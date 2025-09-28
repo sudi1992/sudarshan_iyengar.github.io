@@ -3,37 +3,205 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>My Resume</title>
+  <title>Sudarshan Iyengar | Senior Embedded Engineer</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
   <style>
+    :root {
+      --primary: #2c3e50;
+      --secondary: #3498db;
+      --light: #ecf0f1;
+      --dark: #2c3e50;
+      --text: #333;
+    }
+    
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    
     body {
-      font-family: Arial, sans-serif;
-      background: #f9f9f9;
-      color: #333;
+      font-family: 'Roboto', sans-serif;
+      line-height: 1.6;
+      color: var(--text);
+      background-color: #f9f9f9;
+    }
+    
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 20px;
+    }
+    
+    /* Header */
+    header {
+      background-color: var(--primary);
+      color: white;
+      padding: 3rem 0;
       text-align: center;
-      padding: 50px;
     }
+    
+    .profile-img {
+      width: 150px;
+      height: 150px;
+      border-radius: 50%;
+      border: 5px solid white;
+      margin-bottom: 1rem;
+      object-fit: cover;
+    }
+    
     h1 {
-      color: #2c3e50;
+      font-size: 2.5rem;
+      margin-bottom: 0.5rem;
     }
-    a.button {
-      display: inline-block;
-      margin-top: 20px;
-      padding: 12px 24px;
-      background: #007acc;
-      color: #fff;
+    
+    .title {
+      color: var(--secondary);
+      font-weight: 300;
+      margin-bottom: 1.5rem;
+      font-size: 1.5rem;
+    }
+    
+    /* Navigation */
+    nav {
+      background-color: white;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+    
+    .nav-container {
+      display: flex;
+      justify-content: center;
+      padding: 1rem 0;
+    }
+    
+    .nav-link {
+      color: var(--dark);
       text-decoration: none;
-      border-radius: 6px;
-      font-weight: bold;
+      padding: 0.5rem 1.5rem;
+      font-weight: 500;
+      transition: color 0.3s;
     }
-    a.button:hover {
-      background: #005f99;
+    
+    .nav-link:hover, .nav-link.active {
+      color: var(--secondary);
+    }
+    
+    /* Sections */
+    section {
+      padding: 4rem 0;
+    }
+    
+    .section-title {
+      text-align: center;
+      margin-bottom: 2rem;
+      position: relative;
+    }
+    
+    .section-title:after {
+      content: '';
+      display: block;
+      width: 80px;
+      height: 4px;
+      background: var(--secondary);
+      margin: 15px auto 0;
+    }
+    
+    /* About Section */
+    #about {
+      background-color: white;
+    }
+    
+    .about-content {
+      max-width: 800px;
+      margin: 0 auto;
+      text-align: center;
+    }
+    
+    .about-text p {
+      margin-bottom: 1.5rem;
+      font-size: 1.1rem;
+      line-height: 1.8;
+    }
+    
+    /* Button */
+    .btn-resume {
+      display: inline-block;
+      background: var(--secondary);
+      color: white;
+      padding: 12px 30px;
+      border-radius: 30px;
+      text-decoration: none;
+      font-weight: 500;
+      margin-top: 1rem;
+      transition: all 0.3s;
+      border: 2px solid var(--secondary);
+    }
+    
+    .btn-resume:hover {
+      background: transparent;
+      color: var(--secondary);
+    }
+    
+    @media (max-width: 768px) {
+      .nav-container {
+        flex-wrap: wrap;
+      }
+      
+      .nav-link {
+        padding: 0.5rem 1rem;
+      }
+      
+      h1 {
+        font-size: 2rem;
+      }
+      
+      .title {
+        font-size: 1.2rem;
+      }
     }
   </style>
 </head>
 <body>
-  <h1>Welcome to My Resume</h1>
-  <p>You can view or download my resume using the link below:</p>
-  <a href="resume.pdf" class="button" target="_blank">View / Download Resume</a>
+  <!-- Header -->
+  <header>
+    <div class="container">
+      <img src="https://via.placeholder.com/150" alt="Profile Photo" class="profile-img">
+      <h1>Sudarshan Iyengar</h1>
+      <p class="title">Senior Embedded Systems Engineer</p>
+      <p>Expert in Embedded C/C++, RTOS, and IoT Solutions</p>
+    </div>
+  </header>
+  
+  <!-- Navigation -->
+  <nav>
+    <div class="nav-container">
+      <a href="#about" class="nav-link active">About</a>
+      <a href="#skills" class="nav-link">Skills</a>
+      <a href="#experience" class="nav-link">Experience</a>
+      <a href="#contact" class="nav-link">Contact</a>
+    </div>
+  </nav>
+  
+  <!-- About Section -->
+  <section id="about">
+    <div class="container">
+      <h2 class="section-title">About Me</h2>
+      <div class="about-content">
+        <div class="about-text">
+          <p>Hello! I'm Sudarshan Iyengar, a Senior Embedded Systems Engineer with over 8 years of experience in designing and developing embedded solutions. I specialize in low-level programming, real-time systems, and IoT applications.</p>
+          <p>My expertise includes firmware development, device drivers, and hardware-software integration. I'm passionate about creating efficient, reliable, and innovative embedded systems that solve real-world problems.</p>
+          <a href="SUDARSHAN-IYENGAR-1992.pdf" class="btn-resume" download>
+            <i class="fas fa-download"></i> Download Resume
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
 </body>
 </html>
-
