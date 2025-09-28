@@ -6,15 +6,15 @@
   <title>Sudarshan Iyengar | Senior Embedded Engineer</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&family=Source+Code+Pro:wght@400;600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
   <style>
     :root {
-      --primary: #2c3e50;
-      --secondary: #3498db;
-      --light: #ecf0f1;
-      --dark: #2c3e50;
-      --text: #333;
+      --primary: #1a237e;
+      --secondary: #00b0ff;
+      --light: #e8eaf6;
+      --dark: #0d47a1;
+      --text: #212121;
     }
     
     * {
@@ -27,9 +27,9 @@
       font-family: 'Roboto', sans-serif;
       line-height: 1.6;
       color: var(--text);
-      background-color: #f9f9f9;
+      background-color: #f5f5f5;
     }
-    
+
     .container {
       max-width: 1200px;
       margin: 0 auto;
@@ -38,18 +38,18 @@
     
     /* Header */
     header {
-      background-color: var(--primary);
+      background: linear-gradient(135deg, var(--primary), var(--dark));
       color: white;
       padding: 3rem 0;
       text-align: center;
     }
-    
+
     .profile-img {
       width: 150px;
       height: 150px;
       border-radius: 50%;
-      border: 5px solid white;
-      margin-bottom: 1rem;
+      border: 4px solid rgba(255, 255, 255, 0.2);
+      margin-bottom: 1.5rem;
       object-fit: cover;
     }
     
@@ -60,15 +60,15 @@
     
     .title {
       color: var(--secondary);
-      font-weight: 300;
-      margin-bottom: 1.5rem;
+      font-weight: 400;
+      margin-bottom: 1rem;
       font-size: 1.5rem;
     }
     
     /* Navigation */
     nav {
       background-color: white;
-      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
       position: sticky;
       top: 0;
       z-index: 100;
@@ -78,14 +78,33 @@
       display: flex;
       justify-content: center;
       padding: 1rem 0;
+      max-width: 1200px;
+      margin: 0 auto;
     }
     
     .nav-link {
       color: var(--dark);
       text-decoration: none;
-      padding: 0.5rem 1.5rem;
+      padding: 0.7rem 1.5rem;
       font-weight: 500;
       transition: color 0.3s;
+      position: relative;
+    }
+    
+    .nav-link::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 50%;
+      width: 0;
+      height: 2px;
+      background: var(--secondary);
+      transition: all 0.3s;
+      transform: translateX(-50%);
+    }
+    
+    .nav-link:hover::after, .nav-link.active::after {
+      width: 60%;
     }
     
     .nav-link:hover, .nav-link.active {
@@ -94,33 +113,27 @@
     
     /* Sections */
     section {
-      padding: 4rem 0;
+      padding: 5rem 0;
     }
     
     .section-title {
       text-align: center;
-      margin-bottom: 2rem;
-      position: relative;
-    }
-    
-    .section-title:after {
-      content: '';
-      display: block;
-      width: 80px;
-      height: 4px;
-      background: var(--secondary);
-      margin: 15px auto 0;
+      margin-bottom: 3rem;
+      color: var(--primary);
     }
     
     /* About Section */
-    #about {
-      background-color: white;
-    }
-    
     .about-content {
       max-width: 800px;
       margin: 0 auto;
       text-align: center;
+    }
+    
+    .about-text {
+      background: white;
+      padding: 2.5rem;
+      border-radius: 8px;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
     }
     
     .about-text p {
@@ -131,11 +144,12 @@
     
     /* Button */
     .btn-resume {
-      display: inline-block;
+      display: inline-flex;
+      align-items: center;
       background: var(--secondary);
       color: white;
-      padding: 12px 30px;
-      border-radius: 30px;
+      padding: 12px 28px;
+      border-radius: 50px;
       text-decoration: none;
       font-weight: 500;
       margin-top: 1rem;
@@ -148,30 +162,192 @@
       color: var(--secondary);
     }
     
+    .btn-resume i {
+      margin-right: 8px;
+    }
+
+    /* Experience Section */
+    .timeline {
+      position: relative;
+      max-width: 1000px;
+      margin: 0 auto;
+    }
+    
+    .timeline::before {
+      content: '';
+      position: absolute;
+      width: 2px;
+      background: var(--light);
+      top: 0;
+      bottom: 0;
+      left: 50%;
+      margin-left: -1px;
+    }
+    
+    .timeline-item {
+      padding: 10px 40px;
+      position: relative;
+      width: 50%;
+      margin-bottom: 30px;
+    }
+    
+    .timeline-item:nth-child(odd) {
+      left: 0;
+      padding-right: 70px;
+      text-align: right;
+    }
+    
+    .timeline-item:nth-child(even) {
+      left: 50%;
+      padding-left: 70px;
+    }
+    
+    .timeline-content {
+      padding: 30px;
+      background: white;
+      border-radius: 8px;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+      position: relative;
+      transition: transform 0.3s, box-shadow 0.3s;
+    }
+    
+    .timeline-content:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+    }
+    
+    .timeline-item:nth-child(odd) .timeline-content::after {
+      content: '';
+      position: absolute;
+      width: 20px;
+      height: 20px;
+      right: -10px;
+      top: 40px;
+      background: white;
+      border: 4px solid var(--secondary);
+      border-radius: 50%;
+      z-index: 1;
+    }
+    
+    .timeline-item:nth-child(even) .timeline-content::after {
+      content: '';
+      position: absolute;
+      width: 20px;
+      height: 20px;
+      left: -10px;
+      top: 40px;
+      background: white;
+      border: 4px solid var(--secondary);
+      border-radius: 50%;
+      z-index: 1;
+    }
+    
+    .experience-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 10px;
+    }
+    
+    .experience-header h3 {
+      color: var(--primary);
+      margin: 0;
+      font-size: 1.3rem;
+    }
+    
+    .experience-date {
+      background: var(--light);
+      color: var(--primary);
+      padding: 3px 12px;
+      border-radius: 20px;
+      font-size: 0.85rem;
+      font-weight: 500;
+    }
+    
+    .timeline-content h4 {
+      color: var(--dark);
+      margin: 5px 0 15px;
+      font-weight: 500;
+    }
+    
+    .experience-details {
+      list-style: none;
+      margin-bottom: 15px;
+    }
+    
+    .experience-details li {
+      position: relative;
+      padding-left: 20px;
+      margin-bottom: 8px;
+      line-height: 1.5;
+    }
+    
+    .experience-details li::before {
+      content: '▹';
+      position: absolute;
+      left: 0;
+      color: var(--secondary);
+    }
+    
+    .experience-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+    
+    .tag {
+      background: var(--light);
+      color: var(--primary);
+      padding: 3px 12px;
+      border-radius: 4px;
+      font-size: 0.8rem;
+      font-weight: 500;
+    }
+    
     @media (max-width: 768px) {
-      .nav-container {
-        flex-wrap: wrap;
+      .timeline::before {
+        left: 31px;
       }
       
-      .nav-link {
-        padding: 0.5rem 1rem;
+      .timeline-item {
+        width: 100%;
+        padding-left: 70px;
+        padding-right: 25px;
       }
       
-      h1 {
-        font-size: 2rem;
+      .timeline-item:nth-child(even) {
+        left: 0;
+        padding-left: 70px;
+        text-align: left;
       }
       
-      .title {
-        font-size: 1.2rem;
+      .timeline-item:nth-child(odd) {
+        padding-right: 25px;
+        text-align: left;
+      }
+      
+      .timeline-item:nth-child(odd) .timeline-content::after,
+      .timeline-item:nth-child(even) .timeline-content::after {
+        left: 21px;
+        right: auto;
+      }
+      
+      .experience-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 5px;
       }
     }
   </style>
+  
+
+  
 </head>
 <body>
   <!-- Header -->
   <header>
     <div class="container">
-      <img src="https://via.placeholder.com/150" alt="Profile Photo" class="profile-img">
+      <img src="images/profile.jpg" alt="Sudarshan Iyengar" class="profile-img">
       <h1>Sudarshan Iyengar</h1>
       <p class="title">Senior Embedded Systems Engineer</p>
       <p>Expert in Embedded C/C++, RTOS, and IoT Solutions</p>
@@ -197,11 +373,1151 @@
           <p>Hello! I'm Sudarshan Iyengar, a Senior Embedded Systems Engineer with over 8 years of experience in designing and developing embedded solutions. I specialize in low-level programming, real-time systems, and IoT applications.</p>
           <p>My expertise includes firmware development, device drivers, and hardware-software integration. I'm passionate about creating efficient, reliable, and innovative embedded systems that solve real-world problems.</p>
           <a href="SUDARSHAN-IYENGAR-1992.pdf" class="btn-resume" download>
-            <i class="fas fa-download"></i> Download Resume
+            <i class="fas fa-file-pdf"></i> Download Resume
           </a>
         </div>
       </div>
     </div>
   </section>
+
+  <!-- Experience Section -->
+  <section id="experience">
+    <div class="container">
+      <h2 class="section-title">Professional Experience</h2>
+      
+      <div class="timeline">
+        <!-- Experience Item 1 -->
+        <div class="timeline-item">
+          <div class="timeline-content">
+            <div class="experience-header">
+              <h3>Senior Embedded Engineer</h3>
+              <span class="experience-date">2020 - Present</span>
+            </div>
+            <h4>Tech Innovations Inc.</h4>
+            <ul class="experience-details">
+              <li>Led the development of embedded firmware for IoT devices, reducing power consumption by 35% through optimized low-power modes</li>
+              <li>Designed and implemented RTOS-based solutions for real-time data acquisition systems</li>
+              <li>Mentored junior engineers and conducted code reviews to maintain high code quality standards</li>
+              <li>Developed custom device drivers for various sensors and communication protocols</li>
+            </ul>
+            <div class="experience-tags">
+              <span class="tag">C/C++</span>
+              <span class="tag">FreeRTOS</span>
+              <span class="tag">ARM Cortex-M</span>
+              <span class="tag">I2C/SPI</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Experience Item 2 -->
+        <div class="timeline-item">
+          <div class="timeline-content">
+            <div class="experience-header">
+              <h3>Embedded Systems Engineer</h3>
+              <span class="experience-date">2017 - 2020</span>
+            </div>
+            <h4>Embedded Solutions Ltd.</h4>
+            <ul class="experience-details">
+              <li>Developed and maintained firmware for automotive control units using AUTOSAR architecture</li>
+              <li>Implemented CAN and LIN communication protocols for in-vehicle networking</li>
+              <li>Performed hardware-software integration and debugging using logic analyzers and oscilloscopes</li>
+              <li>Reduced system boot time by 40% through optimization of initialization routines</li>
+            </ul>
+            <div class="experience-tags">
+              <span class="tag">AUTOSAR</span>
+              <span class="tag">CAN/LIN</span>
+              <span class="tag">C</span>
+              <span class="tag">Embedded Linux</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Experience Item 3 -->
+        <div class="timeline-item">
+          <div class="timeline-content">
+            <div class="experience-header">
+              <h3>Firmware Engineer</h3>
+              <span class="experience-date">2015 - 2017</span>
+            </div>
+            <h4>Digital Devices Corp.</h4>
+            <ul class="experience-details">
+              <li>Developed bare-metal firmware for microcontrollers in consumer electronics</li>
+              <li>Designed and implemented bootloaders for secure firmware updates</li>
+              <li>Collaborated with hardware team on PCB bring-up and validation</li>
+              <li>Created automated test frameworks for firmware validation</li>
+            </ul>
+            <div class="experience-tags">
+              <span class="tag">Bare-Metal</span>
+              <span class="tag">Bootloaders</span>
+              <span class="tag">C/Assembly</span>
+              <span class="tag">PCB Debugging</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <script>
+    // Smooth scrolling for navigation links
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function (e) {
+        e.preventDefault();
+        const targetId = this.getAttribute('href');
+        if (targetId === '#') return;
+        
+        const targetElement = document.querySelector(targetId);
+        if (targetElement) {
+          window.scrollTo({
+            top: targetElement.offsetTop - 80,
+            behavior: 'smooth'
+          });
+          
+          // Update active nav link
+          document.querySelectorAll('.nav-link').forEach(link => {
+            link.classList.remove('active');
+          });
+          this.classList.add('active');
+        }
+      });
+    });
+    
+    // Update active nav link on scroll
+    window.addEventListener('scroll', function() {
+      const scrollPosition = window.scrollY + 100;
+      
+      document.querySelectorAll('section').forEach(section => {
+        const sectionTop = section.offsetTop;
+        const sectionHeight = section.offsetHeight;
+        const sectionId = section.getAttribute('id');
+        
+        if (scrollPosition >= sectionTop && scrollPosition < sectionTop + sectionHeight) {
+          document.querySelectorAll('.nav-link').forEach(link => {
+            link.classList.remove('active');
+            if (link.getAttribute('href') === `#${sectionId}`) {
+              link.classList.add('active');
+            }
+          });
+        }
+      });
+    });
+  </script>
+</body>
+</html><!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sudarshan Iyengar | Senior Embedded Engineer</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&family=Source+Code+Pro:wght@400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+  <style>
+    :root {
+      --primary: #1a237e;
+      --secondary: #00b0ff;
+      --light: #e8eaf6;
+      --dark: #0d47a1;
+      --text: #212121;
+    }
+    
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    
+    body {
+      font-family: 'Roboto', sans-serif;
+      line-height: 1.6;
+      color: var(--text);
+      background-color: #f5f5f5;
+      overflow-x: hidden;
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 20px;
+    }
+    
+    /* Semiconductor Chip Background */
+    .chip-bg {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: -1;
+      opacity: 0.03;
+      background-image: 
+        linear-gradient(rgba(0, 176, 255, 0.2) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(0, 176, 255, 0.2) 1px, transparent 1px),
+        linear-gradient(rgba(0, 176, 255, 0.1) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(0, 176, 255, 0.1) 1px, transparent 1px);
+      background-size: 100px 100px, 100px 100px, 20px 20px, 20px 20px;
+      background-position: -1px -1px, -1px -1px, -1px -1px, -1px -1px;
+      animation: float 15s ease-in-out infinite;
+    }
+
+    @keyframes float {
+      0%, 100% { transform: translate(0, 0) rotate(0.01deg); }
+      25% { transform: translate(5px, 5px) rotate(0.01deg); }
+      50% { transform: translate(10px, 0) rotate(0.01deg); }
+      75% { transform: translate(5px, -5px) rotate(0.01deg); }
+    }
+    
+    /* Header */
+    header {
+      background: linear-gradient(135deg, var(--primary), var(--dark));
+      color: white;
+      padding: 4rem 0;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .profile-img {
+      width: 180px;
+      height: 180px;
+      border-radius: 50%;
+      border: 4px solid rgba(255, 255, 255, 0.3);
+      box-shadow: 0 0 30px rgba(0, 176, 255, 0.3);
+      transition: all 0.5s ease;
+    }
+
+    .profile-img:hover {
+      transform: scale(1.05);
+      box-shadow: 0 0 40px rgba(0, 176, 255, 0.5);
+    }
+    
+    h1 {
+      font-size: 2.8rem;
+      margin: 1.5rem 0 0.5rem;
+      font-weight: 700;
+    }
+    
+    .title {
+      color: var(--secondary);
+      font-weight: 400;
+      margin-bottom: 1rem;
+      font-size: 1.5rem;
+      text-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    }
+    
+    /* Navigation */
+    nav {
+      background-color: rgba(255, 255, 255, 0.95);
+      box-shadow: 0 2px 15px rgba(0, 0, 0, 0.1);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      backdrop-filter: blur(10px);
+    }
+    
+    .nav-container {
+      display: flex;
+      justify-content: center;
+      padding: 1rem 0;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+    
+    .nav-link {
+      color: var(--dark);
+      text-decoration: none;
+      padding: 0.8rem 1.8rem;
+      font-weight: 500;
+      transition: all 0.3s;
+      position: relative;
+      font-size: 1.05rem;
+      border-radius: 4px;
+      margin: 0 0.3rem;
+    }
+    
+    .nav-link::after {
+      content: '';
+      position: absolute;
+      bottom: 0.5rem;
+      left: 50%;
+      width: 0;
+      height: 2px;
+      background: var(--secondary);
+      transition: all 0.3s;
+      transform: translateX(-50%);
+    }
+    
+    .nav-link:hover::after, .nav-link.active::after {
+      width: 50%;
+    }
+    
+    .nav-link:hover, .nav-link.active {
+      color: var(--secondary);
+    }
+    
+    /* Sections */
+    section {
+      padding: 5rem 0;
+      position: relative;
+    }
+    
+    .section-title {
+      text-align: center;
+      margin-bottom: 3rem;
+      color: var(--primary);
+      position: relative;
+      font-size: 2.2rem;
+    }
+    
+    .section-title::after {
+      content: '';
+      display: block;
+      width: 80px;
+      height: 4px;
+      background: linear-gradient(90deg, var(--secondary), var(--primary));
+      margin: 1rem auto 0;
+      border-radius: 2px;
+    }
+    
+    /* About Section */
+    .about-content {
+      max-width: 800px;
+      margin: 0 auto;
+    }
+    
+    .about-text {
+      background: rgba(255, 255, 255, 0.95);
+      padding: 2.5rem;
+      border-radius: 12px;
+      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.05);
+      border: 1px solid rgba(0, 0, 0, 0.05);
+      backdrop-filter: blur(10px);
+    }
+    
+    .about-text p {
+      margin-bottom: 1.5rem;
+      font-size: 1.1rem;
+      line-height: 1.8;
+      color: #444;
+    }
+    
+    /* Button */
+    .btn-resume {
+      display: inline-flex;
+      align-items: center;
+      background: linear-gradient(45deg, var(--secondary), #0091ea);
+      color: white;
+      padding: 0.8rem 2rem;
+      border-radius: 50px;
+      text-decoration: none;
+      font-weight: 500;
+      margin-top: 1rem;
+      transition: all 0.3s;
+      border: none;
+      cursor: pointer;
+      box-shadow: 0 4px 15px rgba(0, 176, 255, 0.3);
+    }
+    
+    .btn-resume:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 20px rgba(0, 176, 255, 0.4);
+    }
+    
+    .btn-resume i {
+      margin-right: 10px;
+    }
+
+    /* Skills Section */
+    #skills {
+      background-color: #f9f9f9;
+    }
+
+    .skills-container {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      gap: 1.5rem;
+      margin-top: 2rem;
+    }
+
+    .skill-category {
+      background: rgba(255, 255, 255, 0.95);
+      backdrop-filter: blur(10px);
+      border-radius: 12px;
+      padding: 1.8rem;
+      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.05);
+      transition: all 0.3s ease;
+      border: 1px solid rgba(0, 0, 0, 0.05);
+    }
+
+    .skill-category:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 15px 40px rgba(0, 0, 0, 0.1);
+    }
+
+    .skill-category h3 {
+      color: var(--primary);
+      margin-bottom: 1.2rem;
+      font-size: 1.3rem;
+      display: flex;
+      align-items: center;
+      gap: 0.8rem;
+    }
+
+    .skill-category h3 i {
+      color: var(--secondary);
+    }
+
+    .skill-item {
+      margin-bottom: 1.2rem;
+      position: relative;
+    }
+
+    .skill-name {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 0.5rem;
+      font-size: 0.95rem;
+      font-weight: 500;
+    }
+
+    .skill-bar {
+      height: 8px;
+      background: rgba(0, 0, 0, 0.05);
+      border-radius: 4px;
+      overflow: hidden;
+    }
+
+    .skill-progress {
+      height: 100%;
+      background: linear-gradient(90deg, var(--secondary), #0091ea);
+      border-radius: 4px;
+      width: 0;
+      transition: width 1.5s ease-out;
+    }
+
+    /* Experience Section */
+    .timeline {
+      position: relative;
+      max-width: 1000px;
+      margin: 0 auto;
+      padding: 0 20px;
+    }
+    
+    .timeline::before {
+      content: '';
+      position: absolute;
+      width: 2px;
+      background: var(--light);
+      top: 0;
+      bottom: 0;
+      left: 50%;
+      margin-left: -1px;
+    }
+    
+    .timeline-item {
+      padding: 10px 40px;
+      position: relative;
+      width: 50%;
+      margin-bottom: 30px;
+      opacity: 0;
+      transform: translateY(30px);
+      transition: all 0.6s ease;
+    }
+    
+    .timeline-item.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    
+    .timeline-item:nth-child(odd) {
+      left: 0;
+      padding-right: 70px;
+      text-align: right;
+    }
+    
+    .timeline-item:nth-child(even) {
+      left: 50%;
+      padding-left: 70px;
+    }
+    
+    .timeline-content {
+      padding: 30px;
+      background: rgba(255, 255, 255, 0.95);
+      border-radius: 12px;
+      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.05);
+      position: relative;
+      transition: all 0.3s;
+      border: 1px solid rgba(0, 0, 0, 0.05);
+      backdrop-filter: blur(10px);
+    }
+    
+    .timeline-content:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 15px 40px rgba(0, 0, 0, 0.1);
+    }
+    
+    .timeline-item:nth-child(odd) .timeline-content::after {
+      content: '';
+      position: absolute;
+      width: 20px;
+      height: 20px;
+      right: -10px;
+      top: 40px;
+      background: white;
+      border: 4px solid var(--secondary);
+      border-radius: 50%;
+      z-index: 1;
+    }
+    
+    .timeline-item:nth-child(even) .timeline-content::after {
+      content: '';
+      position: absolute;
+      width: 20px;
+      height: 20px;
+      left: -10px;
+      top: 40px;
+      background: white;
+      border: 4px solid var(--secondary);
+      border-radius: 50%;
+      z-index: 1;
+    }
+    
+    .experience-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 10px;
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+    
+    .experience-header h3 {
+      background: linear-gradient(45deg, var(--primary), var(--dark));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      display: inline-block;
+      margin: 0;
+      font-size: 1.4rem;
+    }
+    
+    .experience-date {
+      background: linear-gradient(45deg, var(--secondary), #0091ea);
+      color: white;
+      padding: 0.3rem 1rem;
+      border-radius: 20px;
+      font-size: 0.85rem;
+      font-weight: 500;
+      box-shadow: 0 4px 15px rgba(0, 176, 255, 0.2);
+    }
+    
+    .timeline-content h4 {
+      color: var(--dark);
+      margin: 5px 0 15px;
+      font-weight: 500;
+      font-size: 1.1rem;
+    }
+    
+    .experience-details {
+      list-style: none;
+      margin-bottom: 15px;
+    }
+    
+    .experience-details li {
+      position: relative;
+      padding-left: 25px;
+      margin-bottom: 10px;
+      line-height: 1.6;
+      color: #444;
+    }
+    
+    .experience-details li::before {
+      content: '▹';
+      position: absolute;
+      left: 0;
+      color: var(--secondary);
+      font-size: 1.1rem;
+      line-height: 1.4;
+    }
+    
+    .experience-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 1rem;
+    }
+    
+    .tag {
+      background: rgba(0, 176, 255, 0.1);
+      color: var(--primary);
+      padding: 0.3rem 0.9rem;
+      border-radius: 20px;
+      font-size: 0.8rem;
+      font-weight: 500;
+      border: 1px solid rgba(0, 176, 255, 0.2);
+      transition: all 0.3s;
+    }
+    
+    .tag:hover {
+      background: var(--secondary);
+      color: white;
+      transform: translateY(-2px);
+    }
+
+    /* Responsive Design */
+    @media (max-width: 768px) {
+      .timeline::before {
+        left: 31px;
+      }
+      
+      .timeline-item {
+        width: 100%;
+        padding-left: 70px;
+        padding-right: 25px;
+      }
+      
+      .timeline-item:nth-child(even) {
+        left: 0;
+        padding-left: 70px;
+        text-align: left;
+      }
+      
+      .timeline-item:nth-child(odd) {
+        padding-right: 25px;
+        text-align: left;
+      }
+      
+      .timeline-item:nth-child(odd) .timeline-content::after,
+      .timeline-item:nth-child(even) .timeline-content::after {
+        left: 21px;
+        right: auto;
+      }
+      
+      .experience-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0.5rem;
+      }
+
+      .skills-container {
+        grid-template-columns: 1fr;
+      }
+
+      .nav-container {
+        flex-wrap: wrap;
+        padding: 0.5rem;
+      }
+
+      .nav-link {
+        padding: 0.5rem 1rem;
+        font-size: 0.95rem;
+      }
+
+      h1 {
+        font-size: 2.2rem;
+      }
+
+      .section-title {
+        font-size: 1.8rem;
+      }
+    }
+
+    /* Contact Section */
+    #contact {
+      background-color: #f9f9f9;
+    }
+
+    .contact-container {
+      max-width: 800px;
+      margin: 0 auto;
+      background: white;
+      padding: 2.5rem;
+      border-radius: 12px;
+      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.05);
+    }
+
+    .contact-info {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 1.5rem;
+      margin-top: 2rem;
+    }
+
+    .contact-item {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      padding: 1.2rem;
+      background: rgba(0, 176, 255, 0.05);
+      border-radius: 8px;
+      transition: all 0.3s;
+      border: 1px solid rgba(0, 0, 0, 0.05);
+    }
+
+    .contact-item:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 5px 20px rgba(0, 0, 0, 0.05);
+      background: rgba(0, 176, 255, 0.1);
+    }
+
+    .contact-icon {
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      background: linear-gradient(45deg, var(--secondary), #0091ea);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      font-size: 1.2rem;
+    }
+
+    .contact-text h4 {
+      color: var(--primary);
+      margin-bottom: 0.3rem;
+      font-size: 1.1rem;
+    }
+
+    .contact-text a, .contact-text p {
+      color: #555;
+      text-decoration: none;
+      transition: color 0.3s;
+    }
+
+    .contact-text a:hover {
+      color: var(--secondary);
+    }
+
+    /* Footer */
+    footer {
+      background: var(--primary);
+      color: white;
+      text-align: center;
+      padding: 2rem 0;
+      margin-top: 4rem;
+    }
+
+    .social-links {
+      display: flex;
+      justify-content: center;
+      gap: 1.5rem;
+      margin: 1.5rem 0;
+    }
+
+    .social-link {
+      color: white;
+      font-size: 1.5rem;
+      transition: all 0.3s;
+    }
+
+    .social-link:hover {
+      color: var(--secondary);
+      transform: translateY(-3px);
+    }
+
+    .copyright {
+      font-size: 0.9rem;
+      opacity: 0.8;
+    }
+
+    /* Animations */
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(30px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .fade-in {
+      animation: fadeInUp 0.8s ease-out forwards;
+    }
+
+    .delay-1 {
+      animation-delay: 0.2s;
+    }
+
+    .delay-2 {
+      animation-delay: 0.4s;
+    }
+
+    .delay-3 {
+      animation-delay: 0.6s;
+    }
+  </style>
+</head>
+<body>
+  <!-- Semiconductor Background -->
+  <div class="chip-bg"></div>
+
+  <!-- Header -->
+  <header>
+    <div class="container">
+      <img src="images/profile.jpg" alt="Sudarshan Iyengar" class="profile-img">
+      <h1 class="fade-in">Sudarshan Iyengar</h1>
+      <p class="title fade-in delay-1">Senior Embedded Systems Engineer</p>
+      <p class="fade-in delay-2">Expert in Embedded C/C++, RTOS, and IoT Solutions</p>
+    </div>
+  </header>
+  
+  <!-- Navigation -->
+  <nav>
+    <div class="nav-container">
+      <a href="#about" class="nav-link active">About</a>
+      <a href="#skills" class="nav-link">Skills</a>
+      <a href="#experience" class="nav-link">Experience</a>
+      <a href="#contact" class="nav-link">Contact</a>
+    </div>
+  </nav>
+  
+  <!-- About Section -->
+  <section id="about">
+    <div class="container">
+      <h2 class="section-title fade-in">About Me</h2>
+      <div class="about-content fade-in delay-1">
+        <div class="about-text">
+          <p>Hello! I'm Sudarshan Iyengar, a Senior Embedded Systems Engineer with over 8 years of experience in designing and developing embedded solutions. I specialize in low-level programming, real-time systems, and IoT applications.</p>
+          <p>My expertise includes firmware development, device drivers, and hardware-software integration. I'm passionate about creating efficient, reliable, and innovative embedded systems that solve real-world problems.</p>
+          <a href="SUDARSHAN-IYENGAR-1992.pdf" class="btn-resume" download>
+            <i class="fas fa-file-pdf"></i> Download Resume
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Skills Section -->
+  <section id="skills">
+    <div class="container">
+      <h2 class="section-title fade-in">Technical Skills</h2>
+      <div class="skills-container">
+        <!-- Programming Languages -->
+        <div class="skill-category fade-in delay-1">
+          <h3><i class="fas fa-code"></i> Programming</h3>
+          <div class="skill-item">
+            <div class="skill-name">
+              <span>C/C++</span>
+              <span>95%</span>
+            </div>
+            <div class="skill-bar">
+              <div class="skill-progress" style="width: 95%"></div>
+            </div>
+          </div>
+          <div class="skill-item">
+            <div class="skill-name">
+              <span>Python</span>
+              <span>85%</span>
+            </div>
+            <div class="skill-bar">
+              <div class="skill-progress" style="width: 85%"></div>
+            </div>
+          </div>
+          <div class="skill-item">
+            <div class="skill-name">
+              <span>Assembly</span>
+              <span>80%</span>
+            </div>
+            <div class="skill-bar">
+              <div class="skill-progress" style="width: 80%"></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Embedded Systems -->
+        <div class="skill-category fade-in delay-2">
+          <h3><i class="fas fa-microchip"></i> Embedded</h3>
+          <div class="skill-item">
+            <div class="skill-name">
+              <span>RTOS (FreeRTOS, Zephyr)</span>
+              <span>90%</span>
+            </div>
+            <div class="skill-bar">
+              <div class="skill-progress" style="width: 90%"></div>
+            </div>
+          </div>
+          <div class="skill-item">
+            <div class="skill-name">
+              <span>ARM Cortex-M/A</span>
+              <span>88%</span>
+            </div>
+            <div class="skill-bar">
+              <div class="skill-progress" style="width: 88%"></div>
+            </div>
+          </div>
+          <div class="skill-item">
+            <div class="skill-name">
+              <span>Bare Metal Programming</span>
+              <span>92%</span>
+            </div>
+            <div class="skill-bar">
+              <div class="skill-progress" style="width: 92%"></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Protocols & Communication -->
+        <div class="skill-category fade-in delay-3">
+          <h3><i class="fas fa-network-wired"></i> Protocols</h3>
+          <div class="skill-item">
+            <div class="skill-name">
+              <span>I2C/SPI/UART</span>
+              <span>94%</span>
+            </div>
+            <div class="skill-bar">
+              <div class="skill-progress" style="width: 94%"></div>
+            </div>
+          </div>
+          <div class="skill-item">
+            <div class="skill-name">
+              <span>CAN/LIN</span>
+              <span>85%</span>
+            </div>
+            <div class="skill-bar">
+              <div class="skill-progress" style="width: 85%"></div>
+            </div>
+          </div>
+          <div class="skill-item">
+            <div class="skill-name">
+              <span>USB/Ethernet</span>
+              <span>82%</span>
+            </div>
+            <div class="skill-bar">
+              <div class="skill-progress" style="width: 82%"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Experience Section -->
+  <section id="experience">
+    <div class="container">
+      <h2 class="section-title fade-in">Professional Experience</h2>
+      
+      <div class="timeline">
+        <!-- Experience Item 1 -->
+        <div class="timeline-item fade-in">
+          <div class="timeline-content">
+            <div class="experience-header">
+              <h3>Senior Embedded Engineer</h3>
+              <span class="experience-date">2020 - Present</span>
+            </div>
+            <h4>Tech Innovations Inc.</h4>
+            <ul class="experience-details">
+              <li>Led the development of embedded firmware for IoT devices, reducing power consumption by 35% through optimized low-power modes</li>
+              <li>Designed and implemented RTOS-based solutions for real-time data acquisition systems</li>
+              <li>Mentored junior engineers and conducted code reviews to maintain high code quality standards</li>
+              <li>Developed custom device drivers for various sensors and communication protocols</li>
+            </ul>
+            <div class="experience-tags">
+              <span class="tag">C/C++</span>
+              <span class="tag">FreeRTOS</span>
+              <span class="tag">ARM Cortex-M</span>
+              <span class="tag">I2C/SPI</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Experience Item 2 -->
+        <div class="timeline-item fade-in delay-1">
+          <div class="timeline-content">
+            <div class="experience-header">
+              <h3>Embedded Systems Engineer</h3>
+              <span class="experience-date">2017 - 2020</span>
+            </div>
+            <h4>Embedded Solutions Ltd.</h4>
+            <ul class="experience-details">
+              <li>Developed and maintained firmware for automotive control units using AUTOSAR architecture</li>
+              <li>Implemented CAN and LIN communication protocols for in-vehicle networking</li>
+              <li>Performed hardware-software integration and debugging using logic analyzers and oscilloscopes</li>
+              <li>Reduced system boot time by 40% through optimization of initialization routines</li>
+            </ul>
+            <div class="experience-tags">
+              <span class="tag">AUTOSAR</span>
+              <span class="tag">CAN/LIN</span>
+              <span class="tag">C</span>
+              <span class="tag">Embedded Linux</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Experience Item 3 -->
+        <div class="timeline-item fade-in delay-2">
+          <div class="timeline-content">
+            <div class="experience-header">
+              <h3>Firmware Engineer</h3>
+              <span class="experience-date">2015 - 2017</span>
+            </div>
+            <h4>Digital Devices Corp.</h4>
+            <ul class="experience-details">
+              <li>Developed bare-metal firmware for microcontrollers in consumer electronics</li>
+              <li>Designed and implemented bootloaders for secure firmware updates</li>
+              <li>Collaborated with hardware team on PCB bring-up and validation</li>
+              <li>Created automated test frameworks for firmware validation</li>
+            </ul>
+            <div class="experience-tags">
+              <span class="tag">Bare-Metal</span>
+              <span class="tag">Bootloaders</span>
+              <span class="tag">C/Assembly</span>
+              <span class="tag">PCB Debugging</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact Section -->
+  <section id="contact">
+    <div class="container">
+      <h2 class="section-title fade-in">Get In Touch</h2>
+      <div class="contact-container fade-in delay-1">
+        <div class="contact-info">
+          <div class="contact-item">
+            <div class="contact-icon">
+              <i class="fas fa-envelope"></i>
+            </div>
+            <div class="contact-text">
+              <h4>Email</h4>
+              <a href="mailto:your.email@example.com">your.email@example.com</a>
+            </div>
+          </div>
+          <div class="contact-item">
+            <div class="contact-icon">
+              <i class="fas fa-phone"></i>
+            </div>
+            <div class="contact-text">
+              <h4>Phone</h4>
+              <a href="tel:+1234567890">+1 (234) 567-890</a>
+            </div>
+          </div>
+          <div class="contact-item">
+            <div class="contact-icon">
+              <i class="fas fa-map-marker-alt"></i>
+            </div>
+            <div class="contact-text">
+              <h4>Location</h4>
+              <p>Bangalore, India</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <div class="container">
+      <div class="social-links">
+        <a href="https://github.com/yourusername" class="social-link" target="_blank" rel="noopener noreferrer">
+          <i class="fab fa-github"></i>
+        </a>
+        <a href="https://linkedin.com/in/yourusername" class="social-link" target="_blank" rel="noopener noreferrer">
+          <i class="fab fa-linkedin-in"></i>
+        </a>
+        <a href="https://twitter.com/yourusername" class="social-link" target="_blank" rel="noopener noreferrer">
+          <i class="fab fa-twitter"></i>
+        </a>
+        <a href="https://stackoverflow.com/users/youruserid" class="social-link" target="_blank" rel="noopener noreferrer">
+          <i class="fab fa-stack-overflow"></i>
+        </a>
+      </div>
+      <p class="copyright">© 2025 Sudarshan Iyengar. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <script>
+    // Animate skills on scroll
+    function animateSkills() {
+      const skills = document.querySelectorAll('.skill-progress');
+      skills.forEach(skill => {
+        const width = skill.style.width;
+        skill.style.width = '0';
+        setTimeout(() => {
+          skill.style.width = width;
+        }, 100);
+      });
+    }
+
+    // Intersection Observer for scroll animations
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          if (entry.target.classList.contains('timeline-item')) {
+            entry.target.classList.add('visible');
+          }
+          if (entry.target.classList.contains('skill-progress')) {
+            animateSkills();
+          }
+          entry.target.classList.add('animate');
+        }
+      });
+    }, { threshold: 0.1 });
+
+    // Observe elements
+    document.querySelectorAll('.timeline-item, .skill-progress, .fade-in').forEach(element => {
+      observer.observe(element);
+    });
+
+    // Smooth scrolling for navigation links
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function (e) {
+        e.preventDefault();
+        const targetId = this.getAttribute('href');
+        if (targetId === '#') return;
+        
+        const targetElement = document.querySelector(targetId);
+        if (targetElement) {
+          window.scrollTo({
+            top: targetElement.offsetTop - 80,
+            behavior: 'smooth'
+          });
+          
+          // Update active nav link
+          document.querySelectorAll('.nav-link').forEach(link => {
+            link.classList.remove('active');
+          });
+          this.classList.add('active');
+        }
+      });
+    });
+    
+    // Update active nav link on scroll
+    window.addEventListener('scroll', function() {
+      const scrollPosition = window.scrollY + 100;
+      
+      document.querySelectorAll('section').forEach(section => {
+        const sectionTop = section.offsetTop;
+        const sectionHeight = section.offsetHeight;
+        const sectionId = section.getAttribute('id');
+        
+        if (scrollPosition >= sectionTop && scrollPosition < sectionTop + sectionHeight) {
+          document.querySelectorAll('.nav-link').forEach(link => {
+            link.classList.remove('active');
+            if (link.getAttribute('href') === `#${sectionId}`) {
+              link.classList.add('active');
+            }
+          });
+        }
+      });
+    });
+
+    // Initialize animations on page load
+    document.addEventListener('DOMContentLoaded', function() {
+      // Trigger skill animations
+      animateSkills();
+      
+      // Add visible class to timeline items with delay
+      document.querySelectorAll('.timeline-item').forEach((item, index) => {
+        setTimeout(() => {
+          item.classList.add('visible');
+        }, 200 * index);
+      });
+    });
+  </script>
 </body>
 </html>
