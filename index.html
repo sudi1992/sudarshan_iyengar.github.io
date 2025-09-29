@@ -10,11 +10,26 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
   <style>
     :root {
-      --primary: #1a237e;
-      --secondary: #00b0ff;
-      --light: #e8eaf6;
-      --dark: #0d47a1;
-      --text: #212121;
+      --primary: #000000;      /* Black */
+      --secondary: #FFD700;    /* Gold/Yellow */
+      --accent: #FF4136;       /* Red */
+      --background: #FFFFF0;   /* Ivory */
+      --text: #333333;         /* Dark gray */
+      --light-bg: #FFFDE7;     /* Light yellow */
+      --card-bg: #FFFFFF;      /* White for cards */
+    }
+    
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    
+    body {
+      font-family: 'Roboto', sans-serif;
+      line-height: 1.6;
+      color: var(--text);
+      background-color: var(--background);
     }
     
     * {
@@ -38,16 +53,18 @@
     
     /* Header */
     header {
-      background: linear-gradient(135deg, var(--primary), var(--dark));
-      color: white;
-      padding: 3rem 0;
-      text-align: centerE
+      background: linear-gradient(135deg, var(--primary), #333);
+      color: var(--secondary);
+      padding: 4rem 0;
+      text-align: center;
     }
 
     .profile-img {
       width: 150px;
       height: 150px;
       border-radius: 50%;
+      border: 4px solid var(--secondary);
+      box-shadow: 0 4px 15px rgba(0,0,0,0.2);
       border: 4px solid rgba(255, 255, 255, 0.2);
       margin-bottom: 1.5rem;
       object-fit: cover;
@@ -67,7 +84,7 @@
     
     /* Navigation */
     nav {
-      background-color: white;
+      background-color: var(--primary);
       box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
       position: sticky;
       top: 0;
@@ -83,11 +100,11 @@
     }
     
     .nav-link {
-      color: var(--dark);
+      color: white;
       text-decoration: none;
       padding: 0.7rem 1.5rem;
       font-weight: 500;
-      transition: color 0.3s;
+      transition: all 0.3s;
       position: relative;
     }
     
@@ -107,8 +124,27 @@
       width: 60%;
     }
     
+    .nav-link::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 50%;
+      width: 0;
+      height: 4px;
+      background: var(--accent);
+      transition: all 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+      transform: translateX(-50%);
+      border-radius: 2px;
+    }
+    
+    .nav-link:hover::after, .nav-link.active::after {
+      width: 80%;
+      background: linear-gradient(90deg, var(--accent), var(--secondary));
+    }
+    
     .nav-link:hover, .nav-link.active {
       color: var(--secondary);
+      text-shadow: 0 0 10px rgba(255, 215, 0, 0.3);
     }
     
     /* Sections */
@@ -120,18 +156,29 @@
       text-align: center;
       margin-bottom: 3rem;
       color: var(--primary);
+      position: relative;
+      font-size: 2.2rem;
     }
     
+    .section-title::after {
+      content: '';
+      display: block;
+      width: 80px;
+      height: 4px;
+      background: var(--accent);
+      margin: 1rem auto 0;
+      border-radius: 2px;
+    }
     /* About Section */
     .about-content {
       max-width: 800px;
       margin: 0 auto;
-      text-align: center;
     }
     
     .about-text {
-      background: white;
+      background: var(--card-bg);
       padding: 2.5rem;
+      text-align: left;
       border-radius: 8px;
       box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
     }
@@ -146,7 +193,7 @@
     .btn-resume {
       display: inline-flex;
       align-items: center;
-      background: var(--secondary);
+      background: var(--accent);
       color: white;
       padding: 12px 28px;
       border-radius: 50px;
@@ -154,12 +201,20 @@
       font-weight: 500;
       margin-top: 1rem;
       transition: all 0.3s;
-      border: 2px solid var(--secondary);
+      border: 2px solid var(--accent);
     }
     
     .btn-resume:hover {
       background: transparent;
-      color: var(--secondary);
+      color: var(--accent);
+      transform: translateY(-3px);
+      box-shadow: 0 8px 20px rgba(255, 65, 54, 0.4);
+      letter-spacing: 0.5px;
+    }
+    
+    .btn-resume:active {
+      transform: translateY(-1px);
+      box-shadow: 0 4px 10px rgba(255, 65, 54, 0.3);
     }
     
     .btn-resume i {
@@ -208,15 +263,39 @@
       border-radius: 8px;
       box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
       position: relative;
-      transition: transform 0.3s, box-shadow 0.3s;
+      transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+      border-left: 4px solid var(--accent);
+      overflow: hidden;
+    }
+    
+    .timeline-content::after {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(135deg, rgba(255, 209, 0, 0.05), rgba(255, 65, 54, 0.05));
+      opacity: 0;
+      transition: opacity 0.4s ease;
+      pointer-events: none;
     }
     
     .timeline-content:hover {
-      transform: translateY(-5px);
-      box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+      transform: translateX(8px);
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.12);
+      border-left-color: var(--secondary);
     }
     
-    .timeline-item:nth-child(odd) .timeline-content::after {
+    .timeline-content:hover::after {
+      opacity: 1;
+    }
+    
+    .timeline-content:active {
+      transform: translateX(6px);
+    }
+    
+    .timeline-item:nth-child(odd) .timeline-content::before {
       content: '';
       position: absolute;
       width: 20px;
@@ -229,63 +308,107 @@
       z-index: 1;
     }
     
-    .timeline-item:nth-child(even) .timeline-content::after {
-      content: '';
-      position: absolute;
-      width: 20px;
-      height: 20px;
-      left: -10px;
-      top: 40px;
-      background: white;
-      border: 4px solid var(--secondary);
-      border-radius: 50%;
-      z-index: 1;
-    }
-    
-    .experience-header {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      margin-bottom: 10px;
-    }
-    
-    .experience-header h3 {
-      color: var(--primary);
-      margin: 0;
-      font-size: 1.3rem;
-    }
-    
     .experience-date {
-      background: var(--light);
-      color: var(--primary);
-      padding: 3px 12px;
+      background: linear-gradient(135deg, var(--accent), var(--secondary));
+      color: white;
+      padding: 5px 15px;
       border-radius: 20px;
       font-size: 0.85rem;
-      font-weight: 500;
+      font-weight: 600;
+      box-shadow: 0 2px 8px rgba(255, 65, 54, 0.3);
+      transition: all 0.3s ease;
+      display: inline-block;
+    }
+    
+    .experience-date:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 6px 15px rgba(255, 65, 54, 0.4);
+      background: linear-gradient(135deg, var(--accent), var(--secondary));
     }
     
     .timeline-content h4 {
-      color: var(--dark);
-      margin: 5px 0 15px;
+      color: var(--primary);
+      margin: 0 0 10px;
+      font-size: 1.25rem;
+      font-weight: 700;
+      transition: all 0.3s ease;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+    
+    .timeline-content h4 .company {
+      color: var(--accent);
+      font-weight: 600;
+      font-size: 1.1rem;
+    }
+    
+    .timeline-content h4 .date {
+      background: linear-gradient(135deg, var(--accent), var(--secondary));
+      color: white;
+      padding: 3px 12px;
+      border-radius: 12px;
+      font-size: 0.8rem;
       font-weight: 500;
+      white-space: nowrap;
+    }
+    
+    .timeline-content:hover h4 {
+      color: var(--accent);
+      transform: translateX(2px);
     }
     
     .experience-details {
       list-style: none;
-      margin-bottom: 15px;
+      margin: 0 0 15px;
+      padding: 0;
+    }
+    
+    .experience-details {
+      list-style: none;
+      margin: 0 0 20px;
+      padding: 0;
+      display: grid;
+      gap: 12px;
     }
     
     .experience-details li {
       position: relative;
-      padding-left: 20px;
-      margin-bottom: 8px;
-      line-height: 1.5;
+      padding: 12px 15px 12px 35px;
+      margin: 0;
+      line-height: 1.6;
+      transition: all 0.3s ease;
+      background: rgba(255, 255, 255, 0.9);
+      border-radius: 6px;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+      border-left: 3px solid var(--secondary);
+    }
+    
+    .experience-details li:hover {
+      transform: translateX(5px);
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+      border-left-color: var(--accent);
     }
     
     .experience-details li::before {
-      content: '▹';
+      content: '→';
       position: absolute;
-      left: 0;
+      left: 12px;
+      top: 14px;
+      color: var(--accent);
+      font-weight: bold;
+      transition: all 0.3s ease;
+    }
+    
+    .experience-details li:hover::before {
+      transform: translateX(3px);
+      color: var(--secondary);
+    }
+    
+    .timeline-content:hover .experience-details li::before {
+      transform: translateX(5px);
       color: var(--secondary);
     }
     
@@ -293,15 +416,24 @@
       display: flex;
       flex-wrap: wrap;
       gap: 8px;
+      margin: 15px 0 0;
     }
     
     .tag {
-      background: var(--light);
+      background: linear-gradient(135deg, rgba(255, 209, 0, 0.1), rgba(255, 65, 54, 0.1));
       color: var(--primary);
-      padding: 3px 12px;
-      border-radius: 4px;
-      font-size: 0.8rem;
-      font-weight: 500;
+      padding: 4px 12px;
+      border-radius: 15px;
+      font-size: 0.75rem;
+      font-weight: 600;
+      border: 1px solid rgba(0, 0, 0, 0.05);
+      transition: all 0.2s ease;
+    }
+    
+    .tag:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+      background: linear-gradient(135deg, rgba(255, 209, 0, 0.15), rgba(255, 65, 54, 0.15));
     }
     
     @media (max-width: 768px) {
@@ -380,31 +512,7 @@
       </div>
     </div>
   </section><!-- About Section -->
-<section id="about">
-  <div class="container">
-    <h2 class="section-title">About Me</h2>
-    <div class="about-content">
-      <div class="about-text">
-        <p>
-          Hello! I'm <strong>Sudarshan Iyengar</strong>, an Embedded Systems Engineer with over 
-          8 years of experience designing and delivering embedded solutions. 
-          I specialize in low-level programming, real-time operating systems, and 
-          embedded Linux applications.
-        </p>
-        <p>
-          I have a strong background in custom board bring-up, hardware-software 
-          integration, and FPGA-based system development. My experience includes 
-          developing bare-metal and RTOS-based device drivers across multiple MCU 
-          families.
-        </p>
-        <a href="SUDARSHAN-IYENGAR-1992.pdf" class="btn-resume" download>
-          📄 Download Resume
-        </a>
-      </div>
-    </div>
-  </div>
-</section>
-
+  
 <style>
   #about {
     background: #f9f9f9;
@@ -597,104 +705,71 @@
   </script>
 
   <!-- Skills Section -->
-  <section id="skills">
+  <section id="skills" style="background: var(--light-bg); padding: 5rem 0;">
     <div class="container">
-      <h2 class="section-title fade-in">Technical Skills</h2>
-      <div class="skills-container">
-        <!-- Programming Languages -->
-        <div class="skill-category fade-in delay-1">
-          <h3><i class="fas fa-code"></i> Programming</h3>
-          <div class="skill-item">
-            <div class="skill-name">
-              <span>C/C++</span>
-              <span>95%</span>
-            </div>
-            <div class="skill-bar">
-              <div class="skill-progress" style="width: 95%"></div>
-            </div>
-          </div>
-          <div class="skill-item">
-            <div class="skill-name">
-              <span>Python</span>
-              <span>85%</span>
-            </div>
-            <div class="skill-bar">
-              <div class="skill-progress" style="width: 85%"></div>
-            </div>
-          </div>
-          <div class="skill-item">
-            <div class="skill-name">
-              <span>Assembly</span>
-              <span>80%</span>
-            </div>
-            <div class="skill-bar">
-              <div class="skill-progress" style="width: 80%"></div>
-            </div>
-          </div>
+      <h2 class="section-title">Technical Skills</h2>
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem; margin-top: 2rem;">
+        <!-- Embedded Development -->
+        <div style="background: white; padding: 2rem; border-radius: 8px; box-shadow: 0 4px 6px rgba(0,0,0,0.1);">
+          <h3 style="color: var(--primary); margin-bottom: 1.5rem; display: flex; align-items: center; gap: 0.5rem;">
+            <i class="fas fa-microchip" style="color: var(--accent);"></i> Embedded Development
+          </h3>
+          <ul style="list-style: none; padding: 0; margin: 0;">
+            <li style="padding: 0.5rem 0; display: flex; align-items: center; gap: 0.5rem;">
+              <i class="fas fa-check" style="color: var(--accent);"></i> C/C++ Programming
+            </li>
+            <li style="padding: 0.5rem 0; display: flex; align-items: center; gap: 0.5rem;">
+              <i class="fas fa-check" style="color: var(--accent);"></i> RTOS (FreeRTOS, Zephyr)
+            </li>
+            <li style="padding: 0.5rem 0; display: flex; align-items: center; gap: 0.5rem;">
+              <i class="fas fa-check" style="color: var(--accent);"></i> Bare Metal Programming
+            </li>
+            <li style="padding: 0.5rem 0; display: flex; align-items: center; gap: 0.5rem;">
+              <i class="fas fa-check" style="color: var(--accent);"></i> ARM Cortex-M/A
+            </li>
+          </ul>
         </div>
 
-        <!-- Embedded Systems -->
-        <div class="skill-category fade-in delay-2">
-          <h3><i class="fas fa-microchip"></i> Embedded</h3>
-          <div class="skill-item">
-            <div class="skill-name">
-              <span>RTOS (FreeRTOS, Zephyr)</span>
-              <span>90%</span>
-            </div>
-            <div class="skill-bar">
-              <div class="skill-progress" style="width: 90%"></div>
-            </div>
-          </div>
-          <div class="skill-item">
-            <div class="skill-name">
-              <span>ARM Cortex-M/A</span>
-              <span>88%</span>
-            </div>
-            <div class="skill-bar">
-              <div class="skill-progress" style="width: 88%"></div>
-            </div>
-          </div>
-          <div class="skill-item">
-            <div class="skill-name">
-              <span>Bare Metal Programming</span>
-              <span>92%</span>
-            </div>
-            <div class="skill-bar">
-              <div class="skill-progress" style="width: 92%"></div>
-            </div>
-          </div>
+        <!-- Linux & Drivers -->
+        <div style="background: white; padding: 2rem; border-radius: 8px; box-shadow: 0 4px 6px rgba(0,0,0,0.1);">
+          <h3 style="color: var(--primary); margin-bottom: 1.5rem; display: flex; align-items: center; gap: 0.5rem;">
+            <i class="fab fa-linux" style="color: var(--accent);"></i> Linux & Drivers
+          </h3>
+          <ul style="list-style: none; padding: 0; margin: 0;">
+            <li style="padding: 0.5rem 0; display: flex; align-items: center; gap: 0.5rem;">
+              <i class="fas fa-check" style="color: var(--accent);"></i> Linux Device Drivers
+            </li>
+            <li style="padding: 0.5rem 0; display: flex; align-items: center; gap: 0.5rem;">
+              <i class="fas fa-check" style="color: var(--accent);"></i> Device Tree & Yocto
+            </li>
+            <li style="padding: 0.5rem 0; display: flex; align-items: center; gap: 0.5rem;">
+              <i class="fas fa-check" style="color: var(--accent);"></i> DMA & Interrupt Handling
+            </li>
+            <li style="padding: 0.5rem 0; display: flex; align-items: center; gap: 0.5rem;">
+              <i class="fas fa-check" style="color: var(--accent);"></i> Kernel Debugging
+            </li>
+          </ul>
         </div>
 
-        <!-- Protocols & Communication -->
-        <div class="skill-category fade-in delay-3">
-          <h3><i class="fas fa-network-wired"></i> Protocols</h3>
-          <div class="skill-item">
-            <div class="skill-name">
-              <span>I2C/SPI/UART</span>
-              <span>94%</span>
-            </div>
-            <div class="skill-bar">
-              <div class="skill-progress" style="width: 94%"></div>
-            </div>
-          </div>
-          <div class="skill-item">
-            <div class="skill-name">
-              <span>CAN/LIN</span>
-              <span>85%</span>
-            </div>
-            <div class="skill-bar">
-              <div class="skill-progress" style="width: 85%"></div>
-            </div>
-          </div>
-          <div class="skill-item">
-            <div class="skill-name">
-              <span>USB/Ethernet</span>
-              <span>82%</span>
-            </div>
-            <div class="skill-bar">
-              <div class="skill-progress" style="width: 82%"></div>
-            </div>
-          </div>
+        <!-- FPGA & RTL -->
+        <div style="background: white; padding: 2rem; border-radius: 8px; box-shadow: 0 4px 6px rgba(0,0,0,0.1);">
+          <h3 style="color: var(--primary); margin-bottom: 1.5rem; display: flex; align-items: center; gap: 0.5rem;">
+            <i class="fas fa-project-diagram" style="color: var(--accent);"></i> FPGA & RTL
+          </h3>
+          <ul style="list-style: none; padding: 0; margin: 0;">
+            <li style="padding: 0.5rem 0; display: flex; align-items: center; gap: 0.5rem;">
+              <i class="fas fa-check" style="color: var(--accent);"></i> Verilog/VHDL
+            </li>
+            <li style="padding: 0.5rem 0; display: flex; align-items: center; gap: 0.5rem;">
+              <i class="fas fa-check" style="color: var(--accent);"></i> AXI/AXIS Protocols
+            </li>
+            <li style="padding: 0.5rem 0; display: flex; align-items: center; gap: 0.5rem;">
+              <i class="fas fa-check" style="color: var(--accent);"></i> Xilinx Zynq/Artix
+            </li>
+            <li style="padding: 0.5rem 0; display: flex; align-items: center; gap: 0.5rem;">
+              <i class="fas fa-check" style="color: var(--accent);"></i> High-Speed Interfaces
+            </li>
+          </ul>
         </div>
       </div>
     </div>
@@ -986,18 +1061,6 @@
     </p>
   </section>
 
-  <!-- Skills -->
-  <section id="skills">
-    <h2 class="section-title">Skills</h2>
-    <ul>
-      <li>Linux & Drivers: DMA drivers, device trees, Yocto builds, FPGA-CPU communication</li>
-      <li>FPGA & RTL: Custom AXI/AXIS Verilog modules, protocol monitors, stream schedulers (Zynq/Artix)</li>
-      <li>RTOS & MCUs: FreeRTOS, ThreadX, peripheral drivers across multiple MCU families</li>
-      <li>IoT & Wireless: Bluetooth/Wi-Fi solutions on Microchip, sub-1GHz sensing</li>
-      <li>Power Electronics: Buck-boost converters, MPPT controllers, battery management</li>
-      <li>System Validation: Automated setups, compliance testing, cross-team debug</li>
-    </ul>
-  </section>
 
   <!-- Experience -->
   <section id="experience">
