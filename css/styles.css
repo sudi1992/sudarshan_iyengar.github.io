@@ -24,6 +24,7 @@
   --color-bg: #0A0F1E;
   --color-bg-secondary: #0E1525;
   --color-bg-tertiary: #1A2332;
+  --color-bg-gradient: linear-gradient(135deg, #0A0F1E 0%, #0E1525 100%);
   --color-text: #E6E6E6;
   --color-text-muted: #B0B0B0;
   --color-text-secondary: #C0C0C0;
@@ -61,15 +62,14 @@
   --radius-md: 8px;
   --radius-lg: 12px;
   
-  /* Enhanced Transitions */
   --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   --transition-slow: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
   --transition-bounce: all 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.55);
 }
 
 /* Reset & Base Styles */
-*, 
-*::before, 
+*,
+*::before,
 *::after {
   box-sizing: border-box;
   margin: 0;
@@ -77,25 +77,18 @@
 }
 
 html {
-  font-size: 16px;
   scroll-behavior: smooth;
   scroll-padding-top: 100px;
   height: 100%;
 }
 
 /* Animated Background with Enhanced Water Drop Effect */
-body {
-  margin: 0;
-  padding: 0;
-  min-height: 100vh;
+* Sections */
+.section {
+  padding: var(--space-xl) 0;
   position: relative;
-  overflow-x: hidden;
-  background: linear-gradient(135deg, #0a0f1e 0%, #0e1525 100%);
-}
-
-body::before {
-  content: '';
-  position: fixed;
+  overflow: hidden;
+  background: transparent;
   top: 0;
   left: 0;
   width: 100%;

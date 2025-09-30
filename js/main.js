@@ -43,10 +43,31 @@ function initWaterDrop() {
   setInterval(createDrop, 1000);
 }
 
+// Make sure all sections are visible on load
+function ensureSectionsVisible() {
+  const sections = document.querySelectorAll('section');
+  sections.forEach(section => {
+    section.style.opacity = '1';
+    section.style.visibility = 'visible';
+    section.style.transform = 'translateY(0)';
+  });
+}
+
 // Initialize everything when the DOM is fully loaded
 document.addEventListener('DOMContentLoaded', () => {
+  // Make sure all sections are visible
+  ensureSectionsVisible();
+  
   // Initialize water drop effect
   initWaterDrop();
+  
+  // Initialize other effects
+  if (typeof initParticles === 'function') initParticles();
+  if (typeof initScrollAnimations === 'function') initScrollAnimations();
+  if (typeof initInteractiveElements === 'function') initInteractiveElements();
+  if (typeof initSmoothScrolling === 'function') initSmoothScrolling();
+  if (typeof initBackToTop === 'function') initBackToTop();
+  if (typeof initMobileMenu === 'function') initMobileMenu();
   
   // Hide loading screen when everything is loaded
   window.addEventListener('load', () => {
@@ -55,13 +76,20 @@ document.addEventListener('DOMContentLoaded', () => {
       loadingScreen.classList.add('hidden');
       setTimeout(() => loadingScreen.remove(), 500);
     }
+    
+    // Make sure everything is visible after load
+    ensureSectionsVisible();
+    
+    // Force redraw to ensure transitions work
+    document.body.offsetHeight;
   });
   
   // Set initial styles for fade-in elements
-  const fadeElements = document.querySelectorAll('.fade-in, .project-card, .timeline-item, .highlight-card, .certification-item, .education-item');
+  const fadeElements = document.querySelectorAll('.fade-in, .project-card, .timeline-item, .highlight-card, .certification-item, .education-item, section');
   fadeElements.forEach(el => {
-    el.style.opacity = '0';
-    el.style.transform = 'translateY(20px)';
+    el.style.opacity = '1';
+    el.style.visibility = 'visible';
+    el.style.transform = 'translateY(0)';
     el.style.transition = 'opacity 0.6s ease, transform 0.6s ease, box-shadow 0.3s ease';
   });
   
@@ -70,15 +98,11 @@ document.addEventListener('DOMContentLoaded', () => {
     initActiveNavigation();
   }
   
-  // Trigger animations after a short delay
-  setTimeout(() => {
-    fadeElements.forEach((el, index) => {
-      setTimeout(() => {
-        el.style.opacity = '1';
-        el.style.transform = 'translateY(0)';
-      }, 100 * index);
-    });
-  }, 300);
+  // Make sure all sections are visible after a short delay
+  setTimeout(ensureSectionsVisible, 100);
+  
+  // Also check on window resize
+  window.addEventListener('resize', ensureSectionsVisible);
 });
 
 // Create floating particles
