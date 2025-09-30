@@ -1137,6 +1137,26 @@
             I'm a Senior Embedded Engineer with expertise in Linux drivers, FPGA development, and real-time systems.
             Currently, I'm focused on building cutting-edge embedded solutions at <a href="#" class="text-accent">@CurrentCompany</a>.
           </p>
+          
+          <div class="social-links" style="display: flex; gap: 1.5rem; margin: 2rem 0; justify-content: center;">
+            <a href="https://www.linkedin.com/in/sudarshan-iyengar-286a9422" target="_blank" rel="noopener noreferrer" 
+               style="color: #0A66C2; font-size: 1.8rem; transition: transform 0.3s ease, color 0.3s ease;" 
+               title="LinkedIn Profile"
+               onmouseover="this.style.transform='translateY(-3px)'"
+               onmouseout="this.style.transform='translateY(0)'">
+              <i class="fab fa-linkedin"></i>
+              <span class="sr-only">LinkedIn</span>
+            </a>
+            <a href="https://github.com/sudi1992" target="_blank" rel="noopener noreferrer" 
+               style="color: #f5f5f5; font-size: 1.8rem; transition: transform 0.3s ease, color 0.3s ease;" 
+               title="GitHub Profile"
+               onmouseover="this.style.transform='translateY(-3px)'"
+               onmouseout="this.style.transform='translateY(0)'">
+              <i class="fab fa-github"></i>
+              <span class="sr-only">GitHub</span>
+            </a>
+          </div>
+          
           <div class="hero-cta">
             <a href="#contact" class="cta-button">
               <span class="cta-text">Get In Touch</span>
@@ -1189,26 +1209,26 @@ int main() {
       <div class="highlights-grid">
         <div class="highlight-card">
           <div class="highlight-icon">
-            <i class="fas fa-code-branch"></i>
+            <i class="fab fa-linux"></i>
           </div>
           <h3>Linux & Drivers</h3>
-          <p>Designed and integrated Linux DMA drivers, device trees, and Yocto builds for FPGA systems.</p>
+          <p>Designed and integrated Linux DMA drivers, device trees, and Yocto builds for FPGA systems, ensuring seamless hardware-software integration.</p>
+        </div>
+        
+        <div class="highlight-card">
+          <div class="highlight-icon">
+            <i class="fas fa-project-diagram"></i>
+          </div>
+          <h3>FPGA & RTL</h3>
+          <p>Developed custom AXI/AXIS Verilog modules, protocol monitors, and data stream schedulers on Zynq/Artix platforms, optimizing for performance and efficiency.</p>
         </div>
         
         <div class="highlight-card">
           <div class="highlight-icon">
             <i class="fas fa-microchip"></i>
           </div>
-          <h3>FPGA & RTL</h3>
-          <p>Developed custom AXI/AXIS Verilog modules, protocol monitors, and data stream schedulers on Zynq/Artix platforms.</p>
-        </div>
-        
-        <div class="highlight-card">
-          <div class="highlight-icon">
-            <i class="fas fa-microcontroller"></i>
-          </div>
           <h3>RTOS & MCUs</h3>
-          <p>Ported applications to FreeRTOS/ThreadX, delivered RTOS peripheral drivers across multiple MCU families.</p>
+          <p>Ported applications to FreeRTOS/ThreadX, delivered RTOS peripheral drivers across multiple MCU families, and optimized system performance.</p>
         </div>
         
         <div class="highlight-card">
@@ -1216,7 +1236,7 @@ int main() {
             <i class="fas fa-wifi"></i>
           </div>
           <h3>IoT & Wireless</h3>
-          <p>Built POC phase Bluetooth/Wi-Fi solutions on Microchip platforms and sub-1GHz sensing for smart monitoring.</p>
+          <p>Built POC phase Bluetooth/Wi-Fi solutions on Microchip platforms and implemented sub-1GHz sensing for smart monitoring applications.</p>
         </div>
         
         <div class="highlight-card">
@@ -1224,7 +1244,7 @@ int main() {
             <i class="fas fa-bolt"></i>
           </div>
           <h3>Power Electronics</h3>
-          <p>Developed buck-boost converters, MPPT controllers, and conducted battery management analysis.</p>
+          <p>Designed and developed buck-boost converters, MPPT controllers, and conducted comprehensive battery management analysis for power-efficient systems.</p>
         </div>
         
         <div class="highlight-card">
@@ -1232,25 +1252,37 @@ int main() {
             <i class="fas fa-check-double"></i>
           </div>
           <h3>System Validation</h3>
-          <p>Automated test setups, compliance testing, and cross-team debug for production-grade systems.</p>
+          <p>Implemented automated test setups, conducted compliance testing, and led cross-team debug efforts to ensure production-grade system quality and reliability.</p>
+        </div>
       </div>
     </div>
   </section>
 
-  <!-- Tabs Section -->
-  <section class="tabs-section">
+  <!-- Tabs Navigation -->
+  <section class="tabs-section" style="background: rgba(10, 15, 26, 0.97); position: sticky; top: 0; z-index: 100; border-bottom: 1px solid rgba(255, 255, 255, 0.1);">
     <div class="container">
-      <div class="tabs">
-        <button class="tab-btn active" data-tab="skills">Skills</button>
-        <button class="tab-btn" data-tab="experience">Experience</button>
-        <button class="tab-btn" data-tab="contact">Contact</button>
-        <div class="tab-indicator"></div>
+      <div class="tabs" style="display: flex; position: relative; max-width: 600px; margin: 0 auto;">
+        <button class="tab-btn active" data-tab="skills" style="flex: 1; padding: 1.2rem 0; background: none; border: none; color: #61AFEF; font-family: 'JetBrains Mono', monospace; font-size: 1rem; cursor: pointer; position: relative; transition: all 0.3s ease;">
+          <i class="fas fa-code"></i> Skills
+        </button>
+        <button class="tab-btn" data-tab="experience" style="flex: 1; padding: 1.2rem 0; background: none; border: none; color: #B0B0B0; font-family: 'JetBrains Mono', monospace; font-size: 1rem; cursor: pointer; position: relative; transition: all 0.3s ease;">
+          <i class="fas fa-briefcase"></i> Experience
+        </button>
+        <button class="tab-btn" data-tab="highlights" style="flex: 1; padding: 1.2rem 0; background: none; border: none; color: #B0B0B0; font-family: 'JetBrains Mono', monospace; font-size: 1rem; cursor: pointer; position: relative; transition: all 0.3s ease;">
+          <i class="fas fa-star"></i> Highlights
+        </button>
+        <button class="tab-btn" data-tab="contact" style="flex: 1; padding: 1.2rem 0; background: none; border: none; color: #B0B0B0; font-family: 'JetBrains Mono', monospace; font-size: 1rem; cursor: pointer; position: relative; transition: all 0.3s ease;">
+          <i class="fas fa-envelope"></i> Contact
+        </button>
+        <div class="tab-indicator" style="position: absolute; bottom: 0; left: 0; height: 3px; background: #61AFEF; border-radius: 3px 3px 0 0; transition: all 0.3s ease;"></div>
       </div>
     </div>
   </section>
 
-  <!-- Skills Tab Content -->
-  <section id="skills" class="tab-content active" style="background: rgba(10, 15, 26, 0.97); position: relative; overflow: hidden; padding: 6rem 0;">
+  <!-- Tab Content Container -->
+  <div class="tab-content-container">
+    <!-- Skills Tab Content -->
+    <section id="skills" class="tab-content active" style="min-height: 100vh; padding: 6rem 0; display: block;">
     <div class="container" style="max-width: 1200px; margin: 0 auto; padding: 0 2rem;">
       <div class="section-header" style="text-align: center; margin-bottom: 4rem;">
         <h2 class="section-title" style="font-size: 2.5rem; margin-bottom: 1rem; background: linear-gradient(90deg, #61AFEF, #C678DD); -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; color: transparent; display: inline-block;">
@@ -3525,22 +3557,61 @@ int main() {
   </style>
 
   <script>
-    // Skills Tabs Functionality
+    // Main Tabs Functionality
     document.addEventListener('DOMContentLoaded', function() {
+      // Main navigation tabs
+      const mainTabs = document.querySelectorAll('.tab-btn');
+      const tabContents = document.querySelectorAll('.tab-content');
+      const tabIndicator = document.querySelector('.tab-indicator');
+      
+      // Skills tabs
       const skillTabs = document.querySelectorAll('.skill-tab');
       const skillPanes = document.querySelectorAll('.skill-tab-pane');
-      const indicator = document.querySelector('.skill-tab-indicator');
+      const skillIndicator = document.querySelector('.skill-tab-indicator');
       
-      function updateIndicator(activeTab) {
+      // Update tab indicator position
+      function updateIndicator(activeTab, indicator, isSkillTab = false) {
+        if (!indicator) return;
+        
         const tabRect = activeTab.getBoundingClientRect();
         const containerRect = activeTab.parentElement.getBoundingClientRect();
         
         indicator.style.width = `${tabRect.width}px`;
-        indicator.style.left = `${tabRect.left - containerRect.left}px`;
+        indicator.style.transform = `translateX(${tabRect.left - containerRect.left}px)`;
       }
       
-      function setActiveTab(tab) {
-        // Remove active class from all tabs and panes
+      // Set active main tab
+      function setActiveMainTab(tab) {
+        // Remove active class from all main tabs and contents
+        mainTabs.forEach(t => t.classList.remove('active'));
+        tabContents.forEach(content => content.style.display = 'none');
+        
+        // Add active class to clicked tab
+        tab.classList.add('active');
+        
+        // Show corresponding content
+        const tabId = tab.getAttribute('data-tab');
+        const targetContent = document.getElementById(tabId);
+        if (targetContent) {
+          targetContent.style.display = 'block';
+          
+          // Smooth scroll to the top of the section
+          window.scrollTo({
+            top: 0,
+            behavior: 'smooth'
+          });
+        }
+        
+        // Update URL hash
+        window.location.hash = tabId;
+        
+        // Update indicator
+        updateIndicator(tab, tabIndicator);
+      }
+      
+      // Set active skills tab
+      function setActiveSkillTab(tab) {
+        // Remove active class from all skill tabs and panes
         skillTabs.forEach(t => t.classList.remove('active'));
         skillPanes.forEach(p => p.classList.remove('active'));
         
@@ -3549,28 +3620,64 @@ int main() {
         
         // Show corresponding pane
         const tabId = tab.getAttribute('data-tab');
-        document.getElementById(tabId).classList.add('active');
+        const targetPane = document.getElementById(tabId);
+        if (targetPane) {
+          targetPane.classList.add('active');
+        }
         
         // Update indicator
-        updateIndicator(tab);
+        updateIndicator(tab, skillIndicator, true);
       }
       
-      // Set initial active tab
-      const initialTab = document.querySelector('.skill-tab.active');
-      if (initialTab) {
-        updateIndicator(initialTab);
+      // Check URL hash on page load
+      function checkHash() {
+        const hash = window.location.hash.substring(1);
+        if (hash) {
+          const targetTab = document.querySelector(`.tab-btn[data-tab="${hash}"]`);
+          if (targetTab) {
+            setActiveMainTab(targetTab);
+          }
+        }
       }
       
-      // Add click event listeners to tabs
-      skillTabs.forEach(tab => {
-        tab.addEventListener('click', () => setActiveTab(tab));
+      // Initialize main tabs
+      mainTabs.forEach(tab => {
+        tab.addEventListener('click', () => setActiveMainTab(tab));
       });
       
-      // Update indicator on window resize
+      // Initialize skill tabs
+      skillTabs.forEach(tab => {
+        tab.addEventListener('click', () => setActiveSkillTab(tab));
+      });
+      
+      // Set initial active main tab
+      const initialMainTab = document.querySelector('.tab-btn.active');
+      if (initialMainTab) {
+        setActiveMainTab(initialMainTab);
+      }
+      
+      // Set initial active skill tab
+      const initialSkillTab = document.querySelector('.skill-tab.active');
+      if (initialSkillTab && skillIndicator) {
+        updateIndicator(initialSkillTab, skillIndicator, true);
+      }
+      
+      // Check hash on page load
+      checkHash();
+      
+      // Handle browser back/forward navigation
+      window.addEventListener('popstate', checkHash);
+      
+      // Update indicators on window resize
       window.addEventListener('resize', () => {
-        const activeTab = document.querySelector('.skill-tab.active');
-        if (activeTab) {
-          updateIndicator(activeTab);
+        const activeMainTab = document.querySelector('.tab-btn.active');
+        if (activeMainTab) {
+          updateIndicator(activeMainTab, tabIndicator);
+        }
+        
+        const activeSkillTab = document.querySelector('.skill-tab.active');
+        if (activeSkillTab && skillIndicator) {
+          updateIndicator(activeSkillTab, skillIndicator, true);
         }
       });
     });
