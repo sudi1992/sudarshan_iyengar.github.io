@@ -1,15 +1,72 @@
-// Mobile menu toggle
-const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
-const navMenu = document.querySelector('.nav-menu');
+// Wait for the DOM to be fully loaded
+// Create floating particles
+document.addEventListener('DOMContentLoaded', () => {
+  // Create particles container
+  const particlesContainer = document.createElement('div');
+  particlesContainer.className = 'particles';
+  document.body.appendChild(particlesContainer);
 
-if (mobileMenuBtn) {
-  mobileMenuBtn.addEventListener('click', () => {
-    navMenu.classList.toggle('active');
-    mobileMenuBtn.setAttribute('aria-expanded', 
-      mobileMenuBtn.getAttribute('aria-expanded') === 'true' ? 'false' : 'true'
-    );
+  // Generate particles
+  function createParticles() {
+    const particleCount = 30;
+    const container = document.querySelector('.particles');
+    
+    for (let i = 0; i < particleCount; i++) {
+      const particle = document.createElement('div');
+      particle.className = 'particle';
+      
+      // Random size between 1px and 3px
+      const size = Math.random() * 2 + 1;
+      
+      // Random position
+      const posX = Math.random() * 100;
+      const delay = Math.random() * 15; // Random delay up to 15s
+      const duration = 15 + Math.random() * 15; // Duration between 15-30s
+      
+      // Apply styles
+      particle.style.width = `${size}px`;
+      particle.style.height = `${size}px`;
+      particle.style.left = `${posX}%`;
+      particle.style.animationDelay = `${delay}s`;
+      particle.style.animationDuration = `${duration}s`;
+      
+      // Random opacity
+      particle.style.opacity = Math.random() * 0.3;
+      
+      container.appendChild(particle);
+    }
+  }
+  
+  // Initialize particles
+  createParticles();
+  // Hide loading screen when everything is loaded
+  window.addEventListener('load', () => {
+    const loadingScreen = document.getElementById('loading');
+    if (loadingScreen) {
+      loadingScreen.classList.add('hidden');
+      
+      // Remove loading screen from DOM after animation completes
+      setTimeout(() => {
+        loadingScreen.remove();
+      }, 500);
+    }
+    
+    // Trigger initial animations
+    setTimeout(animateOnScroll, 300);
   });
-}
+
+  // Mobile menu toggle
+  const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
+  const navMenu = document.querySelector('.nav-menu');
+
+  if (mobileMenuBtn && navMenu) {
+    mobileMenuBtn.addEventListener('click', () => {
+      navMenu.classList.toggle('active');
+      mobileMenuBtn.setAttribute('aria-expanded', 
+        mobileMenuBtn.getAttribute('aria-expanded') === 'true' ? 'false' : 'true'
+      );
+    });
+  }
 
 // Smooth scrolling for anchor links
 document.querySelectorAll('a[href^="#"]').forEach(anchor => {
@@ -70,100 +127,135 @@ const animateOnScroll = () => {
   });
 };
 
-// Set initial styles for fade-in elements
-document.addEventListener('DOMContentLoaded', () => {
-  document.querySelectorAll('.fade-in, .project-card, .timeline-item').forEach(el => {
+  // Set initial styles for fade-in elements
+  const fadeElements = document.querySelectorAll('.fade-in, .project-card, .timeline-item, .highlight-card, .certification-item, .education-item');
+  fadeElements.forEach(el => {
     el.style.opacity = '0';
     el.style.transform = 'translateY(20px)';
-    el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+    el.style.transition = 'opacity 0.6s ease, transform 0.6s ease, box-shadow 0.3s ease';
   });
   
-  // Trigger initial animation
-  setTimeout(animateOnScroll, 300);
+  // Initialize interactive elements
+  initInteractiveElements();
+  
+  // Initialize smooth scrolling
+  initSmoothScrolling();
+  
+  // Initialize scroll animations
+  window.addEventListener('scroll', animateOnScroll);
+  
+  // Initialize skill bars
+  window.addEventListener('scroll', animateSkillBars);
+  window.addEventListener('load', animateSkillBars);
 });
 
 window.addEventListener('scroll', animateOnScroll);
 
-// Add hover and click effects for interactive elements
-const interactiveElements = document.querySelectorAll('.project-card, .highlight-card, .certification-item, .education-item, .btn');
-const waterDrop = document.createElement('div');
-waterDrop.className = 'water-drop';
-document.body.appendChild(waterDrop);
-
-// Function to create water drop effect
-const createWaterDrop = (x, y) => {
-  waterDrop.style.left = `${x}px`;
-  waterDrop.style.top = `${y}px`;
-  waterDrop.classList.remove('active');
-  void waterDrop.offsetWidth; // Trigger reflow
-  waterDrop.classList.add('active');
-};
-
-// Add effects to interactive elements
-interactiveElements.forEach(element => {
-  // Hover effect
-  element.addEventListener('mouseenter', (e) => {
-    element.style.transform = 'translateY(-5px)';
-    element.style.boxShadow = '0 15px 25px rgba(0, 0, 0, 0.2)';
-    
-    // Create ripple effect
-    const ripple = document.createElement('span');
-    ripple.className = 'ripple-effect';
-    element.appendChild(ripple);
-    
-    // Position ripple at cursor
-    const rect = element.getBoundingClientRect();
-    const x = e.clientX - rect.left;
-    const y = e.clientY - rect.top;
-    ripple.style.left = `${x}px`;
-    ripple.style.top = `${y}px`;
-    
-    // Remove ripple after animation
-    setTimeout(() => {
-      ripple.remove();
-    }, 1000);
-  });
+/**
+ * Initialize interactive elements with hover and click effects
+ */
+function initInteractiveElements() {
+  const interactiveElements = document.querySelectorAll('.project-card, .highlight-card, .certification-item, .education-item, .btn');
+  const waterDrop = document.getElementById('waterDrop');
   
-  // Reset on mouse leave
-  element.addEventListener('mouseleave', () => {
-    element.style.transform = 'translateY(0)';
-    element.style.boxShadow = '0 5px 15px rgba(0, 0, 0, 0.1)';
-  });
-  
-  // Click effect
-  element.addEventListener('click', (e) => {
-    createWaterDrop(e.clientX, e.clientY);
-  });
-});
+  if (!waterDrop) return;
 
-// Enhanced smooth scrolling with offset for fixed header
-document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-  anchor.addEventListener('click', function (e) {
-    e.preventDefault();
-    const targetId = this.getAttribute('href');
-    
-    if (targetId === '#') return;
-    
-    const targetElement = document.querySelector(targetId);
-    
-    if (targetElement) {
-      const headerOffset = 80; // Adjust based on your header height
-      const elementPosition = targetElement.getBoundingClientRect().top;
-      const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+  // Function to create water drop effect
+  const createWaterDrop = (x, y) => {
+    waterDrop.style.left = `${x}px`;
+    waterDrop.style.top = `${y}px`;
+    waterDrop.classList.remove('active');
+    void waterDrop.offsetWidth; // Trigger reflow
+    waterDrop.classList.add('active');
+  };
 
-      window.scrollTo({
-        top: offsetPosition,
-        behavior: 'smooth'
-      });
-      
-      // Close mobile menu if open
-      if (navMenu && navMenu.classList.contains('active')) {
-        navMenu.classList.remove('active');
-        mobileMenuBtn.setAttribute('aria-expanded', 'false');
-      }
+  // Add effects to interactive elements
+  interactiveElements.forEach(element => {
+    // Only add event listeners if the element is not disabled
+    if (element.classList.contains('disabled') || element.getAttribute('disabled') === '') {
+      return;
     }
+
+    // Hover effect
+    element.addEventListener('mouseenter', (e) => {
+      element.style.transform = 'translateY(-5px) scale(1.01)';
+      element.style.boxShadow = '0 20px 40px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.1)';
+      
+      // Create ripple effect
+      const ripple = document.createElement('span');
+      ripple.className = 'ripple-effect';
+      element.appendChild(ripple);
+      
+      // Position ripple at cursor
+      const rect = element.getBoundingClientRect();
+      const x = e.clientX - rect.left;
+      const y = e.clientY - rect.top;
+      ripple.style.left = `${x}px`;
+      ripple.style.top = `${y}px`;
+      
+      // Remove ripple after animation
+      setTimeout(() => {
+        if (ripple.parentNode === element) {
+          element.removeChild(ripple);
+        }
+      }, 1000);
+    });
+    
+    // Reset on mouse leave
+    element.addEventListener('mouseleave', () => {
+      element.style.transform = 'translateY(0) scale(1)';
+      element.style.boxShadow = '0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06)';
+    });
+    
+    // Click effect
+    element.addEventListener('click', (e) => {
+      createWaterDrop(e.clientX, e.clientY);
+    });
   });
-});
+}
+
+/**
+ * Initialize smooth scrolling with offset for fixed header
+ */
+function initSmoothScrolling() {
+  const navMenu = document.querySelector('.nav-menu');
+  const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
+  
+  document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', function (e) {
+      const targetId = this.getAttribute('href');
+      
+      // Skip if it's just a # link
+      if (targetId === '#' || targetId === '') {
+        e.preventDefault();
+        return;
+      }
+      
+      const targetElement = document.querySelector(targetId);
+      
+      if (targetElement) {
+        e.preventDefault();
+        
+        const headerOffset = 80; // Adjust based on your header height
+        const elementPosition = targetElement.getBoundingClientRect().top;
+        const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+
+        window.scrollTo({
+          top: offsetPosition,
+          behavior: 'smooth'
+        });
+        
+        // Close mobile menu if open
+        if (navMenu && navMenu.classList.contains('active')) {
+          navMenu.classList.remove('active');
+          if (mobileMenuBtn) {
+            mobileMenuBtn.setAttribute('aria-expanded', 'false');
+          }
+        }
+      }
+    });
+  });
+}
 
 // Add animation for skill bars
 const animateSkillBars = () => {

@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
   <title>Sudarshan Iyengar | Embedded Systems Engineer</title>
   <meta name="description" content="Senior Embedded Systems Engineer with expertise in Linux drivers, FPGA development, and real-time systems.">
   <meta name="keywords" content="Embedded Systems, Linux, FPGA, Firmware, C/C++, RTOS">
@@ -11,45 +11,80 @@
   <!-- Favicon -->
   <link rel="icon" type="image/png" href="assets/images/favicon.png">
   
+  <!-- Preload Critical Resources -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap">
+  
   <!-- CSS -->
   <link rel="stylesheet" href="css/styles.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  
+  <!-- Fonts -->
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap" media="print" onload="this.media='all'">
+  <noscript>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap">
+  </noscript>
   <style>
+    /* Critical CSS - Loads before the rest of the CSS */
+    .loading {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: var(--color-bg);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      z-index: 9999;
+      transition: opacity 0.5s ease-out, visibility 0.5s ease-out;
+    }
+    
+    .loading.hidden {
+      opacity: 0;
+      visibility: hidden;
+    }
+    
+    .loading-spinner {
+      width: 50px;
+      height: 50px;
+      border: 3px solid rgba(97, 175, 239, 0.2);
+      border-radius: 50%;
+      border-top-color: var(--color-primary);
+      animation: spin 1s ease-in-out infinite;
+    }
+    
+    @keyframes spin {
+      to { transform: rotate(360deg); }
+    }
+    
     /* Water Drop Effect */
     .water-drop {
       position: fixed;
-      width: 10px;
-      height: 10px;
-      background: rgba(97, 175, 239, 0.5);
+      width: 12px;
+      height: 12px;
+      background: rgba(97, 175, 239, 0.6);
       border-radius: 50%;
       pointer-events: none;
-      transform: translate(-50%, -50%);
+      transform: translate(-50%, -50%) scale(1);
       z-index: 9999;
       opacity: 0;
-      transition: width 0.3s ease, height 0.3s ease, opacity 0.3s ease;
+      transition: all 0.8s cubic-bezier(0.19, 1, 0.22, 1);
+      will-change: transform, opacity;
+      mix-blend-mode: screen;
+      box-shadow: 0 0 20px 5px rgba(97, 175, 239, 0.3);
     }
     
     .water-drop.active {
-      width: 100px;
-      height: 100px;
-      opacity: 0;
-      background: rgba(97, 175, 239, 0.1);
-      border: 1px solid rgba(97, 175, 239, 0.3);
-    }
-
-    /* Smooth Scrolling */
-    html {
-      scroll-behavior: smooth;
-      scroll-padding-top: 100px;
-    }
-    
-    /* Layout */
-    body {
-      display: flex;
-      min-height: 100vh;
-      margin: 0;
-      padding: 0;
-      background-color: var(--bg-primary);
-      color: var(--text-primary);
+      width: 120px;
+      height: 120px;
+      opacity: 1;
+      background: rgba(97, 175, 239, 0.08);
+      border: 1.5px solid rgba(97, 175, 239, 0.4);
+      transform: translate(-50%, -50%) scale(1.2);
+      transition: all 0.8s cubic-bezier(0.19, 1, 0.22, 1);
+      box-shadow: 0 0 30px 10px rgba(97, 175, 239, 0.15);
     }
     
     .sidebar {
@@ -374,6 +409,10 @@
   <meta name="twitter:image" content="https://sudarshan-iyengar.github.io/assets/images/og-image.jpg">
 </head>
 <body class="fade-in">
+  <!-- Loading Screen -->
+  <div class="loading" id="loading">
+    <div class="loading-spinner"></div>
+  </div>
   <!-- Water Drop Effect Element -->
   <div class="water-drop" id="waterDrop"></div>
   <!-- Sidebar -->
@@ -395,7 +434,7 @@
             <i class="fas fa-phone"></i>
             <a href="tel:+917353639083">+91 73536 39083</a>
           </li>
-          <li>
+          <li data-type="location">
             <i class="fas fa-map-marker-alt"></i>
             <span>Bengaluru, Karnataka, India</span>
           </li>
@@ -770,4 +809,4 @@
         <a href="#">Imprint</a>
       </p>
     </div>
-  </section>
+  </footer>

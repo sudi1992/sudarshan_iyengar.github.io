@@ -1,52 +1,502 @@
-/* Base Styles */
+/* ==========================================================================
+   Base Styles & Reset
+   ========================================================================== */
+
+/* CSS Variables */
 :root {
-  --primary: #61AFEF;
-  --secondary: #C678DD;
-  --dark: #0A0F1E;
-  --light: #FFFFFF;
-  --gray: #B0B0B0;
-  --dark-bg: rgba(10, 15, 26, 0.97);
+  /* Colors */
+  --color-primary: #61AFEF;
+  --color-secondary: #C678DD;
+  --color-dark: #0A0F1E;
+  --color-light: #FFFFFF;
+  --color-gray: #B0B0B0;
+  --color-bg: #0A0F1E;
+  --color-bg-secondary: #0E1525;
+  --color-text: #E6E6E6;
+  --color-text-muted: #B0B0B0;
+  
+  /* Typography */
+  --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+  --font-mono: 'JetBrains Mono', 'Fira Code', 'Courier New', monospace;
+  
+  /* Dotted Border */
+  --dotted-border: repeating-linear-gradient(
+    90deg,
+    var(--color-primary) 0,
+    var(--color-primary) 2px,
+    transparent 2px,
+    transparent 8px
+  );
+  
+  --dotted-border-vertical: repeating-linear-gradient(
+    0deg,
+    var(--color-primary) 0,
+    var(--color-primary) 2px,
+    transparent 2px,
+    transparent 8px
+  );
+  
+  /* Spacing */
+  --space-xs: 0.5rem;
+  --space-sm: 1rem;
+  --space-md: 2rem;
+  --space-lg: 3rem;
+  --space-xl: 4rem;
+  
+  /* Border Radius */
+  --radius-sm: 4px;
+  --radius-md: 8px;
+  --radius-lg: 12px;
+  
+  /* Transitions */
   --transition: all 0.3s ease;
+  --transition-slow: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Reset & Base Styles */
+*, 
+*::before, 
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  font-size: 16px;
+  scroll-behavior: smooth;
+  scroll-padding-top: 100px;
+  height: 100%;
+}
+
+/* Animated Background */
+body::before {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+  background: 
+    radial-gradient(circle at 20% 30%, rgba(97, 175, 239, 0.15) 0%, transparent 25%),
+    radial-gradient(circle at 80% 70%, rgba(198, 120, 221, 0.15) 0%, transparent 25%),
+    linear-gradient(135deg, #0a0f1e 0%, #141a2e 100%);
+  background-attachment: fixed;
+  opacity: 0.8;
+}
+
+/* Grid Overlay */
+body::after {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+  background-image: 
+    linear-gradient(rgba(97, 175, 239, 0.1) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(97, 175, 239, 0.1) 1px, transparent 1px);
+  background-size: 50px 50px;
+  opacity: 0.3;
+  pointer-events: none;
+}
+
+body {
+  font-family: var(--font-sans);
+  line-height: 1.6;
+  color: var(--color-text);
+  background-color: transparent;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  overflow-x: hidden;
+  position: relative;
 }
 
 /* Typography */
-@import url('https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap');
-
-body {
-  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
-  line-height: 1.6;
-  color: #e6e6e6;
-  background-color: #0a0f1e;
-  margin: 0;
-  padding: 0;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-}
-
-code, pre {
-  font-family: 'Fira Code', 'Courier New', monospace;
-}
-
 h1, h2, h3, h4, h5, h6 {
-  font-family: 'Fira Code', monospace;
+  font-family: var(--font-mono);
   font-weight: 600;
   line-height: 1.2;
   margin: 0 0 1rem 0;
-  color: var(--light);
+  color: var(--color-light);
+  letter-spacing: -0.5px;
+  position: relative;
+  display: inline-block;
 }
 
-h1 { font-size: 2.5rem; }
-h2 { font-size: 2rem; }
-h4 { font-size: 1.5rem; }
+/* Dotted Underline for Headings */
+h2::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: -10px;
+  width: 100%;
+  height: 4px;
+  background: var(--dotted-border);
+  background-size: 10px 4px;
+  border-radius: 2px;
+}
 
-p {
-  margin: 0 0 1.5rem 0;
+/* Dotted Border Utility */
+.dotted-border {
+  position: relative;
+  padding: 1.5rem;
+  border-radius: 8px;
+}
+
+.dotted-border::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: 8px;
+  padding: 2px;
+  background: var(--dotted-border);
+  -webkit-mask: 
+    linear-gradient(#fff 0 0) content-box, 
+    linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask: 
+    linear-gradient(#fff 0 0) content-box, 
+    linear-gradient(#fff 0 0);
+  mask-composite: exclude;
+  -webkit-mask-composite: xor;
+  pointer-events: none;
+}
+
+/* Code Blocks */
+pre, code {
+  font-family: var(--font-mono);
+  font-size: 0.95em;
+  line-height: 1.5;
+  background: rgba(15, 23, 42, 0.7) !important;
+  border: 1px solid rgba(97, 175, 239, 0.2);
+  border-radius: 6px;
+  padding: 0.2em 0.4em;
+}
+
+pre {
+  padding: 1rem;
+  overflow-x: auto;
+  margin: 1.5rem 0;
+  position: relative;
+}
+
+pre::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: var(--dotted-border);
+  background-size: 10px 2px;
+}
+
+h1 { 
+  font-size: clamp(2rem, 5vw, 2.5rem);
+  line-height: 1.1;
+}
+
+h2 { 
+  font-size: clamp(1.75rem, 4vw, 2rem);
+  margin-bottom: 1.5rem;
+  position: relative;
+  display: inline-block;
+}
+
+h2::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: -6px;
+  width: 50%;
+  height: 2px;
+  background: var(--color-primary);
+  border-radius: 2px;
+}
+
+.contact-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.contact-list li {
+  margin-bottom: 1rem;
+  display: flex;
+  align-items: flex-start;
+  font-size: 0.95rem;
+  color: var(--color-text-muted);
+  padding: 0.5rem 0;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+  transition: all 0.3s ease;
+}
+
+.contact-list li:last-child {
+  border-bottom: none;
+  margin-bottom: 0;
+  padding-bottom: 0;
+}
+
+/* Contact Section Styling */
+.contact-section {
+  margin: 2rem 0;
+  position: relative;
+  padding: 1.5rem;
+  background: rgba(15, 23, 42, 0.3);
+  border-radius: 12px;
+  border: 1px solid rgba(97, 175, 239, 0.1);
+  backdrop-filter: blur(5px);
+}
+
+.contact-section::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: 12px;
+  padding: 1px;
+  background: var(--dotted-border);
+  -webkit-mask: 
+    linear-gradient(#fff 0 0) content-box, 
+    linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask: 
+    linear-gradient(#fff 0 0) content-box, 
+    linear-gradient(#fff 0 0);
+  mask-composite: exclude;
+  pointer-events: none;
+}
+
+.contact-section h3 {
+  color: var(--color-primary);
+  margin: 0 0 1.2rem 0;
+  font-size: 1.2rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  position: relative;
+  display: inline-block;
+  font-family: var(--font-mono);
+}
+
+.contact-section h3::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: -6px;
+  width: 50%;
+  height: 2px;
+  background: var(--color-primary);
+  border-radius: 2px;
+}
+
+/* Location specific styles */
+.contact-list li[data-type="location"] {
+  align-items: center;
+  padding: 0.8rem 0.5rem;
+  border-radius: 8px;
+  background: rgba(97, 175, 239, 0.05);
+  border: 1px dashed rgba(97, 175, 239, 0.3);
+  margin: 0.5rem 0 1rem;
+  transition: all 0.3s ease;
+}
+
+.contact-list li[data-type="location"]:hover {
+  background: rgba(97, 175, 239, 0.1);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.contact-list li[data-type="location"] i {
+  color: #ff6b6b;
   font-size: 1.1rem;
-  color: var(--gray);
+  margin-right: 0.8rem;
 }
+
+.contact-list li[data-type="location"] span {
+  color: var(--color-text);
+  font-weight: 500;
+  letter-spacing: 0.5px;
+  font-family: var(--font-mono);
+  font-size: 0.95rem;
+}
+
+/* Hover effects for contact items */
+/* Contact List Styles */
+.contact-list a {
+  color: var(--color-text-muted);
+  text-decoration: none;
+  transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  flex: 1;
+  position: relative;
+  will-change: transform, color;
+  backface-visibility: hidden;
+  transform: translateZ(0);
+}
+
+.contact-list a::after {
+  content: '';
+  position: absolute;
+  width: 0;
+  height: 1px;
+  bottom: -2px;
+  left: 0;
+  background-color: var(--color-primary);
+  transition: width 0.3s ease;
+  will-change: width;
+}
+
+.contact-list a:hover {
+  color: var(--color-primary);
+  transform: translateX(3px);
+}
+
+.contact-list a:hover::after {
+  width: 100%;
+}
+
+.contact-list i {
+  margin-right: 0.8rem;
+  color: var(--color-primary);
+  width: 20px;
+  text-align: center;
+  margin-top: 0.2rem;
+  transition: color 0.3s ease;
+  will-change: color;
+}
+
+code, pre {
+  font-family: var(--font-mono);
+  background: rgba(0, 0, 0, 0.2);
+  padding: 0.2em 0.4em;
+  border-radius: 3px;
+  font-size: 0.9em;
+}
+
+pre {
+  padding: 1rem;
+  border-radius: var(--radius-md);
+  overflow-x: auto;
+  margin: 1.5rem 0;
+}
+
+/* Layout Utilities */
+.container {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 1.5rem;
+  position: relative;
+  z-index: 1;
+}
+
+/* Add subtle animation to background */
+@keyframes gradientShift {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+/* Add floating particles effect */
+.particles {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+  pointer-events: none;
+  overflow: hidden;
+}
+
+.particle {
+  position: absolute;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 50%;
+  pointer-events: none;
+  animation: float 15s infinite linear;
+  opacity: 0;
+}
+
+@keyframes float {
+  0% {
+    transform: translateY(0) rotate(0deg);
+    opacity: 0;
+  }
+  10% {
+    opacity: 0.5;
+  }
+  90% {
+    opacity: 0.5;
+  }
+  100% {
+    transform: translateY(-1000px) rotate(720deg);
+    opacity: 0;
+  }
+}
+
+.section {
+  padding: 5rem 0;
+  position: relative;
+}
+
+/* Section Titles */
+.section-title {
+  text-align: center;
+  margin-bottom: 3rem;
+  position: relative;
+  display: inline-block;
+  left: 50%;
+  transform: translateX(-50%);
+  padding: 0 1.5rem;
+}
+
+.section-title::before,
+.section-title::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  width: 60px;
+  height: 2px;
+  background: var(--dotted-border);
+  background-size: 10px 2px;
+}
+
+.section-title::before {
+  right: 100%;
+}
+
+.section-title::after {
+  left: 100%;
+  width: 60px;
+  transform: none;
+}
+
+/* Background Utilities */
+.bg-dark {
+  background-color: var(--color-bg-secondary);
+}
+
+.bg-light {
+  background-color: var(--color-bg);
+}
+
+/* Card Styles */
 
 .project-card, .highlight-card, .certification-item, .education-item {
-  background: rgba(15, 23, 42, 0.8);
+  background: rgba(15, 23, 42, 0.7);
   backdrop-filter: blur(10px);
   -webkit-backdrop-filter: blur(10px);
   border-radius: 12px;
@@ -54,9 +504,15 @@ p {
   transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
   position: relative;
   z-index: 1;
-  border: 1px solid rgba(255, 255, 255, 0.08);
-  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 
-              0 2px 4px -1px rgba(0, 0, 0, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.36);
+  transition: all 0.3s ease;
+}
+
+/* Add subtle glow effect on hover */
+.project-card:hover, .highlight-card:hover, .certification-item:hover, .education-item:hover {
+  border-color: rgba(97, 175, 239, 0.3);
+  box-shadow: 0 0 20px rgba(97, 175, 239, 0.1);
 }
 
 .project-card:hover, 
