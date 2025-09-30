@@ -104,50 +104,49 @@
       margin-bottom: 1em;
       letter-spacing: -0.5px;
     }
-      
-      h1 { font-size: 2.5rem; }
-      h2 { font-size: 2rem; }
-      h3 { font-size: 1.75rem; }
-      h4 { font-size: 1.5rem; }
-      h5 { font-size: 1.25rem; }
-      h6 { font-size: 1rem; }
-      
-      p {
-        margin-bottom: 1.5em;
-        color: var(--text-secondary);
-        font-size: 1.05em;
-        line-height: 1.8;
-      }
-      
-      a {
-        color: var(--primary);
-        text-decoration: none;
-        transition: all var(--transition-fast);
-        position: relative;
-        font-weight: 500;
-      }
-      
-      a::after {
-        content: '';
-        position: absolute;
-        width: 100%;
-        height: 2px;
-        bottom: -2px;
-        left: 0;
-        background-color: var(--primary);
-        transform: scaleX(0);
-        transform-origin: bottom right;
-        transition: transform 0.3s ease-out;
-      }
-      
-      a:hover::after {
-        transform: scaleX(1);
-        transform-origin: bottom left;
-      }
-      
-      a:hover {
-        color: var(--primary-hover);
-      }
+    
+    h1 { font-size: 2.5rem; }
+    h2 { font-size: 2rem; }
+    h3 { font-size: 1.75rem; }
+    h4 { font-size: 1.5rem; }
+    h5 { font-size: 1.25rem; }
+    h6 { font-size: 1rem; }
+    
+    p {
+      margin-bottom: 1.5em;
+      color: var(--text-secondary);
+      font-size: 1.05em;
+      line-height: 1.8;
+    }
+    
+    a {
+      color: var(--primary);
+      text-decoration: none;
+      transition: all var(--transition-fast);
+      position: relative;
+      font-weight: 500;
+    }
+    
+    a::after {
+      content: '';
+      position: absolute;
+      width: 100%;
+      height: 2px;
+      bottom: -2px;
+      left: 0;
+      background-color: var(--primary);
+      transform: scaleX(0);
+      transform-origin: bottom right;
+      transition: transform 0.3s ease-out;
+    }
+    
+    a:hover::after {
+      transform: scaleX(1);
+      transform-origin: bottom left;
+    }
+    
+    a:hover {
+      color: var(--primary-hover);
     }
 
     .container {
@@ -1274,11 +1273,11 @@ int main() {
         <button class="tab-btn" data-tab="contact" style="flex: 1; padding: 1.2rem 0; background: none; border: none; color: #B0B0B0; font-family: 'JetBrains Mono', monospace; font-size: 1rem; cursor: pointer; position: relative; transition: all 0.3s ease;">
           <i class="fas fa-envelope"></i> Contact
         </button>
-        <div class="tab-indicator" style="position: absolute; bottom: 0; left: 0; height: 3px; background: #61AFEF; border-radius: 3px 3px 0 0; transition: all 0.3s ease;"></div>
+        <div class="tab-indicator" style="position: absolute; bottom: 0; left: 0; height: 3px; background: #61AFEF; border-radius: 3px 3px 0 0; transition: all 0.3s ease; will-change: transform, width;"></div>
       </div>
     </div>
   </section>
-
+  
   <!-- Tab Content Container -->
   <div class="tab-content-container">
     <!-- Skills Tab Content -->
@@ -1689,25 +1688,35 @@ int main() {
       position: absolute;
       bottom: 0;
       left: 0;
-      height: 2px;
-      background: var(--secondary);
+      height: 3px;
+      background: #61AFEF;
+      border-radius: 3px 3px 0 0;
       transition: all 0.3s ease;
+      will-change: transform, width;
     }
-
-    /* Tab Content */
+    
     .tab-content {
       display: none;
-      padding: 4rem 0;
       opacity: 0;
-      transform: translateY(20px);
       transition: opacity 0.3s ease, transform 0.3s ease;
+      transform: translateY(10px);
+      min-height: 100vh;
+      padding: 6rem 0;
+      background: rgba(10, 15, 26, 0.97);
+      position: relative;
+      overflow: hidden;
     }
     
     .tab-content.active {
       display: block;
       opacity: 1;
       transform: translateY(0);
-      animation: fadeIn 0.5s ease;
+      animation: fadeIn 0.5s ease forwards;
+    }
+    
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(10px); }
+      to { opacity: 1; transform: translateY(0); }
     }
 
     /* Skills Grid */
@@ -2571,113 +2580,147 @@ int main() {
     </div>
   </section>
 
-  <!-- Contact Section -->
-  <section id="contact" class="contact-section tab-content" style="background: rgba(10, 15, 26, 0.97); padding: 6rem 0; position: relative; overflow: hidden;">
-    <div class="container" style="max-width: 1200px; margin: 0 auto; padding: 0 2rem;">
-      <div class="section-header" style="text-align: center; margin-bottom: 4rem;">
-        <h2 class="section-title" style="font-size: 2.5rem; margin-bottom: 1rem; background: linear-gradient(90deg, #61AFEF, #C678DD); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; display: inline-block;">
-          Let's Work Together
-        </h2>
-        <p class="section-subtitle" style="color: #B0B0B0; font-size: 1.2rem;">// Let's work together on your next project</p>
-      </div>
-      
-      <div class="contact-content" style="display: grid; grid-template-columns: 1fr 1.5fr; gap: 3rem; align-items: start;">
-        <!-- Contact Info -->
-        <div class="contact-info" style="display: flex; flex-direction: column; gap: 1.5rem;">
-          <!-- Email -->
-          <div class="contact-method" style="background: rgba(20, 25, 36, 0.8); padding: 1.5rem; border-radius: 12px; border: 1px solid rgba(255, 255, 255, 0.1); transition: all 0.3s ease; backdrop-filter: blur(10px);">
-            <div style="display: flex; align-items: center; gap: 1rem;">
-              <div style="width: 50px; height: 50px; background: rgba(97, 175, 239, 0.1); border-radius: 50%; display: flex; align-items: center; justify-content: center; flex-shrink: 0;">
-                <i class="fas fa-envelope" style="font-size: 1.25rem; color: #61AFEF;"></i>
-              </div>
-              <div>
-                <h3 style="color: #fff; margin: 0 0 0.25rem; font-size: 1.1rem;">Email</h3>
-                <a href="mailto:sudi.iyengar@gmail.com" style="color: #61AFEF; text-decoration: none; font-size: 0.95rem; word-break: break-all;">sudi.iyengar@gmail.com</a>
-              </div>
-            </div>
-          </div>
-          
-          <!-- Phone -->
-          <div class="contact-method" style="background: rgba(20, 25, 36, 0.8); padding: 1.5rem; border-radius: 12px; border: 1px solid rgba(255, 255, 255, 0.1); transition: all 0.3s ease; backdrop-filter: blur(10px);">
-            <div style="display: flex; align-items: center; gap: 1rem;">
-              <div style="width: 50px; height: 50px; background: rgba(97, 175, 239, 0.1); border-radius: 50%; display: flex; align-items: center; justify-content: center; flex-shrink: 0;">
-                <i class="fas fa-phone" style="font-size: 1.25rem; color: #61AFEF; transform: rotate(90deg);"></i>
-              </div>
-              <div>
-                <h3 style="color: #fff; margin: 0 0 0.25rem; font-size: 1.1rem;">Phone</h3>
-                <a href="tel:+917353639083" style="color: #61AFEF; text-decoration: none; font-size: 0.95rem;">+91 73536 39083</a>
-              </div>
-            </div>
-          </div>
-          
-          <!-- GitHub -->
-          <div class="contact-method" style="background: rgba(20, 25, 36, 0.8); padding: 1.5rem; border-radius: 12px; border: 1px solid rgba(255, 255, 255, 0.1); transition: all 0.3s ease; backdrop-filter: blur(10px);">
-            <div style="display: flex; align-items: center; gap: 1rem;">
-              <div style="width: 50px; height: 50px; background: rgba(97, 175, 239, 0.1); border-radius: 50%; display: flex; align-items: center; justify-content: center; flex-shrink: 0;">
-                <i class="fab fa-github" style="font-size: 1.5rem; color: #61AFEF;"></i>
-              </div>
-              <div>
-                <h3 style="color: #fff; margin: 0 0 0.25rem; font-size: 1.1rem;">GitHub</h3>
-                <a href="https://github.com/yourusername" target="_blank" rel="noopener noreferrer" style="color: #61AFEF; text-decoration: none; font-size: 0.95rem; word-break: break-all;">github.com/yourusername</a>
-              </div>
-            </div>
-          </div>
-          
-          <!-- LinkedIn -->
-          <div class="contact-method" style="background: rgba(20, 25, 36, 0.8); padding: 1.5rem; border-radius: 12px; border: 1px solid rgba(255, 255, 255, 0.1); transition: all 0.3s ease; backdrop-filter: blur(10px);">
-            <div style="display: flex; align-items: center; gap: 1rem;">
-              <div style="width: 50px; height: 50px; background: rgba(97, 175, 239, 0.1); border-radius: 50%; display: flex; align-items: center; justify-content: center; flex-shrink: 0;">
-                <i class="fab fa-linkedin" style="font-size: 1.25rem; color: #61AFEF;"></i>
-              </div>
-              <div>
-                <h3 style="color: #fff; margin: 0 0 0.25rem; font-size: 1.1rem;">LinkedIn</h3>
-                <a href="https://linkedin.com/in/yourusername" target="_blank" rel="noopener noreferrer" style="color: #61AFEF; text-decoration: none; font-size: 0.95rem; word-break: break-all;">linkedin.com/in/yourusername</a>
-              </div>
-            </div>
-          </div>
+  <!-- Contact Tab Content -->
+    <section id="contact" class="tab-content" style="min-height: 100vh; padding: 6rem 0; display: none;">
+      <div class="container" style="max-width: 1200px; margin: 0 auto; padding: 0 2rem;">
+        <div class="section-header" style="text-align: center; margin-bottom: 4rem;">
+          <h2 class="section-title" style="font-size: 2.5rem; margin-bottom: 1rem; background: linear-gradient(90deg, #61AFEF, #C678DD); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; display: inline-block;">
+            Let's Work Together
+          </h2>
+          <p class="section-subtitle" style="color: #B0B0B0; font-size: 1.2rem;">// Get in touch for collaboration opportunities</p>
         </div>
         
-        <!-- Contact Form -->
-        <form class="contact-form" id="contactForm" style="background: rgba(20, 25, 36, 0.8); padding: 2.5rem; border-radius: 12px; border: 1px solid rgba(255, 255, 255, 0.1); backdrop-filter: blur(10px);">
-          <div class="form-group" style="margin-bottom: 1.5rem; position: relative;">
-            <input type="text" id="name" name="name" required 
-                   style="width: 100%; padding: 1rem; background: rgba(255, 255, 255, 0.05); border: 1px solid rgba(255, 255, 255, 0.1); border-radius: 6px; color: #fff; font-family: 'JetBrains Mono', monospace; font-size: 0.95rem; transition: all 0.3s ease;"
-                   placeholder="Your Name">
+        <div class="contact-content" style="display: grid; grid-template-columns: 1fr 1.5fr; gap: 3rem; align-items: start;">
+          <!-- Contact Info -->
+          <div class="contact-info" style="display: flex; flex-direction: column; gap: 1.5rem;">
+            <!-- Email -->
+            <div class="contact-method" style="background: rgba(20, 25, 36, 0.8); padding: 1.5rem; border-radius: 12px; border: 1px solid rgba(255, 255, 255, 0.1); transition: all 0.3s ease; backdrop-filter: blur(10px);">
+              <div style="display: flex; align-items: center; gap: 1rem;">
+                <div style="width: 50px; height: 50px; background: rgba(97, 175, 239, 0.1); border-radius: 50%; display: flex; align-items: center; justify-content: center; flex-shrink: 0;">
+                  <i class="fas fa-envelope" style="font-size: 1.25rem; color: #61AFEF;"></i>
+                </div>
+                <div>
+                  <h3 style="color: #fff; margin: 0 0 0.25rem; font-size: 1.1rem;">Email</h3>
+                  <a href="mailto:sudi.iyengar@gmail.com" style="color: #61AFEF; text-decoration: none; font-size: 0.95rem; word-break: break-all;">sudi.iyengar@gmail.com</a>
+                </div>
+              </div>
+            </div>
+            
+            <!-- Phone -->
+            <div class="contact-method" style="background: rgba(20, 25, 36, 0.8); padding: 1.5rem; border-radius: 12px; border: 1px solid rgba(255, 255, 255, 0.1); transition: all 0.3s ease; backdrop-filter: blur(10px);">
+              <div style="display: flex; align-items: center; gap: 1rem;">
+                <div style="width: 50px; height: 50px; background: rgba(97, 175, 239, 0.1); border-radius: 50%; display: flex; align-items: center; justify-content: center; flex-shrink: 0;">
+                  <i class="fas fa-phone" style="font-size: 1.25rem; color: #61AFEF; transform: rotate(90deg);"></i>
+                </div>
+                <div>
+                  <h3 style="color: #fff; margin: 0 0 0.25rem; font-size: 1.1rem;">Phone</h3>
+                  <a href="tel:+917353639083" style="color: #61AFEF; text-decoration: none; font-size: 0.95rem;">+91 73536 39083</a>
+                </div>
+              </div>
+            </div>
+            
+            <!-- GitHub -->
+            <div class="contact-method" style="background: rgba(20, 25, 36, 0.8); padding: 1.5rem; border-radius: 12px; border: 1px solid rgba(255, 255, 255, 0.1); transition: all 0.3s ease; backdrop-filter: blur(10px);">
+              <div style="display: flex; align-items: center; gap: 1rem;">
+                <div style="width: 50px; height: 50px; background: rgba(97, 175, 239, 0.1); border-radius: 50%; display: flex; align-items: center; justify-content: center; flex-shrink: 0;">
+                  <i class="fab fa-github" style="font-size: 1.5rem; color: #61AFEF;"></i>
+                </div>
+                <div>
+                  <h3 style="color: #fff; margin: 0 0 0.25rem; font-size: 1.1rem;">GitHub</h3>
+                  <a href="https://github.com/sudi1992" target="_blank" rel="noopener noreferrer" style="color: #61AFEF; text-decoration: none; font-size: 0.95rem; word-break: break-all;">github.com/sudi1992</a>
+                </div>
+              </div>
+            </div>
+            
+            <!-- LinkedIn -->
+            <div class="contact-method" style="background: rgba(20, 25, 36, 0.8); padding: 1.5rem; border-radius: 12px; border: 1px solid rgba(255, 255, 255, 0.1); transition: all 0.3s ease; backdrop-filter: blur(10px);">
+              <div style="display: flex; align-items: center; gap: 1rem;">
+                <div style="width: 50px; height: 50px; background: rgba(97, 175, 239, 0.1); border-radius: 50%; display: flex; align-items: center; justify-content: center; flex-shrink: 0;">
+                  <i class="fab fa-linkedin" style="font-size: 1.25rem; color: #61AFEF;"></i>
+                </div>
+                <div>
+                  <h3 style="color: #fff; margin: 0 0 0.25rem; font-size: 1.1rem;">LinkedIn</h3>
+                  <a href="https://linkedin.com/in/sudarshan-iyengar-286a9422" target="_blank" rel="noopener noreferrer" style="color: #61AFEF; text-decoration: none; font-size: 0.95rem; word-break: break-all;">linkedin.com/in/sudarshan-iyengar</a>
+                </div>
+              </div>
+            </div>
           </div>
           
-          <div class="form-group" style="margin-bottom: 1.5rem; position: relative;">
-            <input type="email" id="email" name="email" required
-                   style="width: 100%; padding: 1rem; background: rgba(255, 255, 255, 0.05); border: 1px solid rgba(255, 255, 255, 0.1); border-radius: 6px; color: #fff; font-family: 'JetBrains Mono', monospace; font-size: 0.95rem; transition: all 0.3s ease;"
-                   placeholder="Your Email">
-          </div>
-          
-          <div class="form-group" style="margin-bottom: 1.5rem; position: relative;">
-            <input type="text" id="subject" name="subject" required
-                   style="width: 100%; padding: 1rem; background: rgba(255, 255, 255, 0.05); border: 1px solid rgba(255, 255, 255, 0.1); border-radius: 6px; color: #fff; font-family: 'JetBrains Mono', monospace; font-size: 0.95rem; transition: all 0.3s ease;"
-                   placeholder="Subject">
-          </div>
-          
-          <div class="form-group" style="margin-bottom: 2rem; position: relative;">
-            <textarea id="message" name="message" rows="5" required
-                     style="width: 100%; padding: 1rem; background: rgba(255, 255, 255, 0.05); border: 1px solid rgba(255, 255, 255, 0.1); border-radius: 6px; color: #fff; font-family: 'JetBrains Mono', monospace; font-size: 0.95rem; resize: vertical; min-height: 150px; transition: all 0.3s ease;"
-                     placeholder="Your Message"></textarea>
-          </div>
-          
-          <button type="submit" 
-                 style="background: linear-gradient(90deg, #61AFEF, #C678DD); color: #fff; border: none; padding: 1rem 2rem; border-radius: 6px; font-family: 'JetBrains Mono', monospace; font-weight: 600; font-size: 1rem; cursor: pointer; display: inline-flex; align-items: center; justify-content: center; gap: 0.5rem; transition: all 0.3s ease; width: 100%;">
-            <span>Send Message</span>
-            <i class="fas fa-paper-plane"></i>
-          </button>
-        </form>
+          <!-- Contact Form -->
+          <form class="contact-form" id="contactForm" style="background: rgba(20, 25, 36, 0.8); padding: 2.5rem; border-radius: 12px; border: 1px solid rgba(255, 255, 255, 0.1); backdrop-filter: blur(10px);">
+            <div class="form-group" style="margin-bottom: 1.5rem; position: relative;">
+              <input type="text" id="name" name="name" required 
+                     style="width: 100%; padding: 1rem; background: rgba(255, 255, 255, 0.05); border: 1px solid rgba(255, 255, 255, 0.1); border-radius: 6px; color: #fff; font-family: 'JetBrains Mono', monospace; font-size: 0.95rem; transition: all 0.3s ease;"
+                     placeholder="Your Name">
+            </div>
+            
+            <div class="form-group" style="margin-bottom: 1.5rem; position: relative;">
+              <input type="email" id="email" name="email" required
+                     style="width: 100%; padding: 1rem; background: rgba(255, 255, 255, 0.05); border: 1px solid rgba(255, 255, 255, 0.1); border-radius: 6px; color: #fff; font-family: 'JetBrains Mono', monospace; font-size: 0.95rem; transition: all 0.3s ease;"
+                     placeholder="Your Email">
+            </div>
+            
+            <div class="form-group" style="margin-bottom: 1.5rem; position: relative;">
+              <input type="text" id="subject" name="subject" required
+                     style="width: 100%; padding: 1rem; background: rgba(255, 255, 255, 0.05); border: 1px solid rgba(255, 255, 255, 0.1); border-radius: 6px; color: #fff; font-family: 'JetBrains Mono', monospace; font-size: 0.95rem; transition: all 0.3s ease;"
+                     placeholder="Subject">
+            </div>
+            
+            <div class="form-group" style="margin-bottom: 2rem; position: relative;">
+              <textarea id="message" name="message" rows="5" required
+                       style="width: 100%; padding: 1rem; background: rgba(255, 255, 255, 0.05); border: 1px solid rgba(255, 255, 255, 0.1); border-radius: 6px; color: #fff; font-family: 'JetBrains Mono', monospace; font-size: 0.95rem; resize: vertical; min-height: 150px; transition: all 0.3s ease;"
+                       placeholder="Your Message"></textarea>
+            </div>
+            
+            <button type="submit" 
+                   style="background: linear-gradient(90deg, #61AFEF, #C678DD); color: #fff; border: none; padding: 1rem 2rem; border-radius: 6px; font-family: 'JetBrains Mono', monospace; font-weight: 600; font-size: 1rem; cursor: pointer; display: inline-flex; align-items: center; justify-content: center; gap: 0.5rem; transition: all 0.3s ease; width: 100%;">
+              <span>Send Message</span>
+              <i class="fas fa-paper-plane"></i>
+            </button>
+          </form>
+        </div>
       </div>
-    </div>
+      
+      <!-- Background Pattern -->
+      <div style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxMDAlIiBoZWlnaHQ9IjEwMCUiPjxkZWZzPjxwYXR0ZXJuIGlkPSJwYXR0ZXJuIiB3aWR0aD0iNDAiIGhlaWdodD0iNDAiIHBhdHRlcm5Vbml0cz0idXNlclNwYWNlT25Vc2UiIHBhdHRlcm5UcmFuc2Zvcm09InJvdGF0ZSg0NSkiPjxyZWN0IHdpZHRoPSIyMCIgaGVpZ2h0PSIyMCIgZmlsbD0icmdiYSgxMDAsMjU1LDIxOCwwLjAzKSIvPjwvcGF0dGVybj48L2RlZnM+PHJlY3Qgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSIgZmlsbD0idXJsKCNwYXR0ZXJuKSIvPjwvc3ZnPg==') center/cover no-repeat; opacity: 0.3; z-index: -1;"></div>
+    </section>
     
-    <!-- Background Pattern -->
-    <div style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxMDAlIiBoZWlnaHQ9IjEwMCUiPjxkZWZzPjxwYXR0ZXJuIGlkPSJwYXR0ZXJuIiB3aWR0aD0iNDAiIGhlaWdodD0iNDAiIHBhdHRlcm5Vbml0cz0idXNlclNwYWNlT25Vc2UiIHBhdHRlcm5UcmFuc2Zvcm09InJvdGF0ZSg0NSkiPjxyZWN0IHdpZHRoPSIyMCIgaGVpZ2h0PSIyMCIgZmlsbD0icmdiYSgxMDAsMjU1LDIxOCwwLjAzKSIvPjwvcGF0dGVybj48L2RlZnM+PHJlY3Qgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSIgZmlsbD0idXJsKCNwYXR0ZXJuKSIvPjwvc3ZnPg==') center/cover no-repeat; opacity: 0.3; z-index: -1;"></div>
-  </section>
+    
+  </div> <!-- End of tab-content-container -->
   </div> <!-- End of page-wrapper -->
   
   <style>
+    /* Global Font Settings */
+    body, button, input, textarea, select {
+      font-family: 'JetBrains Mono', monospace;
+    }
+    
+    /* Tab Content Transitions */
+    .tab-content {
+      transition: opacity 0.3s ease, transform 0.3s ease;
+      opacity: 0;
+      transform: translateY(10px);
+      display: none;
+    }
+    
+    .tab-content.active {
+      opacity: 1;
+      transform: translateY(0);
+      display: block;
+    }
+    
+    /* Ensure contact form is visible when active */
+    #contact.tab-content {
+      display: none;
+      opacity: 0;
+      transition: opacity 0.3s ease;
+    }
+    
+    #contact.tab-content.active {
+      display: block;
+      opacity: 1;
+    }
+    
     /* Form field focus effects */
     .contact-form input:focus,
     .contact-form textarea:focus {
@@ -3582,18 +3625,33 @@ int main() {
       
       // Set active main tab
       function setActiveMainTab(tab) {
-        // Remove active class from all main tabs and contents
-        mainTabs.forEach(t => t.classList.remove('active'));
-        tabContents.forEach(content => content.style.display = 'none');
+        // Remove active class from all main tabs and reset colors
+        mainTabs.forEach(t => {
+          t.classList.remove('active');
+          t.style.color = '#B0B0B0';
+        });
         
-        // Add active class to clicked tab
+        // Hide all tab contents and remove active class
+        tabContents.forEach(content => {
+          content.style.display = 'none';
+          content.classList.remove('active');
+        });
+        
+        // Add active class to clicked tab and update its color
         tab.classList.add('active');
+        tab.style.color = '#61AFEF';
         
-        // Show corresponding content
+        // Show corresponding content with animation
         const tabId = tab.getAttribute('data-tab');
         const targetContent = document.getElementById(tabId);
+        
         if (targetContent) {
+          // Add active class and show with animation
+          targetContent.classList.add('active');
           targetContent.style.display = 'block';
+          
+          // Trigger reflow to enable animation
+          void targetContent.offsetWidth;
           
           // Smooth scroll to the top of the section
           window.scrollTo({
@@ -3602,11 +3660,13 @@ int main() {
           });
         }
         
-        // Update URL hash
-        window.location.hash = tabId;
+        // Update URL hash without page reload
+        history.pushState(null, null, '#' + tabId);
         
-        // Update indicator
-        updateIndicator(tab, tabIndicator);
+        // Update indicator with smooth transition
+        if (tabIndicator) {
+          updateIndicator(tab, tabIndicator);
+        }
       }
       
       // Set active skills tab
@@ -3636,13 +3696,34 @@ int main() {
           const targetTab = document.querySelector(`.tab-btn[data-tab="${hash}"]`);
           if (targetTab) {
             setActiveMainTab(targetTab);
+            return;
           }
+        }
+        // Default to first tab if no hash or invalid hash
+        if (mainTabs.length > 0 && !document.querySelector('.tab-btn.active')) {
+          setActiveMainTab(mainTabs[0]);
         }
       }
       
-      // Initialize main tabs
-      mainTabs.forEach(tab => {
-        tab.addEventListener('click', () => setActiveMainTab(tab));
+      // Initialize main tabs with proper event delegation
+      document.addEventListener('click', (e) => {
+        const tab = e.target.closest('.tab-btn');
+        if (tab) {
+          e.preventDefault();
+          setActiveMainTab(tab);
+        }
+      });
+      
+      // Set active tab on page load based on hash
+      window.addEventListener('load', () => {
+        const hash = window.location.hash.substring(1);
+        const targetTab = document.querySelector(`.tab-btn[data-tab="${hash}"]`);
+        if (targetTab) {
+          setActiveMainTab(targetTab);
+        } else if (mainTabs.length > 0) {
+          // Default to first tab if no hash
+          setActiveMainTab(mainTabs[0]);
+        }
       });
       
       // Initialize skill tabs
