@@ -11,7 +11,16 @@
   <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;700&family=Nothing+Dot:wght@400&display=swap" rel="stylesheet">
+  <style>
+    @font-face {
+      font-family: 'Nothing Dot';
+      src: url('https://cdn.jsdelivr.net/gh/webfontworld/nerko/NothingDot.woff2') format('woff2');
+      font-weight: 400;
+      font-style: normal;
+      font-display: swap;
+    }
+  </style>
   
   <!-- CSS -->
   <link rel="stylesheet" href="css/main.css">
@@ -815,24 +824,97 @@ void main() {
   <!-- Projects Section -->
   <section id="projects" class="section">
     <div class="container">
-      <h2 class="section-title">Featured Projects</h2>
+      <h2 class="section-title">Career Highlights</h2>
       <div class="projects-grid">
         <div class="project-card">
           <div class="project-header">
-            <h3>Custom RTOS for Microcontrollers</h3>
-            <div class="project-links">
-              <!-- <a href="#" aria-label="GitHub"><i class="fab fa-github"></i></a> -->
-              <!-- <a href="#" aria-label="External Link"><i class="fas fa-external-link-alt"></i></a> -->
-            </div>
+            <h3>Linux & Drivers</h3>
           </div>
-          <p class="project-description">A lightweight real-time operating system designed for resource-constrained microcontrollers, featuring preemptive multitasking and inter-process communication.</p>
+          <p class="project-description">
+            Designed and integrated Linux DMA drivers, device trees, and Yocto builds for FPGA systems. Developed custom device drivers and maintained secure boot scripts for embedded Linux systems.
+          </p>
           <div class="project-tech">
-            <span>C</span>
-            <span>ARM Cortex-M</span>
-            <span>RTOS</span>
+            <span>Linux</span>
+            <span>DMA</span>
+            <span>Yocto</span>
+            <span>Device Tree</span>
           </div>
         </div>
-        <!-- Add more project cards as needed -->
+
+        <div class="project-card">
+          <div class="project-header">
+            <h3>FPGA & RTL</h3>
+          </div>
+          <p class="project-description">
+            Developed custom AXI/AXIS Verilog modules, protocol monitors, and data stream schedulers on Zynq/Artix platforms. Integrated MicroBlaze soft-core with Zynq for high-speed digital decoding.
+          </p>
+          <div class="project-tech">
+            <span>Verilog</span>
+            <span>FPGA</span>
+            <span>AXI</span>
+            <span>Zynq</span>
+          </div>
+        </div>
+
+        <div class="project-card">
+          <div class="project-header">
+            <h3>RTOS & MCUs</h3>
+          </div>
+          <p class="project-description">
+            Ported applications to FreeRTOS/ThreadX on Cortex-M55 platforms. Delivered RTOS peripheral drivers across multiple MCU families including STM32, NXP, and Microchip.
+          </p>
+          <div class="project-tech">
+            <span>RTOS</span>
+            <span>FreeRTOS</span>
+            <span>ThreadX</span>
+            <span>ARM Cortex</span>
+          </div>
+        </div>
+
+        <div class="project-card">
+          <div class="project-header">
+            <h3>IoT & Wireless</h3>
+          </div>
+          <p class="project-description">
+            Built POC phase Bluetooth/Wi-Fi solutions on Microchip platforms. Developed sub-1GHz radio-based monitoring systems with capacitive sensing for smart applications.
+          </p>
+          <div class="project-tech">
+            <span>Bluetooth</span>
+            <span>Wi-Fi</span>
+            <span>IoT</span>
+            <span>Sub-1GHz</span>
+          </div>
+        </div>
+
+        <div class="project-card">
+          <div class="project-header">
+            <h3>Power Electronics</h3>
+          </div>
+          <p class="project-description">
+            Designed and developed buck-boost converters, MPPT charge controllers, and conducted comprehensive battery management system (BMS) analysis for various applications.
+          </p>
+          <div class="project-tech">
+            <span>Buck-Boost</span>
+            <span>MPPT</span>
+            <span>BMS</span>
+            <span>Power Design</span>
+          </div>
+        </div>
+
+        <div class="project-card">
+          <div class="project-header">
+            <h3>System Validation</h3>
+          </div>
+          <p class="project-description">
+            Led system validation efforts, developed automated test setups, conducted compliance testing, and facilitated cross-team debugging for production-grade systems.
+          </p>
+          <div class="project-tech">
+            <span>Testing</span>
+            <span>Validation</span>
+            <span>Automation</span>
+            <span>Debugging</span>
+          </div>
+        </div>
       </div>
     </div>
   </section>
