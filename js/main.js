@@ -1,12 +1,7 @@
 // Main initialization when DOM is fully loaded
 document.addEventListener('DOMContentLoaded', () => {
-  // Initialize all interactive components
-  initParticles();
-  initSmoothScrolling();
-  initScrollAnimations();
-  initInteractiveElements();
-  initBackToTop();
-  initMobileMenu();
+  // Initialize water drop effect
+  initWaterDrop();
   
   // Hide loading screen when everything is loaded
   window.addEventListener('load', () => {
@@ -69,36 +64,62 @@ function initParticles() {
   
   createParticles();
 }
-// Initialize active navigation highlighting
-function initActiveNavigation() {
-  const sections = document.querySelectorAll('section');
-  const navLinks = document.querySelectorAll('.nav-link');
+// Initialize water drop effect
+function initWaterDrop() {
+  const waterDrop = document.getElementById('waterDrop');
+  if (!waterDrop) return;
   
-  if (!sections.length || !navLinks.length) return;
+  let isActive = false;
+  let timeout;
   
-  const updateActiveNav = () => {
-    let current = '';
-    const scrollPosition = window.pageYOffset + 100; // Add offset for fixed header
+  const createRipple = (x, y) => {
+    const ripple = document.createElement('div');
+    ripple.className = 'ripple-effect';
+    ripple.style.left = `${x}px`;
+    ripple.style.top = `${y}px`;
+    document.body.appendChild(ripple);
     
-    sections.forEach(section => {
-      const sectionTop = section.offsetTop;
-      const sectionHeight = section.offsetHeight;
-      
-      if (scrollPosition >= sectionTop && scrollPosition < sectionTop + sectionHeight) {
-        current = section.getAttribute('id');
-      }
-    });
-    
-    navLinks.forEach(link => {
-      link.classList.remove('active');
-      if (link.getAttribute('href') === `#${current}`) {
-        link.classList.add('active');
-      }
-    });
+    setTimeout(() => {
+      ripple.remove();
+    }, 800);
   };
   
-  window.addEventListener('scroll', updateActiveNav);
-  updateActiveNav(); // Run once on load
+  const activateWaterDrop = (x, y) => {
+    waterDrop.style.left = `${x}px`;
+    waterDrop.style.top = `${y}px`;
+    waterDrop.classList.add('active');
+    isActive = true;
+    
+    // Create ripple effect
+    createRipple(x, y);
+    
+    // Deactivate after animation
+    clearTimeout(timeout);
+    timeout = setTimeout(() => {
+      waterDrop.classList.remove('active');
+      isActive = false;
+    }, 800);
+  };
+  
+  // Add mouse move listener for water drop effect
+  document.addEventListener('mousemove', (e) => {
+    if (Math.random() < 0.3) { // Only trigger 30% of the time for performance
+      activateWaterDrop(e.clientX, e.clientY);
+    }
+  });
+  
+  // Add touch support for mobile
+  document.addEventListener('touchmove', (e) => {
+    if (e.touches.length > 0 && Math.random() < 0.2) {
+      const touch = e.touches[0];
+      activateWaterDrop(touch.clientX, touch.clientY);
+    }
+  }, { passive: true });
+  
+  // Add click interaction
+  document.addEventListener('click', (e) => {
+    activateWaterDrop(e.clientX, e.clientY);
+  });
 }
 
 // Initialize scroll animations
