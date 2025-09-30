@@ -18,20 +18,50 @@
     }
 
     :root {
-      --primary: #0a192f;       /* Dark blue */
-      --secondary: #64ffda;     /* Teal accent */
-      --accent: #1e90ff;        /* Bright blue */
-      --background: #0a192f;    /* Dark blue background */
-      --text: #ccd6f6;          /* Light blue-gray text */
-      --text-secondary: #8892b0; /* Lighter blue-gray */
-      --card-bg: #112240;       /* Slightly lighter blue for cards */
-      --section-bg: #0a192f;    /* Same as background */
-      --border: #233554;        /* Border color */
-      --terminal-bg: #0a192f;   /* Dark blue terminal */
-      --terminal-header: #112240; /* Slightly lighter header */
-      --terminal-border: #1e90ff; /* Blue border */
-      --gradient-start: #0a192f; /* Gradient start */
-      --gradient-end: #112240;   /* Gradient end */
+      /* Modern, clean color palette */
+      --primary: #2563eb;       /* Bright blue for primary actions */
+      --primary-hover: #1d4ed8;  /* Slightly darker blue for hover states */
+      --secondary: #1e293b;     /* Dark slate for backgrounds */
+      --accent: #3b82f6;        /* Lighter blue for accents */
+      --background: #ffffff;    /* White background */
+      --text-primary: #1f2937;  /* Dark gray for main text */
+      --text-secondary: #4b5563; /* Lighter gray for secondary text */
+      --light: #f8fafc;         /* Off-white for backgrounds */
+      --border: #e2e8f0;        /* Light gray for borders */
+      --card-bg: #ffffff;       /* White card backgrounds */
+      --section-bg: #f8fafc;    /* Light gray section backgrounds */
+      --success: #10b981;       /* Green for success states */
+      --warning: #f59e0b;       /* Yellow for warnings */
+      --error: #ef4444;         /* Red for errors */
+      
+      /* Typography */
+      --font-primary: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      --font-heading: 'Space Grotesk', var(--font-primary);
+      --font-mono: 'Fira Code', 'Roboto Mono', monospace;
+      
+      /* Spacing */
+      --space-xs: 0.5rem;
+      --space-sm: 1rem;
+      --space-md: 1.5rem;
+      --space-lg: 2rem;
+      --space-xl: 3rem;
+      
+      /* Border radius */
+      --radius-sm: 4px;
+      --radius-md: 8px;
+      --radius-lg: 12px;
+      --radius-full: 9999px;
+      
+      /* Shadows */
+      --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+      --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+      --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+      --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+      
+      /* Transitions */
+      --transition-fast: 150ms ease-in-out;
+      --transition-normal: 250ms ease-in-out;
+      --transition-slow: 400ms ease-in-out;
     }
 
     * {
@@ -41,13 +71,45 @@
     }
 
     body {
-      font-family: 'Space Grotesk', sans-serif;
-      line-height: 1.7;
-      color: var(--text);
-      background: linear-gradient(135deg, var(--gradient-start) 0%, var(--gradient-end) 100%);
+      font-family: var(--font-primary);
+      line-height: 1.6;
+      color: var(--text-primary);
+      background-color: var(--background);
       -webkit-font-smoothing: antialiased;
       -moz-osx-font-smoothing: grayscale;
       min-height: 100vh;
+      overflow-x: hidden;
+      
+      /* Base typography */
+      h1, h2, h3, h4, h5, h6 {
+        font-family: var(--font-heading);
+        font-weight: 700;
+        line-height: 1.2;
+        color: var(--text-primary);
+        margin-bottom: 1em;
+      }
+      
+      h1 { font-size: 2.5rem; }
+      h2 { font-size: 2rem; }
+      h3 { font-size: 1.75rem; }
+      h4 { font-size: 1.5rem; }
+      h5 { font-size: 1.25rem; }
+      h6 { font-size: 1rem; }
+      
+      p {
+        margin-bottom: 1.5em;
+        color: var(--text-secondary);
+      }
+      
+      a {
+        color: var(--primary);
+        text-decoration: none;
+        transition: color var(--transition-fast);
+      }
+      
+      a:hover {
+        color: var(--primary-hover);
+      }
     }
 
     .container {
@@ -2239,82 +2301,91 @@
       border: 1px solid rgba(234, 84, 85, 0.2);
     }
     
-    /* Experience Section Styles */
+    /* ==================== */
+    /* Experience Section */
+    /* ==================== */
     .experience-container {
-      background: rgba(10, 25, 47, 0.7);
-      backdrop-filter: blur(10px);
-      border-radius: 16px;
+      background: white;
+      border-radius: var(--radius-lg);
       overflow: hidden;
-      box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
-      margin-top: 2.5rem;
-      border: 1px solid rgba(100, 255, 218, 0.1);
-      transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+      box-shadow: 0 10px 30px -10px rgba(2, 12, 27, 0.1);
+      margin: 4rem 0;
+      border: 1px solid var(--border);
+      transition: all var(--transition-normal);
+      position: relative;
+      z-index: 1;
+    }
+    
+    .experience-container::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 2px;
+      background: linear-gradient(90deg, var(--primary), var(--accent));
+      z-index: 2;
     }
     
     .experience-container:hover {
       transform: translateY(-5px);
-      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
-      border-color: rgba(100, 255, 218, 0.2);
+      box-shadow: 0 20px 30px -10px rgba(2, 12, 27, 0.2);
     }
     
     .experience-tabs {
       display: flex;
       position: relative;
-      background: rgba(10, 25, 47, 0.9);
+      background: var(--light);
       padding: 0 2rem;
-      border-bottom: 1px solid rgba(100, 255, 218, 0.1);
-      border-radius: 12px 12px 0 0;
+      border-bottom: 1px solid var(--border);
       overflow-x: auto;
-      scrollbar-width: none; /* Firefox */
-      -ms-overflow-style: none; /* IE and Edge */
+      scrollbar-width: none;
+      -ms-overflow-style: none;
+      border-top-left-radius: var(--radius-lg);
+      border-top-right-radius: var(--radius-lg);
+      scroll-behavior: smooth;
+    }
+    
+    @media (max-width: 768px) {
+      .experience-tabs {
+        padding: 0 1rem;
+      }
     }
     
     .experience-tabs::-webkit-scrollbar {
-      display: none; /* Chrome, Safari, Opera */
+      display: none;
     }
     
     .exp-tab {
-      padding: 1.2rem 2.2rem;
+      padding: 1.5rem 2rem;
       background: none;
       border: none;
-      color: rgba(255, 255, 255, 0.7);
-      font-family: 'Space Grotesk', sans-serif;
-      font-size: 0.9rem;
+      color: var(--text-secondary);
+      font-family: var(--font-heading);
+      font-size: 1rem;
       font-weight: 500;
       cursor: pointer;
       position: relative;
-      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-      text-transform: uppercase;
-      letter-spacing: 1px;
-      margin: 0;
+      transition: all var(--transition-fast);
       white-space: nowrap;
-      border-bottom: 2px solid transparent;
+      margin: 0;
+      border-bottom: 3px solid transparent;
+      letter-spacing: 0.5px;
     }
     
     .exp-tab:hover {
-      color: var(--secondary);
-      background: rgba(100, 255, 218, 0.05);
+      color: var(--primary);
+      background: rgba(37, 99, 235, 0.05);
     }
     
     .exp-tab.active {
-      color: var(--secondary);
-      background: rgba(100, 255, 218, 0.1);
+      color: var(--primary);
       font-weight: 600;
-      text-shadow: 0 0 15px rgba(100, 255, 218, 0.3);
+      border-bottom-color: var(--primary);
+      background: white;
+      box-shadow: 0 -2px 0 0 white;
       position: relative;
-    }
-    
-    .exp-tab.active::after {
-      content: '';
-      position: absolute;
-      bottom: -1px;
-      left: 50%;
-      transform: translateX(-50%);
-      width: 60%;
-      height: 2px;
-      background: var(--secondary);
-      box-shadow: 0 0 15px var(--secondary);
-      border-radius: 2px;
+      z-index: 1;
     }
     
     .exp-tab-indicator {
@@ -2329,14 +2400,27 @@
     }
     
     .experience-content {
-      padding: 3rem 2.5rem;
-      min-height: 450px;
-      background: rgba(10, 25, 47, 0.5);
-      border-radius: 0 0 12px 12px;
-      border: 1px solid rgba(100, 255, 218, 0.1);
-      border-top: none;
+      padding: 3.5rem 3rem;
+      min-height: 400px;
+      background: white;
       position: relative;
-      overflow: hidden;
+      background-image: 
+        radial-gradient(circle at 100% 0%, rgba(37, 99, 235, 0.03) 0%, transparent 50%),
+        radial-gradient(circle at 0% 100%, rgba(16, 185, 129, 0.03) 0%, transparent 50%);
+      background-size: 400% 400%;
+      animation: gradientBG 15s ease infinite;
+    }
+    
+    @keyframes gradientBG {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+    
+    @media (max-width: 768px) {
+      .experience-content {
+        padding: 2.5rem 1.5rem;
+      }
     }
     
     .experience-content::before {
@@ -2351,26 +2435,78 @@
     
     .exp-tab-pane {
       display: none;
-      animation: fadeIn 0.5s ease;
+      animation: fadeIn 0.4s ease-out forwards;
+      opacity: 0;
+      transform: translateY(10px);
     }
     
     .exp-tab-pane.active {
       display: block;
-      animation: fadeIn 0.5s ease;
+      opacity: 1;
+      transform: translateY(0);
     }
     
     .experience-item {
       margin-bottom: 2.5rem;
-      padding: 2rem;
-      border-radius: 12px;
-      transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
-      background: rgba(10, 25, 47, 0.4);
-      border: 1px solid rgba(100, 255, 218, 0.1);
+      padding: 2.5rem;
+      border-radius: var(--radius-md);
+      transition: all var(--transition-normal);
+      background: white;
+      border: 1px solid var(--border);
       position: relative;
       overflow: hidden;
-      transform: translateY(0);
-      animation: fadeInUp 0.6s ease-out;
-      backdrop-filter: blur(5px);
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.03);
+      opacity: 0;
+      transform: translateY(20px);
+      animation: fadeInUp 0.6s ease-out forwards;
+    }
+    
+    .experience-item:nth-child(1) { animation-delay: 0.1s; }
+    .experience-item:nth-child(2) { animation-delay: 0.2s; }
+    .experience-item:nth-child(3) { animation-delay: 0.3s; }
+    .experience-item:nth-child(4) { animation-delay: 0.4s; }
+    
+    @keyframes fadeInUp {
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+    
+    .experience-item:last-child {
+      margin-bottom: 0;
+    }
+    
+    .experience-item:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.08);
+      border-color: var(--primary);
+    }
+    
+    .experience-item:not(:last-child) {
+      margin-bottom: 2rem;
+      padding-bottom: 2.5rem;
+      border-bottom: 1px solid var(--border);
+      border-radius: 0;
+    }
+    
+    .experience-item:first-child {
+      border-top-left-radius: var(--radius-md);
+      border-top-right-radius: var(--radius-md);
+    }
+    
+    .experience-item:last-child {
+      border-bottom-left-radius: var(--radius-md);
+      border-bottom-right-radius: var(--radius-md);
+      border-bottom: none;
+      margin-bottom: 0;
+      padding-bottom: 0;
+    }
+    
+    .experience-item:hover {
+      transform: translateY(-2px);
+      box-shadow: var(--shadow-md);
+      border-color: var(--primary);
     }
     
     @keyframes fadeInUp {
@@ -2416,13 +2552,21 @@
     }
     
     .experience-title {
-      color: #e6f1ff;
-      font-size: 1.5rem;
-      margin-bottom: 1rem;
+      color: var(--text-primary);
+      font-size: 1.6rem;
+      margin: 0 0 0.75rem 0;
       display: flex;
       align-items: center;
       gap: 1rem;
-      font-weight: 600;
+      font-weight: 700;
+      line-height: 1.3;
+    }
+    
+    .experience-title i {
+      color: var(--primary);
+      font-size: 1.4rem;
+      width: 32px;
+      text-align: center;
     }
     
     .experience-title i {
@@ -2432,27 +2576,42 @@
     }
     
     .experience-company {
-      color: var(--secondary);
-      font-weight: 500;
-      font-size: 1.1rem;
-      margin-bottom: 0.5rem;
-      display: inline-block;
-      background: rgba(100, 255, 218, 0.1);
+      color: var(--primary);
+      font-weight: 600;
+      font-size: 1.2rem;
+      margin: 0 0 0.5rem 0;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      background: rgba(37, 99, 235, 0.1);
       padding: 0.4rem 1rem;
-      border-radius: 20px;
-      border: 1px solid rgba(100, 255, 218, 0.1);
-      transition: all 0.3s ease;
+      border-radius: 50px;
+      font-family: var(--font-heading);
+    }
+    
+    .experience-company::before {
+      content: '@';
+      opacity: 0.7;
     }
     
     .experience-date {
-      color: #8892b0;
+      color: var(--text-secondary);
       font-size: 0.95rem;
-      margin-bottom: 1.2rem;
-      display: block;
-      font-family: 'Fira Code', monospace;
-      letter-spacing: 0.5px;
-      position: relative;
-      padding-left: 1.8rem;
+      margin: 0.5rem 0 1.5rem 0;
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      font-family: var(--font-mono);
+      background: var(--light);
+      padding: 0.5rem 1rem;
+      border-radius: 4px;
+      display: inline-flex;
+      font-size: 0.9rem;
+    }
+    
+    .experience-date i {
+      color: var(--primary);
+      font-size: 1rem;
     }
     
     .experience-date::before {
@@ -2466,12 +2625,52 @@
     }
     
     .experience-description {
-      color: #ccd6f6;
+      color: var(--text-secondary);
       line-height: 1.8;
       margin: 1.5rem 0 0;
+      padding: 0 0 0 1.5rem;
+      font-size: 1.05rem;
+    }
+    
+    .experience-description ul {
+      list-style: none;
       padding: 0;
+      margin: 0;
+    }
+    
+    .experience-description li {
       position: relative;
-      z-index: 2;
+      margin-bottom: 1rem;
+      padding-left: 2rem;
+      line-height: 1.6;
+    }
+    
+    .experience-description li::before {
+      content: '▹';
+      position: absolute;
+      left: 0;
+      color: var(--primary);
+      font-size: 1.2rem;
+      line-height: 1.4;
+    }
+    
+    .experience-description strong {
+      color: var(--text-primary);
+      font-weight: 600;
+    }
+    
+    .experience-description li {
+      position: relative;
+      margin-bottom: 0.75rem;
+      padding-left: 1.5rem;
+    }
+    
+    .experience-description li::before {
+      content: '→';
+      position: absolute;
+      left: 0;
+      color: var(--primary);
+      font-weight: bold;
     }
     
     .experience-description li {
