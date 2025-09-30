@@ -6,7 +6,7 @@
   <title>Sudarshan Iyengar | Senior Embedded Engineer</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
   <style>
     /* Modern CSS Reset */
@@ -54,6 +54,9 @@
       max-width: 1200px;
       margin: 0 auto;
       padding: 0 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
     }
 
     /* Hero Section */
@@ -117,20 +120,21 @@
 
     .glitch {
       position: relative;
-      color: #fff;
-      font-size: 3.8rem;
-      font-weight: 800;
+      color: #ffffff;
+      font-size: 3.5rem;
+      font-weight: 500;
       line-height: 1.1;
-      margin-bottom: 1.5rem;
-      letter-spacing: -1px;
+      margin-bottom: 1.25rem;
+      letter-spacing: -0.02em;
       text-align: left;
       font-family: 'Space Grotesk', sans-serif;
+      text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
     }
 
     @media (max-width: 768px) {
       .glitch {
-        font-size: 2.8rem;
-        text-align: center;
+        font-size: 2.5rem;
+        text-align: left;
       }
     }
 
@@ -145,17 +149,7 @@
       opacity: 0.8;
     }
 
-    .glitch::before {
-      color: #1DB954;
-      z-index: -1;
-      animation: glitch-effect 3s infinite;
-    }
-
-    .glitch::after {
-      color: #1DA1F2;
-      z-index: -2;
-      animation: glitch-effect 2s infinite reverse;
-    }
+    /* Glitch effect removed for cleaner look */
 
     @keyframes glitch-effect {
       0% { transform: translate(0); }
@@ -306,29 +300,35 @@
     }
 
     .hero h1 {
-      font-size: 3.5rem;
-      font-weight: 800;
-      margin-bottom: 1.5rem;
-      background: linear-gradient(90deg, #fff, #aaa);
-      -webkit-background-clip: text;
-      background-clip: text;
-      -webkit-text-fill-color: transparent;
-      color: transparent;
+      font-size: 3.75rem;
+      font-weight: 600;
+      margin-bottom: 1.25rem;
+      color: #ffffff;
+      font-family: 'Space Grotesk', sans-serif;
+      letter-spacing: -0.02em;
+      line-height: 1.1;
+      text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
     }
 
     .hero p {
-      font-size: 1.5rem;
-      color: var(--text-secondary);
+      font-size: 1.15rem;
+      color: #d1d1d1;
       max-width: 700px;
       margin: 0 auto 3rem;
-      line-height: 1.6;
+      line-height: 1.7;
+      font-family: 'Inter', sans-serif;
+      font-weight: 400;
+      opacity: 0.9;
     }
 
     /* About Section */
     .about-section {
-      background: linear-gradient(135deg, #0a0a0a 0%, #1a1a1a 100%);
+      background: linear-gradient(135deg, rgba(15, 15, 15, 0.7) 0%, rgba(30, 30, 30, 0.7) 100%);
       padding: 8rem 0;
       position: relative;
+      backdrop-filter: blur(10px);
+      border-top: 1px solid rgba(255, 255, 255, 0.05);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.05);
     }
 
     .section-header {
@@ -604,40 +604,160 @@
     }
 
     .experience-company {
-      color: var(--secondary);
-      font-family: 'Fira Code', monospace;
-      margin-bottom: 0.5rem;
+      color: #f0f0f0;
+      font-family: 'Space Grotesk', sans-serif;
+      font-weight: 500;
+      margin-bottom: 0.4rem;
       display: inline-block;
-      background: rgba(29, 185, 84, 0.1);
-      padding: 0.2rem 0.8rem;
-      border-radius: 4px;
-      font-size: 0.9rem;
+      background: rgba(255, 255, 255, 0.04);
+      padding: 0.35rem 1rem;
+      border-radius: 16px;
+      font-size: 0.88rem;
+      letter-spacing: 0.4px;
+      transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    
+    .experience-company:hover {
+      background: rgba(255, 255, 255, 0.08);
+      transform: translateX(2px);
     }
 
     .experience-date {
-      color: var(--text-secondary);
-      font-size: 0.9rem;
-      margin-bottom: 1rem;
+      color: #a8a8a8;
+      font-size: 0.83rem;
+      margin: 0.2rem 0 0.9rem 0;
       display: block;
+      font-family: 'Fira Code', monospace;
+      letter-spacing: 0.4px;
+      transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
     }
 
     .experience-description {
-      color: var(--text);
-      line-height: 1.7;
-      margin-left: 1.8rem;
+      color: var(--light-gray);
+      line-height: 1.8;
+      margin: 0 0 0 1.5rem;
+      padding: 0 0.5rem 0 0;
+      font-family: var(--font-primary);
+      font-size: 0.95rem;
     }
 
     .experience-description li {
-      margin-bottom: 0.8rem;
+      margin-bottom: 0.75rem;
       position: relative;
-      padding-left: 1.5rem;
+      padding-left: 1.7rem;
+      transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+      opacity: 0.92;
+      color: #e0e0e0;
+      line-height: 1.75;
+    }
+    
+    .experience-description li:hover {
+      color: #ffffff;
+      transform: translateX(2px);
+      opacity: 1;
     }
 
     .experience-description li::before {
-      content: '▹';
+      content: '•';
       position: absolute;
+      left: 0.5rem;
+      color: rgba(255, 255, 255, 0.7);
+      font-size: 1.1em;
+      transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    
+    .experience-description li:hover::before {
+      color: var(--primary);
+      transform: translateX(2px);
+    }
+    
+    /* Main Navigation Tabs */
+    .main-tabs {
+      display: flex;
+      position: relative;
+      gap: 0.5rem;
+      margin: 0 1rem;
+    }
+    
+    .main-tab {
+      padding: 0.7rem 1.5rem;
+      background: none;
+      border: none;
+      color: rgba(255, 255, 255, 0.6);
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 0.9rem;
+      font-weight: 500;
+      cursor: pointer;
+      border-radius: 6px;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      transition: all 0.3s ease;
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .main-tab i {
+      font-size: 1rem;
+      transition: transform 0.3s ease;
+    }
+    
+    .main-tab:hover {
+      color: #ffffff;
+      background: rgba(255, 255, 255, 0.05);
+    }
+    
+    .main-tab:hover i {
+      transform: translateY(-2px);
+    }
+    
+    .main-tab.active {
+      color: #64ffda;
+      font-weight: 600;
+    }
+    
+    .main-tab.active::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 60%;
+      height: 2px;
+      background: #64ffda;
+      border-radius: 2px;
+      transition: all 0.3s ease;
+    }
+    
+    .main-tab-indicator {
+      position: absolute;
+      bottom: 0;
       left: 0;
-      color: var(--accent);
+      height: 2px;
+      background: #64ffda;
+      border-radius: 2px;
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      z-index: 1;
+    }
+    
+    /* Hide old navigation */
+    .nav-links {
+      display: none;
+    }
+    
+    /* Section Management */
+    .section-hidden {
+      display: none;
+    }
+    
+    .active-section {
+      display: block;
+      animation: fadeIn 0.5s ease;
+    }
+    
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
     }
 
     @media (max-width: 768px) {
@@ -684,11 +804,28 @@
         <span class="logo">SI</span>
         <span class="name">Sudarshan Iyengar</span>
       </div>
-      <ul class="nav-links">
-        <li><a href="#skills"><span class="nav-num">01.</span> Skills</a></li>
-        <li><a href="#experience"><span class="nav-num">02.</span> Experience</a></li>
-        <li><a href="#contact" class="btn btn-contact"><span class="nav-num">03.</span> Contact</a></li>
-      </ul>
+      
+      <!-- Main Navigation Tabs -->
+      <div class="main-tabs">
+        <button class="main-tab active" data-section="experience">
+          <i class="fas fa-briefcase"></i>
+          <span>Experience</span>
+        </button>
+        <button class="main-tab" data-section="skills">
+          <i class="fas fa-code"></i>
+          <span>Skills</span>
+        </button>
+        <button class="main-tab" data-section="certifications">
+          <i class="fas fa-certificate"></i>
+          <span>Certifications</span>
+        </button>
+        <button class="main-tab" data-section="contact">
+          <i class="fas fa-envelope"></i>
+          <span>Contact</span>
+        </button>
+        <div class="main-tab-indicator"></div>
+      </div>
+      
       <button class="mobile-menu-btn" aria-label="Menu">
         <span></span>
         <span></span>
@@ -697,8 +834,10 @@
     </div>
   </nav>
 
-  <!-- Header -->
-  <header class="hero-section">
+  <!-- Main Content -->
+  <div class="main-content">
+    <!-- Hero Section -->
+    <header class="hero-section active-section" id="home">
     <div class="container">
       <div class="hero-content">
         <h1 class="glitch" data-text="Sudarshan Iyengar">Sudarshan Iyengar</h1>
@@ -725,8 +864,10 @@
     </div>
   </header>
 
+  </header>
+  
   <!-- Career Highlights -->
-  <section class="highlights-section">
+  <section class="highlights-section" id="highlights">
     <div class="container">
       <div class="section-header">
         <h2 class="section-title">Career Highlights</h2>
@@ -784,14 +925,13 @@
     </div>
   </section>
 
-  <!-- Contact Section -->
-  <section id="contact" class="contact-section">
+  <!-- Tabs Section -->
+  <section class="tabs-section">
     <div class="container">
       <div class="tabs">
         <button class="tab-btn active" data-tab="skills">Skills</button>
         <button class="tab-btn" data-tab="experience">Experience</button>
         <button class="tab-btn" data-tab="contact">Contact</button>
-{{ ... }}
         <div class="tab-indicator"></div>
       </div>
     </div>
@@ -857,68 +997,86 @@
         <p class="section-subtitle">// my career journey</p>
       </div>
       
-      <div class="timeline">
-        <div class="timeline-item">
-          <div class="timeline-content">
-            <h3>Associate Lead Engineer</h3>
-            <p class="company">Veoneer Safety Systems, India</p>
-            <p class="duration">08/2022 – Present</p>
-            <ul class="achievements">
-              <li>Developed AXI/AXIS Verilog RTL modules for SPI/GPIO protocol monitoring</li>
-              <li>Implemented GSML stream decoder with DMA for efficient high-speed data transfers</li>
-              <li>Integrated MicroBlaze soft-core with Zynq for Linux IPC and high-speed digital decoding</li>
-              <li>Maintained Yocto, secure boot scripts, and custom device trees</li>
-              <li>Designed Linux DMA drivers for FPGA-to-CPU data streaming</li>
-              <li>Managed QSPI flashing and RTOS driver integration for various peripherals (I2C, SPI, UART, CAN, LIN, PWM, Timers, GPIO)</li>
-            </ul>
-          </div>
+      <div class="experience-container">
+        <div class="experience-tabs">
+          <button class="exp-tab active" data-tab="current">Current Role</button>
+          <button class="exp-tab" data-tab="previous">Previous Experience</button>
+          <button class="exp-tab" data-tab="education">Education</button>
+          <div class="exp-tab-indicator"></div>
         </div>
         
-        <div class="timeline-item">
-          <div class="timeline-content">
-            <h3>Embedded Engineer</h3>
-            <p class="company">Alif Semiconductor</p>
-            <p class="duration">03/2021 – 02/2022</p>
-            <ul class="achievements">
-              <li>Ported applications to ThreadX/FreeRTOS on Cortex-M55 platforms</li>
-              <li>Developed Baremetal drivers for Watchdog, Timer, and GPIO</li>
-              <li>Debugged RTOS drivers frameworks using Lauterbach, ULINK, and Segger J-Link</li>
-              <li>Developed and validated RTOS peripheral drivers</li>
-              <li>Partnered with cross-functional teams for feature enhancements</li>
-            </ul>
+        <div class="experience-content">
+          <div class="exp-tab-pane active" id="current">
+            <div class="experience-item">
+              <h3 class="experience-title">
+                <i class="fas fa-laptop-code"></i> Associate Lead Engineer
+              </h3>
+              <span class="experience-company">Veoneer Safety Systems, India</span>
+              <span class="experience-date">08/2022 – Present</span>
+              <ul class="experience-description">
+                <li>Designed and implemented AXI/AXIS Verilog RTL modules for monitoring protocols including SPI and GPIO, enhancing system reliability and performance.</li>
+                <li>Developed GSML stream decoder with DMA, achieving efficient high-speed data transfers and optimizing system throughput.</li>
+                <li>Integrated MicroBlaze soft-core with Zynq for Linux-based embedded solutions, enabling advanced processing capabilities.</li>
+                <li>Led the development of real-time embedded systems with a focus on low-latency and high-reliability requirements.</li>
+                <li>Collaborated with cross-functional teams to define system architecture and implement complex embedded solutions.</li>
+              </ul>
+            </div>
+          </div>
+          
+          <div class="exp-tab-pane" id="previous">
+            <div class="experience-item">
+              <h3 class="experience-title">
+                <i class="fas fa-microchip"></i> Embedded Engineer
+              </h3>
+              <span class="experience-company">Alif Semiconductor</span>
+              <span class="experience-date">03/2021 – 02/2022</span>
+              <ul class="experience-description">
+                <li>Ported applications to ThreadX/FreeRTOS on Cortex-M55 platforms, ensuring optimal performance and reliability.</li>
+                <li>Developed bare-metal drivers for Watchdog, Timer, and GPIO, enhancing hardware control and system stability.</li>
+                <li>Debugged RTOS drivers frameworks using Lauterbach, ULINK, and Segger J-Link tools, resolving complex system-level issues.</li>
+                <li>Designed and validated RTOS peripheral drivers, improving system functionality and hardware compatibility.</li>
+                <li>Collaborated with cross-functional teams to implement feature enhancements and drive project success.</li>
+              </ul>
+            </div>
+            
+            <div class="experience-item">
+              <h3 class="experience-title">
+                <i class="fas fa-lightbulb"></i> Design Engineer
+              </h3>
+              <span class="experience-company">J.P. Electronics Pte. Ltd.</span>
+              <span class="experience-date">05/2020 – 02/2021</span>
+              <ul class="experience-description">
+                <li>Designed and implemented PWM-based lighting control solutions, optimizing energy efficiency and performance.</li>
+                <li>Developed Bluetooth/Wi-Fi IoT solutions using Microchip platforms, enabling smart device connectivity and control.</li>
+                <li>Created schematics in KiCAD and supported products through the entire development lifecycle from concept to production.</li>
+                <li>Provided technical consulting, rapid prototyping, and troubleshooting for diverse customer projects, ensuring successful implementation.</li>
+              </ul>
+            </div>
+            
+            <div class="experience-item">
+              <h3 class="experience-title">
+                <i class="fas fa-flask"></i> R&D Engineer
+              </h3>
+              <span class="experience-company">GreenTronics Design Labs India Pvt. Ltd.</span>
+              <span class="experience-date">02/2017 – 04/2020</span>
+              <ul class="experience-description">
+                <li>Designed and developed buck-boost converters and MPPT charge controllers, conducting thorough validation and performance testing.</li>
+                <li>Contributed to Battery Management System (BMS) development, focusing on efficiency optimization, safety protocols, and reliability enhancements.</li>
+                <li>Engineered a sub-1GHz radio-based water-level monitoring system with capacitive sensing, from proof-of-concept to functional prototype.</li>
+                <li>Created innovative LDR and remote-controlled lighting solutions, integrating automation for energy efficiency and user convenience.</li>
+                <li>Designed and tested three-phase star-delta starter systems for industrial motor control applications.</li>
+                <li>Delivered optimized embedded firmware solutions across multiple MCU families, tailoring implementations to specific hardware requirements.</li>
+                <li>Led comprehensive system validation efforts, developing automated test setups and ensuring compliance with industry standards and regulations.</li>
+              </ul>
+            </div>
+          </div>
+          
+          <div class="exp-tab-pane" id="education">
+            <!-- Your education details will be displayed here -->
           </div>
         </div>
-        
-        <div class="timeline-item">
-          <div class="timeline-content">
-            <h3>Design Engineer</h3>
-            <p class="company">J.P. Electronics Pte. Ltd.</p>
-            <p class="duration">05/2020 – 02/2021</p>
-            <ul class="achievements">
-              <li>Designed PWM-based lighting control solutions for efficiency</li>
-              <li>Developed Bluetooth/Wi-Fi IoT solutions using Microchip platforms</li>
-              <li>Created schematics in KiCAD and supported full product lifecycle</li>
-              <li>Provided consulting, prototyping, and troubleshooting for customer projects</li>
-            </ul>
-          </div>
-        </div>
-        
-        <div class="timeline-item">
-          <div class="timeline-content">
-            <h3>R&D Engineer</h3>
-            <p class="company">GreenTronics Design Labs India Pvt. Ltd.</p>
-            <p class="duration">02/2017 – 04/2020</p>
-            <ul class="achievements">
-              <li>Developed buck-boost converters and MPPT charge controllers with validation</li>
-              <li>Contributed to Battery Management System (BMS) analysis for efficiency, safety, and reliability</li>
-              <li>Built sub-1GHz radio-based water-level monitoring (PoC) with capacitive sensing</li>
-              <li>Created LDR and remote-controlled lighting solutions for automation</li>
-              <li>Designed and tested three-phase star-delta starter for motor control</li>
-              <li>Delivered solutions across multiple MCU families, optimizing embedded firmware</li>
-              <li>Led system validation, automated test setups, and compliance testing</li>
-            </ul>
-          </div>
-      
+      </div>
+      <!-- Timeline content is now displayed in the tabbed interface above -->
       <div class="about-content">
         <div class="about-grid">
           <div class="about-image">
@@ -962,12 +1120,13 @@
   <style>
     /* Tab Navigation */
     .tabs-section {
-      background: rgba(10, 25, 47, 0.85);
+      background: linear-gradient(135deg, var(--gradient-start) 0%, var(--gradient-end) 100%);
       backdrop-filter: blur(10px);
       position: sticky;
       top: 0;
       z-index: 999;
       border-bottom: 1px solid var(--border);
+      padding: 0.5rem 0;
     }
 
     .tabs {
@@ -988,6 +1147,10 @@
       position: relative;
       transition: all 0.3s ease;
       font-family: 'Fira Code', monospace;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      font-size: 0.9rem;
+      font-weight: 500;
     }
 
     .tab-btn:hover,
@@ -1007,11 +1170,16 @@
     /* Tab Content */
     .tab-content {
       display: none;
-      padding: 5rem 0;
+      padding: 4rem 0;
+      opacity: 0;
+      transform: translateY(20px);
+      transition: opacity 0.3s ease, transform 0.3s ease;
     }
-
+    
     .tab-content.active {
       display: block;
+      opacity: 1;
+      transform: translateY(0);
       animation: fadeIn 0.5s ease;
     }
 
@@ -1343,6 +1511,61 @@
   </style>
 
   <script>
+    // Contact Form Handling
+    document.addEventListener('DOMContentLoaded', () => {
+      const contactForm = document.getElementById('contactForm');
+      
+      if (contactForm) {
+        contactForm.addEventListener('submit', async (e) => {
+          e.preventDefault();
+          
+          const formData = new FormData(contactForm);
+          const submitBtn = contactForm.querySelector('button[type="submit"]');
+          const originalBtnText = submitBtn.innerHTML;
+          
+          try {
+            // Disable button and show loading state
+            submitBtn.disabled = true;
+            submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Sending...';
+            
+            // Here you would typically send the form data to your server
+            // For now, we'll simulate a successful submission
+            await new Promise(resolve => setTimeout(resolve, 1500));
+            
+            // Show success message
+            const successMessage = document.createElement('div');
+            successMessage.className = 'form-message success';
+            successMessage.innerHTML = '<i class="fas fa-check-circle"></i> Message sent successfully!';
+            contactForm.appendChild(successMessage);
+            
+            // Reset form
+            contactForm.reset();
+            
+            // Remove success message after 5 seconds
+            setTimeout(() => {
+              successMessage.remove();
+            }, 5000);
+            
+          } catch (error) {
+            // Show error message
+            const errorMessage = document.createElement('div');
+            errorMessage.className = 'form-message error';
+            errorMessage.innerHTML = '<i class="fas fa-exclamation-circle"></i> Error sending message. Please try again.';
+            contactForm.insertBefore(errorMessage, contactForm.firstChild);
+            
+            // Remove error message after 5 seconds
+            setTimeout(() => {
+              errorMessage.remove();
+            }, 5000);
+          } finally {
+            // Re-enable button and restore original text
+            submitBtn.disabled = false;
+            submitBtn.innerHTML = originalBtnText;
+          }
+        });
+      }
+    });
+    
     // Tab functionality
     document.addEventListener('DOMContentLoaded', () => {
       const tabBtns = document.querySelectorAll('.tab-btn');
@@ -1357,20 +1580,37 @@
         updateTabIndicator(activeTab);
       }
 
-      // Tab click handler
+      // Tab click handler with smooth scroll
       tabBtns.forEach(btn => {
-        btn.addEventListener('click', () => {
+        btn.addEventListener('click', (e) => {
+          e.preventDefault();
           const tabId = btn.getAttribute('data-tab');
+          const targetSection = document.getElementById(tabId);
+          
+          if (!targetSection) return;
           
           // Update active tab
           tabBtns.forEach(b => b.classList.remove('active'));
           btn.classList.add('active');
           
-          // Show corresponding content
+          // Show corresponding content with smooth transition
           tabContents.forEach(content => {
+            content.style.opacity = '0';
+            content.style.transform = 'translateY(20px)';
             content.classList.remove('active');
+            
             if (content.id === tabId) {
-              content.classList.add('active');
+              setTimeout(() => {
+                content.classList.add('active');
+                content.style.opacity = '1';
+                content.style.transform = 'translateY(0)';
+                
+                // Scroll to the section
+                window.scrollTo({
+                  top: targetSection.offsetTop - 100,
+                  behavior: 'smooth'
+                });
+              }, 50);
             }
           });
           
@@ -1581,8 +1821,56 @@
       }, item.initialDelay || 0);
     }
 
-    // Initialize animations
+    // Initialize Experience Tabs
+    function initExperienceTabs() {
+      const tabs = document.querySelectorAll('.exp-tab');
+      const tabPanes = document.querySelectorAll('.exp-tab-pane');
+      const indicator = document.querySelector('.exp-tab-indicator');
+      
+      function updateIndicator(activeTab) {
+        if (!activeTab) return;
+        indicator.style.width = `${activeTab.offsetWidth}px`;
+        indicator.style.left = `${activeTab.offsetLeft}px`;
+      }
+      
+      tabs.forEach(tab => {
+        tab.addEventListener('click', () => {
+          const tabId = tab.getAttribute('data-tab');
+          
+          // Update active tab
+          tabs.forEach(t => t.classList.remove('active'));
+          tab.classList.add('active');
+          
+          // Update active pane
+          tabPanes.forEach(pane => {
+            pane.classList.remove('active');
+            if (pane.id === tabId) {
+              pane.classList.add('active');
+            }
+          });
+          
+          // Update indicator
+          updateIndicator(tab);
+        });
+      });
+      
+      // Initialize with first tab active
+      if (tabs.length > 0) {
+        updateIndicator(tabs[0]);
+      }
+      
+      // Update indicator on window resize
+      window.addEventListener('resize', () => {
+        const activeTab = document.querySelector('.exp-tab.active');
+        updateIndicator(activeTab);
+      });
+    }
+    
+    // Initialize animations and components
     document.addEventListener('DOMContentLoaded', () => {
+      // Initialize experience tabs
+      initExperienceTabs();
+      
       // Start the terminal typing effect
       setTimeout(() => displayTerminalContent(terminalContent), 1000);
       
@@ -1684,11 +1972,469 @@
     </div>
   </section>
 
+  <!-- Contact Section -->
+  <section id="contact" class="contact-section tab-content">
+    <div class="container">
+      <div class="section-header">
+        <h2 class="section-title">Get In Touch</h2>
+        <p class="section-subtitle">// let's work together</p>
+      </div>
+      
+      <div class="contact-content">
+        <div class="contact-info">
+          <div class="contact-method">
+            <div class="contact-icon">
+              <i class="fas fa-envelope"></i>
+            </div>
+            <div class="contact-details">
+              <h3>Email</h3>
+              <a href="mailto:sudi.iyengar@gmail.com">sudi.iyengar@gmail.com</a>
+            </div>
+          </div>
+          
+          <div class="contact-method">
+            <div class="contact-icon">
+              <i class="fab fa-linkedin"></i>
+            </div>
+            <div class="contact-details">
+              <h3>Phone</h3>
+              <a href="tel:+917353639083">+91 7353639083</a>
+            </div>
+          </div>
+          
+          <div class="contact-method">
+            <div class="contact-icon">
+              <i class="fab fa-github"></i>
+            </div>
+            <div class="contact-details">
+              <h3>GitHub</h3>
+              <a href="https://github.com/yourusername" target="_blank" rel="noopener noreferrer">github.com/yourusername</a>
+            </div>
+          </div>
+        </div>
+        
+        <form class="contact-form" id="contactForm">
+          <div class="form-group">
+            <input type="text" id="name" name="name" placeholder="Your Name" required>
+          </div>
+          <div class="form-group">
+            <input type="email" id="email" name="email" placeholder="Your Email" required>
+          </div>
+          <div class="form-group">
+            <input type="text" id="subject" name="subject" placeholder="Subject" required>
+          </div>
+          <div class="form-group">
+            <textarea id="message" name="message" rows="5" placeholder="Your Message" required></textarea>
+          </div>
+          <button type="submit" class="btn btn-primary">Send Message</button>
+        </form>
+      </div>
+    </div>
+  </section>
+
   <!-- Certifications Section Styles -->
   <style>
+    /* Contact Section Styles */
+    .contact-section {
+      padding: 6rem 0;
+      background: linear-gradient(135deg, rgba(20, 20, 20, 0.7) 0%, rgba(40, 40, 40, 0.7) 100%);
+      min-height: 80vh;
+      display: flex;
+      align-items: center;
+      backdrop-filter: blur(10px);
+      border-top: 1px solid rgba(255, 255, 255, 0.05);
+    }
+    
+    .contact-content {
+      display: grid;
+      grid-template-columns: 1fr 1.5fr;
+      gap: 4rem;
+      margin-top: 3rem;
+      width: 100%;
+    }
+    
+    .contact-info {
+      display: flex;
+      flex-direction: column;
+      gap: 2rem;
+    }
+    
+    .contact-method {
+      display: flex;
+      align-items: flex-start;
+      gap: 1.5rem;
+    }
+    
+    .contact-icon {
+      width: 50px;
+      height: 50px;
+      background: rgba(100, 255, 218, 0.1);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--secondary);
+      font-size: 1.2rem;
+      flex-shrink: 0;
+    }
+    
+    .contact-details h3 {
+      color: var(--text);
+      margin: 0 0 0.5rem;
+      font-size: 1.2rem;
+    }
+    
+    .contact-details a {
+      color: var(--text-secondary);
+      text-decoration: none;
+      transition: color 0.3s ease;
+    }
+    
+    .contact-details a:hover {
+      color: var(--secondary);
+    }
+    
+    .contact-form {
+      background: var(--card-bg);
+      padding: 2.5rem;
+      border-radius: 8px;
+      border: 1px solid var(--border);
+    }
+    
+    .form-group {
+      margin-bottom: 1.5rem;
+    }
+    
+    .form-group input,
+    .form-group textarea {
+      width: 100%;
+      padding: 0.8rem 1rem;
+      background: rgba(17, 34, 64, 0.5);
+      border: 1px solid var(--border);
+      border-radius: 4px;
+      color: var(--text);
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 1rem;
+      transition: all 0.3s ease;
+      -webkit-appearance: none;
+      -moz-appearance: none;
+      appearance: none;
+    }
+    
+    .form-group textarea {
+      resize: vertical;
+      min-height: 150px;
+    }
+    
+    .form-group input:focus,
+    .form-group textarea:focus {
+      outline: none;
+      border-color: var(--secondary);
+      box-shadow: 0 0 0 2px rgba(100, 255, 218, 0.2);
+    }
+    
+    .btn-primary {
+      background: var(--secondary);
+      color: var(--primary);
+      border: none;
+      padding: 0.8rem 2rem;
+      border-radius: 4px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      font-family: 'Fira Code', monospace;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      font-size: 0.9rem;
+    }
+    
+    .btn-primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 5px 15px rgba(100, 255, 218, 0.3);
+    }
+    
+    .btn-primary:disabled {
+      opacity: 0.7;
+      cursor: not-allowed;
+      transform: none !important;
+      box-shadow: none !important;
+    }
+    
+    .form-message {
+      padding: 1rem;
+      margin: 1rem 0;
+      border-radius: 4px;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+    
+    .form-message i {
+      font-size: 1.2rem;
+    }
+    
+    .form-message.success {
+      background: rgba(40, 199, 111, 0.1);
+      color: #28c76f;
+      border: 1px solid rgba(40, 199, 111, 0.2);
+    }
+    
+    .form-message.error {
+      background: rgba(234, 84, 85, 0.1);
+      color: #ea5455;
+      border: 1px solid rgba(234, 84, 85, 0.2);
+    }
+    
+    /* Experience Section Styles */
+    .experience-container {
+      background: linear-gradient(145deg, #0a0a0a 0%, #1a1a1a 100%);
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+      margin-top: 2rem;
+    }
+    
+    .experience-tabs {
+      display: flex;
+      position: relative;
+      background: #0f0f0f;
+      padding: 0 1.5rem;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+      border-radius: 8px 8px 0 0;
+      overflow: hidden;
+    }
+    
+    .exp-tab {
+      padding: 1.2rem 2rem;
+      background: none;
+      border: none;
+      color: rgba(255, 255, 255, 0.6);
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 0.85rem;
+      font-weight: 500;
+      cursor: pointer;
+      position: relative;
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      margin: 0;
+    }
+    
+    .exp-tab:hover {
+      color: #ffffff;
+      background: rgba(255, 255, 255, 0.05);
+    }
+    
+    .exp-tab.active {
+      color: #ffffff;
+      background: rgba(255, 255, 255, 0.08);
+      font-weight: 600;
+      text-shadow: 0 0 10px rgba(255, 255, 255, 0.2);
+      position: relative;
+    }
+    
+    .exp-tab.active::after {
+      content: '';
+      position: absolute;
+      bottom: -1px;
+      left: 0;
+      width: 100%;
+      height: 2px;
+      background: #ffffff;
+      box-shadow: 0 0 10px rgba(255, 255, 255, 0.3);
+    }
+    
+    .exp-tab-indicator {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      height: 2px;
+      background: #ffffff;
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      box-shadow: 0 0 10px rgba(255, 255, 255, 0.3);
+      z-index: 1;
+    }
+    
+    .experience-content {
+      padding: 2.5rem;
+      min-height: 400px;
+      background: linear-gradient(135deg, #0f0f0f 0%, #1a1a1a 100%);
+      border-radius: 0 0 8px 8px;
+      border: 1px solid rgba(255, 255, 255, 0.05);
+      border-top: none;
+    }
+    
+    .exp-tab-pane {
+      display: none;
+      animation: fadeIn 0.5s ease;
+    }
+    
+    .exp-tab-pane.active {
+      display: block;
+      animation: fadeIn 0.5s ease;
+    }
+    
+    .experience-item {
+      margin-bottom: 2.5rem;
+      padding: 1.5rem;
+      border-radius: 8px;
+      transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+      background: rgba(255, 255, 255, 0.02);
+      border: 1px solid rgba(255, 255, 255, 0.05);
+      position: relative;
+      overflow: hidden;
+      transform: translateY(0);
+      animation: fadeIn 0.5s ease;
+    }
+    
+    .experience-item::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 2px;
+      height: 0;
+      background: var(--primary);
+      transition: height 0.5s cubic-bezier(0.19, 1, 0.22, 1);
+      z-index: 1;
+    }
+    
+    .experience-item:hover {
+      transform: translateY(-2px);
+      background: rgba(100, 255, 218, 0.03);
+      border-color: rgba(100, 255, 218, 0.15);
+      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+    }
+    
+    .experience-item:hover::before {
+      color: rgba(255, 255, 255, 0.5);
+      font-size: 0.9rem;
+      margin-bottom: 1rem;
+      display: block;
+    }
+    
+    .experience-description {
+      color: rgba(255, 255, 255, 0.7);
+      line-height: 1.7;
+      margin: 1rem 0 0;
+    }
+    
+    .experience-highlights {
+      margin: 1rem 0 0 1rem;
+      padding: 0;
+    }
+    
+    .experience-highlights li {
+      position: relative;
+      padding-left: 1.5rem;
+      margin-bottom: 0.75rem;
+      list-style: none;
+    }
+    
+    .experience-highlights li::before {
+      content: '▹';
+      position: absolute;
+      left: 0;
+      color: var(--secondary);
+      font-size: 1.1rem;
+      line-height: 1.4;
+    }
+    
+    /* Responsive Styles for Experience Section */
+    @media (max-width: 768px) {
+      .experience-tabs {
+        flex-direction: column;
+        padding: 0;
+      }
+      
+      .exp-tab {
+        text-align: left;
+        padding: 1rem 1.5rem;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+      }
+      
+      .exp-tab-indicator {
+        display: none;
+      }
+      
+      .experience-content {
+        padding: 1.5rem;
+      }
+      
+      .experience-item {
+        padding: 1.5rem;
+      }
+    }
+    
+    /* Section Styling */
+    .section {
+      display: none;
+      padding: 6rem 0;
+    }
+    
+    .section.active {
+      display: block;
+      animation: fadeIn 0.5s ease;
+    }
+    
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    
+    /* Responsive Styles */
+    @media (max-width: 992px) {
+      .contact-content {
+        grid-template-columns: 1fr;
+        gap: 3rem;
+      }
+      
+      .contact-info {
+        order: 2;
+      }
+      
+      .contact-form {
+        order: 1;
+      }
+    }
+    
+    @media (max-width: 768px) {
+      .contact-section {
+        padding: 4rem 0;
+      }
+      
+      .contact-method {
+        flex-direction: column;
+        text-align: center;
+        align-items: center;
+      }
+      
+      .contact-icon {
+        margin-right: 0;
+        margin-bottom: 1rem;
+      }
+    }
+    
+    @media (max-width: 480px) {
+      .contact-form {
+        padding: 1.5rem;
+      }
+      
+      .btn-primary {
+        width: 100%;
+        padding: 0.8rem;
+      }
+      
+      .contact-method {
+        text-align: left;
+        align-items: flex-start;
+      }
+    }
+    
+    /* Certifications Section */
     .certifications-section {
       padding: 6rem 0;
-      background: linear-gradient(135deg, var(--section-bg) 0%, var(--background) 100%);
+      background: linear-gradient(135deg, var(--section-bg) 0%, var(--gradient-end) 100%);
       border-top: 1px solid var(--border);
     }
     
@@ -1751,5 +2497,91 @@
       font-size: 0.95rem;
     }
   </style>
+
+  <script>
+    // Main Navigation Tabs Functionality
+    document.addEventListener('DOMContentLoaded', () => {
+      const tabs = document.querySelectorAll('.main-tab');
+      const indicator = document.querySelector('.main-tab-indicator');
+      const sections = document.querySelectorAll('section, header.hero-section');
+      
+      // Set initial active tab based on URL hash or default to 'home'
+      const initialSection = window.location.hash ? window.location.hash.substring(1) : 'home';
+      let currentSection = initialSection;
+      
+      // Function to update the active tab and section
+      function setActiveTab(sectionId) {
+        // Update URL hash
+        window.location.hash = sectionId;
+        currentSection = sectionId;
+        
+        // Update active tab
+        tabs.forEach(tab => {
+          if (tab.getAttribute('data-section') === sectionId) {
+            tab.classList.add('active');
+            // Update indicator position
+            if (indicator) {
+              const tabRect = tab.getBoundingClientRect();
+              const containerRect = tab.parentElement.getBoundingClientRect();
+              indicator.style.width = `${tabRect.width}px`;
+              indicator.style.transform = `translateX(${tabRect.left - containerRect.left}px)`;
+            }
+          } else {
+            tab.classList.remove('active');
+          }
+        });
+        
+        // Show/hide sections
+        sections.forEach(section => {
+          if (section.id === sectionId) {
+            section.classList.remove('section-hidden');
+            section.classList.add('active-section');
+          } else {
+            section.classList.remove('active-section');
+            section.classList.add('section-hidden');
+          }
+        });
+      }
+      
+      // Set initial active tab
+      setActiveTab(initialSection);
+      
+      // Add click event listeners to tabs
+      tabs.forEach(tab => {
+        tab.addEventListener('click', () => {
+          const sectionId = tab.getAttribute('data-section');
+          setActiveTab(sectionId);
+        });
+      });
+      
+      // Handle browser back/forward navigation
+      window.addEventListener('popstate', () => {
+        const sectionId = window.location.hash ? window.location.hash.substring(1) : 'home';
+        if (sectionId !== currentSection) {
+          setActiveTab(sectionId);
+        }
+      });
+      
+      // Update indicator on window resize
+      window.addEventListener('resize', () => {
+        const activeTab = document.querySelector('.main-tab.active');
+        if (activeTab && indicator) {
+          const tabRect = activeTab.getBoundingClientRect();
+          const containerRect = activeTab.parentElement.getBoundingClientRect();
+          indicator.style.width = `${tabRect.width}px`;
+          indicator.style.transform = `translateX(${tabRect.left - containerRect.left}px)`;
+        }
+      });
+      
+      // Initialize indicator position
+      const activeTab = document.querySelector('.main-tab.active');
+      if (activeTab && indicator) {
+        const tabRect = activeTab.getBoundingClientRect();
+        const containerRect = activeTab.parentElement.getBoundingClientRect();
+        indicator.style.width = `${tabRect.width}px`;
+        indicator.style.transform = `translateX(${tabRect.left - containerRect.left}px)`;
+      }
+    });
+  </script>
 </body>
 </html>
