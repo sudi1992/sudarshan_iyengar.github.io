@@ -443,6 +443,7 @@
       margin-bottom: 1rem;
       color: var(--heading-color);
       font-family: 'Fira Code', monospace;
+    }
     
     .highlight-card p {
       font-size: 1rem;
@@ -738,69 +739,8 @@ void main() {
 
   <!-- Water Drop Effect Element -->
   <div class="water-drop" id="waterDrop"></div>
-  <!-- Sidebar -->
-  <aside class="sidebar">
-    <div class="sidebar-content">
-      <div class="profile-section">
-        <h1>SUDARSHAN<br>IYENGAR</h1>
-        <h2>Embedded Software Engineer</h2>
-      </div>
-      
-      <div class="contact-section">
-        <h3>Contact</h3>
-        <ul class="contact-list">
-          <li>
-            <i class="fas fa-envelope"></i>
-            <a href="mailto:sudi.iyengar@gmail.com">sudi.iyengar@gmail.com</a>
-          </li>
-          <li>
-            <i class="fas fa-phone"></i>
-            <a href="tel:+917353639083">+91 73536 39083</a>
-          </li>
-          <li data-type="location">
-            <i class="fas fa-map-marker-alt"></i>
-            <span>Bengaluru, Karnataka, India</span>
-          </li>
-          <li>
-            <i class="fab fa-linkedin"></i>
-            <a href="https://linkedin.com/in/sudarshan-iyengar-286a9422" target="_blank" rel="noopener noreferrer">linkedin.com/in/sudarshan-iyengar</a>
-          </li>
-          <li>
-            <i class="fab fa-github"></i>
-            <a href="https://github.com/sudi1992" target="_blank" rel="noopener noreferrer">github.com/sudi1992</a>
-          </li>
-        </ul>
-      </div>
-      
-      <div class="summary-section">
-        <h3>Professional Summary</h3>
-        <ul class="summary-list">
-          <li>8+ years of experience developing bare-metal and RTOS-based device drivers</li>
-          <li>Strong background in custom board bring-up and hardware-software integration</li>
-          <li>Recognized for delivering reliable solutions under tight deadlines and driving continuous improvement</li>
-        </ul>
-      </div>
-    </div>
-  </aside>
-
   <!-- Main Content -->
   <main class="main-content">
-    <!-- Navigation -->
-  <nav class="navbar">
-    <div class="container nav-container">
-      <a href="#" class="nav-logo">sudarshan<span>_iyengar</span></a>
-      <ul class="nav-menu">
-        <li><a href="#about" class="nav-link">about</a></li>
-        <li><a href="#experience" class="nav-link">experience</a></li>
-        <li><a href="#projects" class="nav-link">projects</a></li>
-        <li><a href="#skills" class="nav-link">skills</a></li>
-        <li><a href="#contact" class="nav-link">contact</a></li>
-      </ul>
-      <button class="mobile-menu-btn" aria-label="Toggle menu">
-        <i class="fas fa-bars"></i>
-      </button>
-    </div>
-  </nav>
 
   <!-- Hero Section -->
   <section id="home" class="hero">
@@ -933,6 +873,74 @@ void main() {
               <div class="cert-issuer">Coursera Specialization</div>
               <div class="cert-category">Embedded Systems</div>
             </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Projects Section -->
+  <section id="projects" class="section">
+    <div class="container">
+      <h2 class="section-title">Featured Projects</h2>
+      <div class="projects-grid">
+        <div class="project-card">
+          <div class="project-header">
+            <h3>Custom RTOS for Microcontrollers</h3>
+            <div class="project-links">
+              <a href="#" class="project-link" aria-label="GitHub Repository">
+                <i class="fab fa-github"></i>
+              </a>
+              <a href="#" class="project-link" aria-label="Live Demo">
+                <i class="fas fa-external-link-alt"></i>
+              </a>
+            </div>
+          </div>
+          <p class="project-description">
+            A lightweight Real-Time Operating System developed from scratch for ARM Cortex-M microcontrollers, featuring task scheduling, inter-task communication, and memory management.
+          </p>
+          <div class="project-tech">
+            <span>C</span>
+            <span>ARM Cortex-M</span>
+            <span>FreeRTOS</span>
+          </div>
+        </div>
+
+        <div class="project-card">
+          <div class="project-header">
+            <h3>FPGA-Based Digital Oscilloscope</h3>
+            <div class="project-links">
+              <a href="#" class="project-link" aria-label="GitHub Repository">
+                <i class="fab fa-github"></i>
+              </a>
+            </div>
+          </div>
+          <p class="project-description">
+            A high-performance oscilloscope implementation on Xilinx Zynq FPGA with real-time signal processing, touch interface, and USB connectivity for data logging.
+          </p>
+          <div class="project-tech">
+            <span>Verilog</span>
+            <span>Xilinx Zynq</span>
+            <span>Python</span>
+          </div>
+        </div>
+
+        <div class="project-card">
+          <div class="project-header">
+            <h3>IoT Smart Home Hub</h3>
+            <div class="project-links">
+              <a href="#" class="project-link" aria-label="GitHub Repository">
+                <i class="fab fa-github"></i>
+              </a>
+            </div>
+          </div>
+          <p class="project-description">
+            A centralized home automation hub with support for multiple protocols (Zigbee, BLE, WiFi) and a custom web interface for device management and automation rules.
+          </p>
+          <div class="project-tech">
+            <span>Python</span>
+            <span>MQTT</span>
+            <span>Docker</span>
           </div>
         </div>
       </div>
