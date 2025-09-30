@@ -84,17 +84,84 @@ document.addEventListener('DOMContentLoaded', () => {
 
 window.addEventListener('scroll', animateOnScroll);
 
-// Add hover effect for project cards
-const projectCards = document.querySelectorAll('.project-card');
-projectCards.forEach(card => {
-  card.addEventListener('mouseenter', () => {
-    card.style.transform = 'translateY(-10px)';
-    card.style.boxShadow = '0 20px 30px rgba(0, 0, 0, 0.2)';
+// Add hover and click effects for interactive elements
+const interactiveElements = document.querySelectorAll('.project-card, .highlight-card, .certification-item, .education-item, .btn');
+const waterDrop = document.createElement('div');
+waterDrop.className = 'water-drop';
+document.body.appendChild(waterDrop);
+
+// Function to create water drop effect
+const createWaterDrop = (x, y) => {
+  waterDrop.style.left = `${x}px`;
+  waterDrop.style.top = `${y}px`;
+  waterDrop.classList.remove('active');
+  void waterDrop.offsetWidth; // Trigger reflow
+  waterDrop.classList.add('active');
+};
+
+// Add effects to interactive elements
+interactiveElements.forEach(element => {
+  // Hover effect
+  element.addEventListener('mouseenter', (e) => {
+    element.style.transform = 'translateY(-5px)';
+    element.style.boxShadow = '0 15px 25px rgba(0, 0, 0, 0.2)';
+    
+    // Create ripple effect
+    const ripple = document.createElement('span');
+    ripple.className = 'ripple-effect';
+    element.appendChild(ripple);
+    
+    // Position ripple at cursor
+    const rect = element.getBoundingClientRect();
+    const x = e.clientX - rect.left;
+    const y = e.clientY - rect.top;
+    ripple.style.left = `${x}px`;
+    ripple.style.top = `${y}px`;
+    
+    // Remove ripple after animation
+    setTimeout(() => {
+      ripple.remove();
+    }, 1000);
   });
   
-  card.addEventListener('mouseleave', () => {
-    card.style.transform = 'translateY(0)';
-    card.style.boxShadow = '0 10px 20px rgba(0, 0, 0, 0.1)';
+  // Reset on mouse leave
+  element.addEventListener('mouseleave', () => {
+    element.style.transform = 'translateY(0)';
+    element.style.boxShadow = '0 5px 15px rgba(0, 0, 0, 0.1)';
+  });
+  
+  // Click effect
+  element.addEventListener('click', (e) => {
+    createWaterDrop(e.clientX, e.clientY);
+  });
+});
+
+// Enhanced smooth scrolling with offset for fixed header
+document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+  anchor.addEventListener('click', function (e) {
+    e.preventDefault();
+    const targetId = this.getAttribute('href');
+    
+    if (targetId === '#') return;
+    
+    const targetElement = document.querySelector(targetId);
+    
+    if (targetElement) {
+      const headerOffset = 80; // Adjust based on your header height
+      const elementPosition = targetElement.getBoundingClientRect().top;
+      const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+
+      window.scrollTo({
+        top: offsetPosition,
+        behavior: 'smooth'
+      });
+      
+      // Close mobile menu if open
+      if (navMenu && navMenu.classList.contains('active')) {
+        navMenu.classList.remove('active');
+        mobileMenuBtn.setAttribute('aria-expanded', 'false');
+      }
+    }
   });
 });
 
