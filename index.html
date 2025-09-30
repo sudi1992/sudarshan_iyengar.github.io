@@ -1647,9 +1647,9 @@
       }
     });
 
-    // Mobile menu toggle
-    const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
-    const navLinks = document.querySelector('.nav-links');
+    // Mobile menu toggle - variables are already declared above
+    // const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
+    // const navLinks = document.querySelector('.nav-links');
     
     if (mobileMenuBtn) {
       mobileMenuBtn.addEventListener('click', function() {
@@ -1871,8 +1871,8 @@
       // Initialize experience tabs
       initExperienceTabs();
       
-      // Start the terminal typing effect
-      setTimeout(() => displayTerminalContent(terminalContent), 1000);
+      // Terminal functionality has been temporarily disabled
+      // setTimeout(() => displayTerminalContent(terminalContent), 1000);
       
       // Initialize intersection observer for scroll animations
       const observer = new IntersectionObserver((entries) => {
