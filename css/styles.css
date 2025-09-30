@@ -2,8 +2,7 @@
    Base Styles & Reset
    ========================================================================== */
 
-/* CSS Variables */
-/* Enhanced Professional Theme */
+/* CSS Variables - Professional Embedded Theme */
 :root {
   /* Enhanced Colors for Professional Look */
   --color-primary: #61AFEF;
@@ -29,9 +28,10 @@
   --color-text-muted: #B0B0B0;
   --color-text-secondary: #C0C0C0;
   
-  /* Enhanced Typography */
+  /* Typography */
   --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
   --font-mono: 'JetBrains Mono', 'Fira Code', 'Courier New', monospace;
+  --font-heading: 'JetBrains Mono', monospace;
   
   /* Enhanced Dotted Border */
   --dotted-border: repeating-linear-gradient(

@@ -1,50 +1,54 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <!-- Loading Screen (moved to body) -->
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Sudarshan Iyengar | Embedded Systems Engineer</title>
-  <meta name="description" content="Senior Embedded Systems Engineer with expertise in Linux drivers, FPGA development, and real-time systems.">
-  <meta name="keywords" content="Embedded Systems, Linux, FPGA, Firmware, C/C++, RTOS">
+  <meta name="description" content="Senior Embedded Systems Engineer with 8+ years of experience in bare-metal and RTOS-based device drivers, custom board bring-up, and hardware-software integration.">
+  <meta name="keywords" content="Embedded Systems, Linux, RTOS, Firmware, C/C++, ARM, Microcontrollers, Device Drivers, Hardware Design">
   <meta name="author" content="Sudarshan Iyengar">
   
-  <!-- Favicon -->
-  <!-- <link rel="icon" type="image/png" href="assets/images/favicon.png"> -->
-  
-  <!-- Preload Critical Resources -->
+  <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
   
   <!-- CSS -->
-  <link rel="stylesheet" href="css/styles.css">
+  <link rel="stylesheet" href="css/main.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   
-  <!-- Preload critical fonts -->
-  <link rel="preload" href="https://fonts.googleapis.com/css2?family=JetBrains+Mono&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
-  <noscript><link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono&display=swap" rel="stylesheet"></noscript>
+  <!-- Preload critical assets -->
+  <link rel="preload" href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
+  <noscript><link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet"></noscript>
+  
   <style>
-    /* Minimal critical CSS */
+    /* Critical CSS for above-the-fold content */
     .loading {
       position: fixed;
       top: 0;
       left: 0;
       width: 100%;
       height: 100%;
-      background: #0a0f1e;
+      background: var(--dark);
       display: flex;
       justify-content: center;
       align-items: center;
       z-index: 9999;
+      transition: opacity 0.5s ease, visibility 0.5s ease;
+    }
+    
+    .loading.hidden {
+      opacity: 0;
+      visibility: hidden;
+      pointer-events: none;
     }
     
     .loading-spinner {
       width: 50px;
       height: 50px;
-      border: 3px solid rgba(97, 175, 239, 0.2);
+      border: 3px solid rgba(77, 159, 236, 0.2);
       border-radius: 50%;
-      border-top-color: #61AFEF;
+      border-top-color: var(--primary);
       animation: spin 1s ease-in-out infinite;
     }
     
@@ -399,11 +403,116 @@
   <meta name="twitter:description" content="Senior Embedded Systems Engineer with expertise in Linux drivers, FPGA development, and real-time systems.">
   <meta name="twitter:image" content="https://sudarshan-iyengar.github.io/assets/images/og-image.jpg">
 </head>
-<body class="fade-in">
-  <!-- Loading Screen -->
-  <div class="loading" id="loading">
-    <div class="loading-spinner"></div>
-  </div>
+<body>
+  <!-- Header -->
+  <header class="header">
+    <div class="container">
+      <div class="logo">
+        <span class="logo-text">SI</span>
+      </div>
+      <nav class="nav">
+        <a href="#about">About</a>
+        <a href="#experience">Experience</a>
+        <a href="#skills">Skills</a>
+        <a href="#projects">Projects</a>
+        <a href="#contact" class="btn btn-primary">Contact</a>
+      </nav>
+      <button class="mobile-menu-btn">
+        <i class="fas fa-bars"></i>
+      </button>
+    </div>
+  </header>
+
+  <!-- Hero Section -->
+  <section class="hero">
+    <div class="container">
+      <div class="hero-content">
+        <h1 class="hero-title">Sudarshan Iyengar</h1>
+        <h2 class="hero-subtitle">Senior Embedded Systems Engineer</h2>
+        <p class="hero-description">
+          Specializing in bare-metal and RTOS-based device drivers, 
+          custom board bring-up, and hardware-software integration.
+        </p>
+        <div class="hero-cta">
+          <a href="#contact" class="btn btn-primary">Get in Touch</a>
+          <a href="#projects" class="btn btn-outline">View My Work</a>
+        </div>
+      </div>
+      <div class="hero-image">
+        <!-- Placeholder for your image -->
+        <div class="code-window">
+          <div class="window-header">
+            <span class="dot red"></span>
+            <span class="dot yellow"></span>
+            <span class="dot green"></span>
+            <span class="filename">embedded.c</span>
+          </div>
+          <pre><code class="language-c">// Embedded Systems Expertise
+void main() {
+    // Initialize hardware
+    init_hardware();
+    
+    // RTOS task creation
+    xTaskCreate(task_sensor_read, "Sensor", 256, NULL, 2, NULL);
+    xTaskCreate(task_comm, "Comm", 384, NULL, 2, NULL);
+    
+    // Start scheduler
+    vTaskStartScheduler();
+    
+    while(1);
+}</code></pre>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- About Section -->
+  <section id="about" class="section">
+    <div class="container">
+      <h2 class="section-title">About Me</h2>
+      <div class="about-content">
+        <div class="about-text">
+          <p>Senior Embedded Systems Engineer with 8+ years of experience developing bare-metal and RTOS-based device drivers. Strong background in custom board bring-up and hardware-software integration. Recognized for delivering reliable solutions under tight deadlines and driving continuous improvement.</p>
+          <div class="about-details">
+            <div class="detail">
+              <i class="fas fa-envelope"></i>
+              <div>
+                <h4>Email</h4>
+                <a href="mailto:sudi.iyengar@gmail.com">sudi.iyengar@gmail.com</a>
+              </div>
+            </div>
+            <div class="detail">
+              <i class="fas fa-phone"></i>
+              <div>
+                <h4>Phone</h4>
+                <a href="tel:+917353639083">+91 735 363 9083</a>
+              </div>
+            </div>
+            <div class="detail">
+              <i class="fas fa-map-marker-alt"></i>
+              <div>
+                <h4>Location</h4>
+                <p>Bengaluru, India</p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="skills-summary">
+          <h3>Core Competencies</h3>
+          <div class="skills-tags">
+            <span class="skill-tag">Embedded C/C++</span>
+            <span class="skill-tag">RTOS (FreeRTOS, Zephyr)</span>
+            <span class="skill-tag">Linux Device Drivers</span>
+            <span class="skill-tag">ARM Cortex-M/A</span>
+            <span class="skill-tag">Hardware Debugging</span>
+            <span class="skill-tag">PCB Design</span>
+            <span class="skill-tag">Communication Protocols</span>
+            <span class="skill-tag">Firmware Development</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
   <!-- Water Drop Effect Element -->
   <div class="water-drop" id="waterDrop"></div>
   <!-- Sidebar -->
@@ -635,7 +744,7 @@
       <div class="timeline">
         <div class="timeline-item">
           <div class="timeline-header">
-            <h3>R&D Engineer</h3>
+            <h3>R&amp;D Engineer</h3>
             <span class="timeline-period">02/2017 – 04/2020</span>
           </div>
           <div class="timeline-company">GreenTronics Design Labs India Pvt. Ltd.</div>
@@ -699,7 +808,6 @@
             </ul>
           </div>
         </div>
-        <!-- Add more experience items as needed -->
       </div>
     </div>
   </section>
@@ -792,7 +900,7 @@
     <div class="container">
       <p>Designed & Built by Sudarshan Iyengar</p>
       <p class="footer-links">
-        <!-- <a href="#">Privacy Policy</a>
+        <a href="#">Privacy Policy</a>
         <span>•</span>
         <a href="#">Imprint</a>
       </p>
@@ -800,12 +908,47 @@
   </footer>
 
   <!-- Loading Screen -->
-  <div id="loading" class="loading">
+  <div class="loading" id="loading">
     <div class="loading-spinner"></div>
   </div>
 
   <!-- Main Scripts -->
   <script src="js/main.js"></script>
-  <script src="js/visibility.js"></script>
+  <script>
+    // Handle loading screen
+    window.addEventListener('load', function() {
+      const loadingScreen = document.getElementById('loading');
+      if (loadingScreen) {
+        setTimeout(() => {
+          loadingScreen.classList.add('hidden');
+          // Remove from DOM after animation completes
+          setTimeout(() => {
+            loadingScreen.remove();
+          }, 500);
+        }, 500);
+      }
+    });
+    
+    // Mobile menu toggle
+    document.addEventListener('DOMContentLoaded', function() {
+      const menuBtn = document.querySelector('.mobile-menu-btn');
+      const nav = document.querySelector('.nav');
+      
+      if (menuBtn && nav) {
+        menuBtn.addEventListener('click', function() {
+          nav.classList.toggle('active');
+          menuBtn.classList.toggle('active');
+        });
+      }
+      
+      // Close menu when clicking on a nav link
+      document.querySelectorAll('.nav a').forEach(link => {
+        link.addEventListener('click', () => {
+          nav.classList.remove('active');
+          menuBtn.classList.remove('active');
+        });
+      });
+    });
+  </script>
 </body>
 </html>
