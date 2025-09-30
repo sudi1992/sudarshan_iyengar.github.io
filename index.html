@@ -31,6 +31,25 @@
   <noscript><link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet"></noscript>
   
   <style>
+    :root {
+      /* Colors */
+      --primary: #4D9FEC;
+      --primary-dark: #3a7bbf;
+      --secondary: #6C63FF;
+      --dark: #0A0F1E;
+      --dark-secondary: #141A2E;
+      --light: #FFFFFF;
+      --gray: #ADB5BD;
+      --gray-dark: #6C757D;
+      --border-color: rgba(255, 255, 255, 0.1);
+      --bg-secondary: #1a2a4a;
+      
+      /* Typography */
+      --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+      --font-mono: 'JetBrains Mono', monospace;
+      --font-dot: 'Nothing Dot', monospace;
+    }
+    
     /* Critical CSS for above-the-fold content */
     .loading {
       position: fixed;
@@ -66,31 +85,163 @@
     }
     .water-drop {
       position: fixed;
-      width: 12px;
-      height: 12px;
-      background: rgba(97, 175, 239, 0.6);
-      border-radius: 50%;
+      width: 0;
+      height: 0;
+      background: rgba(97, 175, 239, 0.03);
+      border: 2px solid rgba(97, 175, 239, 0.15);
+      border-radius: 12px;
       pointer-events: none;
-      transform: translate(-50%, -50%) scale(1);
-      z-index: 9999;
+      z-index: -1;
       opacity: 0;
-      transition: all 0.8s cubic-bezier(0.19, 1, 0.22, 1);
-      will-change: transform, opacity;
-      mix-blend-mode: screen;
-      box-shadow: 0 0 20px 5px rgba(97, 175, 239, 0.3);
+      transition: 
+        width 0.6s cubic-bezier(0.34, 1.56, 0.64, 1),
+        height 0.6s cubic-bezier(0.34, 1.56, 0.64, 1),
+        left 0.6s cubic-bezier(0.34, 1.56, 0.64, 1),
+        top 0.6s cubic-bezier(0.34, 1.56, 0.64, 1),
+        opacity 0.4s ease-out,
+        border-color 0.4s ease-out;
+      will-change: width, height, left, top, opacity;
+      box-shadow: 
+        0 0 0 1px rgba(97, 175, 239, 0.1),
+        0 0 40px rgba(97, 175, 239, 0.15);
+      transform: translateZ(0);
+      backdrop-filter: blur(2px);
     }
     
     .water-drop.active {
-      width: 120px;
-      height: 120px;
       opacity: 1;
-      background: rgba(97, 175, 239, 0.08);
-      border: 1.5px solid rgba(97, 175, 239, 0.4);
-      transform: translate(-50%, -50%) scale(1.2);
-      transition: all 0.8s cubic-bezier(0.19, 1, 0.22, 1);
-      box-shadow: 0 0 30px 10px rgba(97, 175, 239, 0.15);
+      border-color: rgba(97, 175, 239, 0.3);
+      background: rgba(97, 175, 239, 0.06);
     }
     
+    /* Add a subtle pulsing animation when active */
+    @keyframes pulse {
+      0% { box-shadow: 0 0 0 0 rgba(97, 175, 239, 0.1), 0 0 40px rgba(97, 175, 239, 0.15); }
+      70% { box-shadow: 0 0 0 6px rgba(97, 175, 239, 0), 0 0 60px rgba(97, 175, 239, 0.2); }
+      100% { box-shadow: 0 0 0 0 rgba(97, 175, 239, 0), 0 0 40px rgba(97, 175, 239, 0.15); }
+    }
+    
+    .water-drop.active::after {
+      content: '';
+      position: absolute;
+      top: -4px;
+      left: -4px;
+      right: -4px;
+      bottom: -4px;
+      border: 2px solid rgba(97, 175, 239, 0.1);
+      border-radius: 16px;
+      animation: pulse 3s infinite;
+      pointer-events: none;
+    }
+
+    /* Dot Font Applications */
+    .section-title,
+    .skill-category h3,
+    .highlight-card h3,
+    .project-card h3,
+    .sidebar h1,
+    .sidebar h2 {
+      font-family: var(--font-dot);
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      font-weight: 400;
+    }
+
+    .section-title {
+      position: relative;
+      display: inline-block;
+      margin-bottom: 2rem;
+      font-size: 2rem;
+    }
+
+    .section-title::after {
+      content: '';
+      position: absolute;
+      bottom: -0.5rem;
+      left: 0;
+      width: 100%;
+      height: 2px;
+      background: linear-gradient(90deg, var(--primary), transparent);
+    }
+
+    .sidebar h1 {
+      font-size: 2.5rem;
+      line-height: 1.1;
+      margin-bottom: 0.5rem;
+      color: var(--primary);
+    }
+
+    .sidebar h2 {
+      font-size: 1.2rem;
+      color: var(--gray);
+      margin-bottom: 2rem;
+    }
+    
+    /* Skills Section Styles */
+    .skills-container {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      gap: 1.5rem;
+      margin-top: 1.5rem;
+    }
+
+    .skill-category {
+      background: var(--dark-secondary);
+      border-radius: 8px;
+      padding: 1.25rem;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    .skill-category:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    }
+
+    .skill-category h3 {
+      color: var(--primary);
+      margin: 0 0 1rem 0;
+      font-size: 1.1rem;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding-bottom: 0.5rem;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    .skill-category h3 i {
+      color: var(--primary);
+      font-size: 1rem;
+    }
+
+    .skills-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0.75rem;
+    }
+
+    .skill-item {
+      background: rgba(255, 255, 255, 0.05);
+      padding: 0.5rem 0.75rem;
+      border-radius: 4px;
+      font-size: 0.9rem;
+      color: var(--light);
+      transition: all 0.2s ease;
+      text-align: center;
+    }
+
+    .skill-item:hover {
+      background: rgba(77, 159, 236, 0.15);
+      color: var(--primary);
+      transform: translateY(-1px);
+    }
+
+    @media (max-width: 768px) {
+      .skills-container {
+        grid-template-columns: 1fr;
+      }
+    }
+
     .sidebar {
       width: 300px;
       background: linear-gradient(135deg, #0a0f1e 0%, #1a2a4a 100%);
@@ -522,6 +673,81 @@ void main() {
       </div>
     </div>
   </section>
+
+  <!-- Skills Section -->
+  <section id="skills" class="section bg-light">
+    <div class="container">
+      <h2 class="section-title">Technical Skills</h2>
+      <div class="skills-container">
+        <!-- Programming Languages -->
+        <div class="skill-category">
+          <h3><i class="fas fa-code"></i> Programming</h3>
+          <div class="skills-grid">
+            <div class="skill-item">C/C++</div>
+            <div class="skill-item">Python</div>
+            <div class="skill-item">Bash/Shell</div>
+            <div class="skill-item">Assembly</div>
+          </div>
+        </div>
+
+        <!-- Embedded Technologies -->
+        <div class="skill-category">
+          <h3><i class="fas fa-microchip"></i> Embedded</h3>
+          <div class="skills-grid">
+            <div class="skill-item">RTOS (FreeRTOS, Zephyr)</div>
+            <div class="skill-item">Linux Device Drivers</div>
+            <div class="skill-item">ARM Cortex-M/A</div>
+            <div class="skill-item">Bare-metal Programming</div>
+          </div>
+        </div>
+
+        <!-- Hardware -->
+        <div class="skill-category">
+          <h3><i class="fas fa-cog"></i> Hardware</h3>
+          <div class="skills-grid">
+            <div class="skill-item">Schematic Design</div>
+            <div class="skill-item">PCB Layout</div>
+            <div class="skill-item">FPGA/Verilog</div>
+            <div class="skill-item">Signal Integrity</div>
+          </div>
+        </div>
+
+        <!-- Tools & Platforms -->
+        <div class="skill-category">
+          <h3><i class="fas fa-tools"></i> Tools</h3>
+          <div class="skills-grid">
+            <div class="skill-item">Git</div>
+            <div class="skill-item">Docker</div>
+            <div class="skill-item">CI/CD</div>
+            <div class="skill-item">Jira</div>
+          </div>
+        </div>
+
+        <!-- Protocols & Standards -->
+        <div class="skill-category">
+          <h3><i class="fas fa-network-wired"></i> Protocols</h3>
+          <div class="skills-grid">
+            <div class="skill-item">I2C/SPI/UART</div>
+            <div class="skill-item">USB/CAN/Ethernet</div>
+            <div class="skill-item">WiFi/Bluetooth</div>
+            <div class="skill-item">TCP/IP</div>
+          </div>
+        </div>
+
+        <!-- Methodologies -->
+        <div class="skill-category">
+          <h3><i class="fas fa-project-diagram"></i> Methodologies</h3>
+          <div class="skills-grid">
+            <div class="skill-item">Agile/Scrum</div>
+            <div class="skill-item">Test-Driven Development</div>
+            <div class="skill-item">Code Reviews</div>
+            <div class="skill-item">Documentation</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
   <!-- Water Drop Effect Element -->
   <div class="water-drop" id="waterDrop"></div>
   <!-- Sidebar -->
@@ -657,27 +883,6 @@ void main() {
     </div>
   </section>
 
-  <!-- About Section -->
-  <section id="about" class="section">
-    <div class="container">
-      <h2 class="section-title">About Me</h2>
-      <div class="about-content">
-        <div class="about-text">
-          <p>Hello! I'm Sudarshan, an Embedded Systems Engineer with a passion for creating efficient and reliable embedded solutions. My journey in embedded systems has allowed me to work on a variety of projects, from low-level firmware to complex Linux-based systems.</p>
-          <p>I specialize in developing and optimizing software for resource-constrained environments, with a strong focus on performance, power efficiency, and code quality.</p>
-          <p>Here are a few technologies I've been working with recently:</p>
-          <ul class="skills-list">
-            <li>C/C++</li>
-            <li>Embedded Linux</li>
-            <li>RTOS (FreeRTOS, Zephyr)</li>
-            <li>FPGA Design (VHDL/Verilog)</li>
-            <li>Device Drivers</li>
-            <li>Python</li>
-          </ul>
-        </div>
-      </div>
-    </div>
-  </section>
 
   <!-- Career Highlights Section -->
   <section id="highlights" class="section">
@@ -821,139 +1026,6 @@ void main() {
     </div>
   </section>
 
-  <!-- Projects Section -->
-  <section id="projects" class="section">
-    <div class="container">
-      <h2 class="section-title">Career Highlights</h2>
-      <div class="projects-grid">
-        <div class="project-card">
-          <div class="project-header">
-            <h3>Linux & Drivers</h3>
-          </div>
-          <p class="project-description">
-            Designed and integrated Linux DMA drivers, device trees, and Yocto builds for FPGA systems. Developed custom device drivers and maintained secure boot scripts for embedded Linux systems.
-          </p>
-          <div class="project-tech">
-            <span>Linux</span>
-            <span>DMA</span>
-            <span>Yocto</span>
-            <span>Device Tree</span>
-          </div>
-        </div>
-
-        <div class="project-card">
-          <div class="project-header">
-            <h3>FPGA & RTL</h3>
-          </div>
-          <p class="project-description">
-            Developed custom AXI/AXIS Verilog modules, protocol monitors, and data stream schedulers on Zynq/Artix platforms. Integrated MicroBlaze soft-core with Zynq for high-speed digital decoding.
-          </p>
-          <div class="project-tech">
-            <span>Verilog</span>
-            <span>FPGA</span>
-            <span>AXI</span>
-            <span>Zynq</span>
-          </div>
-        </div>
-
-        <div class="project-card">
-          <div class="project-header">
-            <h3>RTOS & MCUs</h3>
-          </div>
-          <p class="project-description">
-            Ported applications to FreeRTOS/ThreadX on Cortex-M55 platforms. Delivered RTOS peripheral drivers across multiple MCU families including STM32, NXP, and Microchip.
-          </p>
-          <div class="project-tech">
-            <span>RTOS</span>
-            <span>FreeRTOS</span>
-            <span>ThreadX</span>
-            <span>ARM Cortex</span>
-          </div>
-        </div>
-
-        <div class="project-card">
-          <div class="project-header">
-            <h3>IoT & Wireless</h3>
-          </div>
-          <p class="project-description">
-            Built POC phase Bluetooth/Wi-Fi solutions on Microchip platforms. Developed sub-1GHz radio-based monitoring systems with capacitive sensing for smart applications.
-          </p>
-          <div class="project-tech">
-            <span>Bluetooth</span>
-            <span>Wi-Fi</span>
-            <span>IoT</span>
-            <span>Sub-1GHz</span>
-          </div>
-        </div>
-
-        <div class="project-card">
-          <div class="project-header">
-            <h3>Power Electronics</h3>
-          </div>
-          <p class="project-description">
-            Designed and developed buck-boost converters, MPPT charge controllers, and conducted comprehensive battery management system (BMS) analysis for various applications.
-          </p>
-          <div class="project-tech">
-            <span>Buck-Boost</span>
-            <span>MPPT</span>
-            <span>BMS</span>
-            <span>Power Design</span>
-          </div>
-        </div>
-
-        <div class="project-card">
-          <div class="project-header">
-            <h3>System Validation</h3>
-          </div>
-          <p class="project-description">
-            Led system validation efforts, developed automated test setups, conducted compliance testing, and facilitated cross-team debugging for production-grade systems.
-          </p>
-          <div class="project-tech">
-            <span>Testing</span>
-            <span>Validation</span>
-            <span>Automation</span>
-            <span>Debugging</span>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Skills Section -->
-  <section id="skills" class="section">
-    <div class="container">
-      <h2 class="section-title">Skills & Technologies</h2>
-      <div class="skills-container">
-        <div class="skill-category">
-          <h3>Languages</h3>
-          <ul class="skills-list">
-            <li>C/C++</li>
-            <li>Python</li>
-            <li>VHDL/Verilog</li>
-            <li>Bash/Shell</li>
-          </ul>
-        </div>
-        <div class="skill-category">
-          <h3>Embedded</h3>
-          <ul class="skills-list">
-            <li>RTOS (FreeRTOS, Zephyr)</li>
-            <li>ARM Cortex-M/A</li>
-            <li>Device Drivers</li>
-            <li>Communication Protocols</li>
-          </ul>
-        </div>
-        <div class="skill-category">
-          <h3>Tools & Platforms</h3>
-          <ul class="skills-list">
-            <li>Git</li>
-            <li>Docker</li>
-            <li>CI/CD</li>
-            <li>Jira</li>
-          </ul>
-        </div>
-      </div>
-    </div>
-  </section>
 
   <!-- Contact Section -->
   <section id="contact" class="section">
@@ -970,7 +1042,7 @@ void main() {
         <a href="https://github.com/sudi1992" target="_blank" rel="noopener noreferrer" aria-label="GitHub">
           <i class="fab fa-github"></i>
         </a>
-        <a href="https://linkedin.com/in/sudarshan-iyengar-286a9422" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
+        <a href="https://www.linkedin.com/in/sudarshan-iyengar-286a9422/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
           <i class="fab fa-linkedin-in"></i>
         </a>
       </div>
@@ -1003,7 +1075,6 @@ void main() {
       if (loadingScreen) {
         setTimeout(() => {
           loadingScreen.classList.add('hidden');
-          // Remove from DOM after animation completes
           setTimeout(() => {
             loadingScreen.remove();
           }, 500);
@@ -1029,6 +1100,88 @@ void main() {
           nav.classList.remove('active');
           menuBtn.classList.remove('active');
         });
+      });
+
+      // Content highlight effect with improved performance
+      const waterDrop = document.getElementById('waterDrop');
+      const sections = Array.from(document.querySelectorAll('.section, .sidebar, .highlight-card, .project-card'));
+      let rafId = null;
+      let lastSection = null;
+      
+      // Throttle function for scroll events
+      function throttle(callback, limit) {
+        let wait = false;
+        return function() {
+          if (!wait) {
+            callback.apply(this, arguments);
+            wait = true;
+            setTimeout(() => { wait = false; }, limit);
+          }
+        };
+      }
+      
+      function updateWaterDrop(element) {
+        if (!waterDrop || !element || element === lastSection) return;
+        
+        cancelAnimationFrame(rafId);
+        rafId = requestAnimationFrame(() => {
+          const rect = element.getBoundingClientRect();
+          const scrollY = window.scrollY || document.documentElement.scrollTop;
+          
+          // Add a small delay for smoother transitions
+          waterDrop.style.transition = 'all 0.6s cubic-bezier(0.34, 1.56, 0.64, 1)';
+          
+          // Slightly larger padding for better visual effect
+          const padding = 24;
+          waterDrop.style.width = (rect.width + (padding * 2)) + 'px';
+          waterDrop.style.height = (rect.height + (padding * 2)) + 'px';
+          waterDrop.style.left = (rect.left + window.scrollX - padding) + 'px';
+          waterDrop.style.top = (rect.top + scrollY - padding) + 'px';
+          
+          // Add active class with a slight delay
+          if (!waterDrop.classList.contains('active')) {
+            waterDrop.classList.add('active');
+          }
+          
+          lastSection = element;
+        });
+      }
+      
+      // Initial highlight for first section
+      if (sections.length > 0) {
+        updateWaterDrop(sections[0]);
+      }
+      
+      // More efficient scroll handler
+      const handleScroll = throttle(() => {
+        const viewportHeight = window.innerHeight;
+        const viewportMiddle = viewportHeight / 2;
+        
+        // Find the section closest to the middle of the viewport
+        const currentSection = sections.reduce((closest, section) => {
+          const rect = section.getBoundingClientRect();
+          const distanceFromMiddle = Math.abs(rect.top + (rect.height / 2) - viewportMiddle);
+          
+          if (distanceFromMiddle < (closest.distance || Infinity)) {
+            return { element: section, distance: distanceFromMiddle };
+          }
+          return closest;
+        }, { element: null, distance: Infinity }).element;
+        
+        if (currentSection) {
+          updateWaterDrop(currentSection);
+        }
+      }, 100);
+      
+      // Add scroll and resize listeners
+      window.addEventListener('scroll', handleScroll, { passive: true });
+      window.addEventListener('resize', handleScroll, { passive: true });
+      
+      // Clean up
+      window.addEventListener('beforeunload', () => {
+        cancelAnimationFrame(rafId);
+        window.removeEventListener('scroll', handleScroll);
+        window.removeEventListener('resize', handleScroll);
       });
     });
   </script>
