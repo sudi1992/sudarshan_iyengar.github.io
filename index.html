@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+  <!-- Loading Screen (moved to body) -->
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
   <title>Sudarshan Iyengar | Embedded Systems Engineer</title>
@@ -14,36 +15,26 @@
   <!-- Preload Critical Resources -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap">
   
   <!-- CSS -->
   <link rel="stylesheet" href="css/styles.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   
-  <!-- Fonts -->
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap" media="print" onload="this.media='all'">
-  <noscript>
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap">
-  </noscript>
+  <!-- Scripts -->
+  <script src="js/main.js"></script>
   <style>
-    /* Critical CSS - Loads before the rest of the CSS */
+    /* Minimal critical CSS */
     .loading {
       position: fixed;
       top: 0;
       left: 0;
       width: 100%;
       height: 100%;
-      background: var(--color-bg);
+      background: #0a0f1e;
       display: flex;
       justify-content: center;
       align-items: center;
       z-index: 9999;
-      transition: opacity 0.5s ease-out, visibility 0.5s ease-out;
-    }
-    
-    .loading.hidden {
-      opacity: 0;
-      visibility: hidden;
     }
     
     .loading-spinner {
@@ -51,15 +42,13 @@
       height: 50px;
       border: 3px solid rgba(97, 175, 239, 0.2);
       border-radius: 50%;
-      border-top-color: var(--color-primary);
+      border-top-color: #61AFEF;
       animation: spin 1s ease-in-out infinite;
     }
     
     @keyframes spin {
       to { transform: rotate(360deg); }
     }
-    
-    /* Water Drop Effect */
     .water-drop {
       position: fixed;
       width: 12px;
@@ -803,7 +792,17 @@
       <p class="footer-links">
         <!-- <a href="#">Privacy Policy</a>
         <span>•</span>
-        <a href="#">Imprint</a> -->
+        <a href="#">Imprint</a>
       </p>
     </div>
   </footer>
+
+  <!-- Loading Screen -->
+  <div id="loading" class="loading">
+    <div class="loading-spinner"></div>
+  </div>
+
+  <!-- Main Scripts -->
+  <script src="js/init.js"></script>
+</body>
+</html>

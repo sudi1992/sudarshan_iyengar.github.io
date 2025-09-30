@@ -1,4 +1,49 @@
-// Main initialization when DOM is fully loaded
+// Water Drop Effect
+function initWaterDrop() {
+  const container = document.body;
+  const colors = ['rgba(97, 175, 239, 0.5)', 'rgba(198, 120, 221, 0.5)', 'rgba(224, 108, 117, 0.5)'];
+  
+  function createDrop() {
+    const drop = document.createElement('div');
+    const size = Math.random() * 20 + 10;
+    const posX = Math.random() * window.innerWidth;
+    const duration = Math.random() * 3 + 2;
+    const delay = Math.random() * 5;
+    const blur = Math.random() * 10 + 5;
+    const color = colors[Math.floor(Math.random() * colors.length)];
+    
+    drop.style.cssText = `
+      position: fixed;
+      width: ${size}px;
+      height: ${size}px;
+      background: ${color};
+      border-radius: 50%;
+      left: ${posX}px;
+      top: -50px;
+      pointer-events: none;
+      filter: blur(${blur}px);
+      animation: drop ${duration}s linear ${delay}s infinite;
+      z-index: -1;
+    `;
+    
+    container.appendChild(drop);
+    
+    // Remove drop after animation completes
+    setTimeout(() => {
+      drop.remove();
+    }, (duration + delay) * 1000);
+  }
+  
+  // Create initial drops
+  for (let i = 0; i < 5; i++) {
+    setTimeout(createDrop, i * 500);
+  }
+  
+  // Create new drops at intervals
+  setInterval(createDrop, 1000);
+}
+
+// Initialize everything when the DOM is fully loaded
 document.addEventListener('DOMContentLoaded', () => {
   // Initialize water drop effect
   initWaterDrop();
@@ -21,7 +66,19 @@ document.addEventListener('DOMContentLoaded', () => {
   });
   
   // Initialize active navigation
-  initActiveNavigation();
+  if (typeof initActiveNavigation === 'function') {
+    initActiveNavigation();
+  }
+  
+  // Trigger animations after a short delay
+  setTimeout(() => {
+    fadeElements.forEach((el, index) => {
+      setTimeout(() => {
+        el.style.opacity = '1';
+        el.style.transform = 'translateY(0)';
+      }, 100 * index);
+    });
+  }, 300);
 });
 
 // Create floating particles
