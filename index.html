@@ -13,12 +13,14 @@
     
     :root {
       --primary: #000000;      /* Black */
-      --secondary: #FFD700;    /* Gold/Yellow */
-      --accent: #FF4136;       /* Red */
-      --background: #FFFFF0;   /* Ivory */
-      --text: #333333;         /* Dark gray */
-      --light-bg: #FFFDE7;     /* Light yellow */
-      --card-bg: #FFFFFF;      /* White for cards */
+      --secondary: #1DB954;    /* Green accent */
+      --accent: #1DA1F2;       /* Blue accent */
+      --background: #0a0a0a;   /* Dark background */
+      --text: #f5f5f5;        /* Light text */
+      --text-secondary: #a0a0a0; /* Secondary text */
+      --card-bg: #1a1a1a;     /* Card background */
+      --section-bg: #121212;   /* Section background */
+      --border: #2a2a2a;      /* Border color */
     }
     
     * {
@@ -28,10 +30,12 @@
     }
     
     body {
-      font-family: 'Roboto', sans-serif;
-      line-height: 1.6;
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+      line-height: 1.7;
       color: var(--text);
       background-color: var(--background);
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
     }
     
     * {
@@ -59,15 +63,16 @@
     }
     
     .glass-card {
-      background: rgba(255, 255, 255, 0.85);
+      background: rgba(26, 26, 26, 0.9);
       backdrop-filter: blur(10px);
       -webkit-backdrop-filter: blur(10px);
       border-radius: 12px;
-      border: 1px solid rgba(255, 255, 255, 0.5);
-      box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.05);
+      border: 1px solid var(--border);
+      box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.3);
       padding: 30px;
       margin-bottom: 30px;
       transition: all 0.3s ease;
+      color: var(--text);
     }
     
     .glass-card:hover {
@@ -77,14 +82,14 @@
     
     /* Header */
     header {
-      background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+      background: linear-gradient(135deg, #000000 0%, #1a1a1a 100%);
       color: white;
-      padding: 6rem 0 4rem;
+      padding: 10rem 0 6rem;
       text-align: center;
       position: relative;
       overflow: hidden;
-      box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
-      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+      box-shadow: 0 4px 30px rgba(0, 0, 0, 0.3);
+      border-bottom: 1px solid var(--border);
     }
     
     header::before {
@@ -158,28 +163,356 @@
       margin: 0 0 3rem;
       font-size: 1.5rem;
       max-width: 700px;
-      margin-left: auto;
       margin-right: auto;
       line-height: 1.6;
       letter-spacing: -0.2px;
     }
     
+    /* Import Google Fonts */
+    @import url('https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500&family=Space+Grotesk:wght@400;500;600;700&display=swap');
+    
+    /* About Section Styling */
+    .about-section {
+      background: 
+        radial-gradient(circle at 20% 30%, rgba(29, 185, 84, 0.05) 0%, transparent 40%),
+        radial-gradient(circle at 80% 70%, rgba(29, 161, 242, 0.05) 0%, transparent 40%),
+        linear-gradient(135deg, var(--section-bg) 0%, var(--background) 100%);
+      padding: 8rem 0 6rem;
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .about-section::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, var(--border), transparent);
+    }
+    
+    .section-header {
+      text-align: center;
+      margin-bottom: 4rem;
+      position: relative;
+      z-index: 1;
+    }
+    
+    .section-title {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 3rem;
+      font-weight: 800;
+      background: linear-gradient(90deg, #fff, #aaa);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      letter-spacing: -1px;
+      margin-bottom: 1rem;
+      position: relative;
+      display: inline-block;
+    }
+    
+    .section-title::after {
+      content: '';
+      position: absolute;
+      bottom: -10px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 60px;
+      height: 3px;
+      background: linear-gradient(90deg, var(--accent), var(--secondary));
+      border-radius: 2px;
+    }
+    
+    .section-subtitle {
+      color: var(--text-secondary);
+      font-family: 'Fira Code', monospace;
+      font-size: 1.1rem;
+      margin-top: 1.5rem;
+      letter-spacing: 0.5px;
+      position: relative;
+      display: inline-block;
+    }
+    
+    .about-content {
+      background: rgba(26, 26, 26, 0.6);
+      border-radius: 16px;
+      padding: 3.5rem;
+      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      border: 1px solid rgba(255, 255, 255, 0.05);
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .about-content::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+    }
+    
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1fr 2fr;
+      gap: 3rem;
+      align-items: flex-start;
+    }
+    
+    .about-image {
+      position: relative;
+      text-align: center;
+    }
+    
+    .image-wrapper {
+      position: relative;
+      overflow: hidden;
+      border-radius: 12px;
+      border: 1px solid var(--border);
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+    }
+    
+    .about-image .profile-img {
+      width: 100%;
+      height: auto;
+      display: block;
+      transition: transform 0.5s ease;
+    }
+    
+    .about-image:hover .profile-img {
+      transform: scale(1.05);
+    }
+    
+    .about-text h3 {
+      color: var(--secondary);
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 2rem;
+      font-weight: 700;
+      margin-bottom: 1.5rem;
+      position: relative;
+      padding-bottom: 1rem;
+      letter-spacing: -0.5px;
+    }
+    
+    .about-text h3::before {
+      content: '// ';
+      color: var(--accent);
+      font-family: 'Fira Code', monospace;
+      font-weight: 400;
+    }
+    
+    .about-text h3::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 60px;
+      height: 2px;
+      background: linear-gradient(90deg, var(--accent), var(--secondary));
+      border-radius: 2px;
+    }
+    
+    .about-text .highlight {
+      font-size: 1.2rem;
+      line-height: 1.9;
+      color: var(--text);
+      margin-bottom: 2.5rem;
+      font-weight: 400;
+      background: rgba(29, 185, 84, 0.05);
+      border-left: 3px solid var(--secondary);
+      padding: 1.5rem;
+      border-radius: 0 8px 8px 0;
+      position: relative;
+      font-family: 'Space Grotesk', sans-serif;
+    }
+    
+    .about-text .highlight::before {
+      content: '❝';
+      position: absolute;
+      top: 10px;
+      left: 10px;
+      font-size: 2rem;
+      opacity: 0.2;
+      line-height: 1;
+    }
+    
+    .expertise {
+      margin: 2rem 0;
+    }
+    
+    .expertise h4 {
+      color: var(--text);
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 1.25rem;
+      font-weight: 600;
+      margin-bottom: 1.5rem;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      display: flex;
+      align-items: center;
+    }
+    
+    .expertise h4::before {
+      content: '[';
+      color: var(--accent);
+      margin-right: 8px;
+      font-family: 'Fira Code', monospace;
+    }
+    
+    .expertise h4::after {
+      content: ']';
+      color: var(--accent);
+      margin-left: 8px;
+      font-family: 'Fira Code', monospace;
+    }
+    
+    .expertise-list {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+      gap: 1rem;
+    }
+    
+    .expertise-list li {
+      position: relative;
+      padding: 0.75rem 1rem 0.75rem 2.5rem;
+      margin: 0;
+      color: var(--text-secondary);
+      line-height: 1.6;
+      font-family: 'Fira Code', monospace;
+      font-size: 0.95rem;
+      background: rgba(255, 255, 255, 0.02);
+      border: 1px solid rgba(255, 255, 255, 0.05);
+      border-radius: 6px;
+      transition: all 0.3s ease;
+    }
+    
+    .expertise-list li:hover {
+      background: rgba(29, 185, 84, 0.05);
+      border-color: rgba(29, 185, 84, 0.2);
+      transform: translateY(-2px);
+    }
+    
+    .expertise-list li::before {
+      content: '>';
+      position: absolute;
+      left: 1rem;
+      color: var(--accent);
+      font-family: 'Fira Code', monospace;
+      font-weight: bold;
+    }
+    
     .cta-buttons {
       display: flex;
-      gap: 1rem;
+      gap: 1.25rem;
+      margin-top: 3rem;
+      flex-wrap: wrap;
+      position: relative;
+      z-index: 1;
+    }
+    
+    .btn {
+      display: inline-flex;
+      align-items: center;
       justify-content: center;
-      margin-top: 2rem;
+      padding: 0.9rem 2rem;
+      border-radius: 6px;
+      font-family: 'Space Grotesk', sans-serif;
+      font-weight: 600;
+      font-size: 1rem;
+      text-decoration: none;
+      transition: all 0.3s ease;
+      position: relative;
+      overflow: hidden;
+      border: none;
+      cursor: pointer;
+      gap: 0.5rem;
+    }
+    
+    .btn::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(90deg, var(--secondary), var(--accent));
+      z-index: -1;
+      transition: opacity 0.3s ease;
+    }
+    
+    .btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 5px 20px rgba(29, 185, 84, 0.3);
+    }
+    
+    .btn i {
+      font-size: 1.1em;
     }
     
     .btn-outline {
       background: transparent;
       border: 2px solid var(--secondary);
       color: var(--secondary);
+      padding: calc(0.9rem - 2px) calc(2rem - 2px);
     }
     
     .btn-outline:hover {
       background: var(--secondary);
-      color: var(--primary);
+      color: #000;
+      border-color: transparent;
+    }
+    
+    @media (max-width: 992px) {
+      .about-grid {
+        grid-template-columns: 1fr;
+      }
+      
+      .about-image {
+        max-width: 400px;
+        margin: 0 auto 2rem;
+      }
+      
+      .about-text h3 {
+        text-align: center;
+      }
+      
+      .about-text h3::after {
+        left: 50%;
+        transform: translateX(-50%);
+      }
+      
+      .cta-buttons {
+        justify-content: center;
+      }
+    }
+    
+    @media (max-width: 576px) {
+      .about-content {
+        padding: 2rem 1.5rem;
+      }
+      
+      .cta-buttons {
+        flex-direction: column;
+        gap: 1rem;
+      }
+      
+      .cta-buttons .btn {
+        width: 100%;
+        text-align: center;
+      }
+    }
+    
+    .btn-outline:hover {
+      background: var(--secondary);
+      color: #000;
+      border-color: transparent;
     }
     
     /* Navigation */
@@ -230,38 +563,42 @@
       margin: 0;
       padding: 0;
       list-style: none;
+      align-items: center;
     }
     
     .nav-links a {
-      color: rgba(255, 255, 255, 0.9);
+      color: var(--text);
       text-decoration: none;
       font-weight: 500;
       font-size: 0.95rem;
       letter-spacing: 0.5px;
-      text-transform: uppercase;
-      padding: 0.5rem 0;
-      position: relative;
       transition: all 0.3s ease;
+      padding: 0.5rem 1rem;
+      border-radius: 4px;
+      position: relative;
     }
-    
     .nav-links a::after {
       content: '';
       position: absolute;
       width: 0;
       height: 2px;
       bottom: 0;
-      left: 0;
-      background: linear-gradient(90deg, var(--secondary), var(--accent));
-      transition: width 0.3s ease;
+      left: 1rem;
+      right: 1rem;
+      background: var(--secondary);
+      transition: width 0.3s ease, opacity 0.3s ease;
+      opacity: 0;
+      border-radius: 2px;
     }
     
     .nav-links a:hover {
-      color: white;
+      color: var(--secondary);
     }
     
     .nav-links a:hover::after,
     .nav-links a.active::after {
-      width: 100%;
+      width: calc(100% - 2rem);
+      opacity: 1;
     }
     
     .nav-links a.active {
@@ -322,11 +659,14 @@
     
     .nav-link:hover, .nav-link.active {
       color: var(--secondary);
-      text-shadow: 0 0 10px rgba(255, 215, 0, 0.3);
+      text-shadow: 0 0 10px rgba(29, 185, 84, 0.3);
     }
     
     /* Sections */
     section {
+      padding: 6rem 0;
+      background-color: var(--section-bg);
+      border-bottom: 1px solid var(--border);
     }
     
     .section-title {
@@ -660,6 +1000,8 @@
         font-size: 1.5rem;
         cursor: pointer;
         z-index: 1001;
+        padding: 0.5rem;
+        transition: color 0.3s ease;
       }
       
       .mobile-menu-btn:focus {
@@ -697,17 +1039,43 @@
   </nav>
   
   <!-- About Section -->
-  <section id="about">
+  <section id="about" class="about-section">
     <div class="container">
-      <h2 class="section-title">About Me</h2>
-      <div class="about-content">
-        <div class="about-text">
-          <p>Hello! I'm Sudarshan Iyengar, a Senior Embedded Systems Engineer with over 8 years of experience in designing and developing embedded solutions. I specialize in low-level programming, real-time systems, and applications.</p>
-          <p>My expertise Strong background in custom board bring-up and hardware-software integration. </p>
-          <p>Experience developing bare-metal and RTOS-based device drivers</p>
-          <a href="SUDARSHAN-IYENGAR-1992.pdf" class="btn-resume" download>
-            <i class="fas fa-file-pdf"></i> Download Resume
-          </a>
+      <div class="section-header">
+        <h2 class="section-title">About Me</h2>
+        <p class="section-subtitle">Get to know me better</p>
+      </div>
+      
+      <div class="about-content glass-card">
+        <div class="about-grid">
+          <div class="about-image">
+            <div class="image-wrapper">
+              <img src="images/profile.jpg" alt="Sudarshan Iyengar" class="profile-img">
+            </div>
+          </div>
+          <div class="about-text">
+            <h3>Senior Embedded Systems Engineer</h3>
+            <p class="highlight">Hello! I'm Sudarshan Iyengar, a passionate Senior Embedded Systems Engineer with over 8 years of experience in designing and developing cutting-edge embedded solutions.</p>
+            
+            <div class="expertise">
+              <h4>My Expertise</h4>
+              <ul class="expertise-list">
+                <li>Custom board bring-up and hardware-software integration</li>
+                <li>Bare-metal and RTOS-based device driver development</li>
+                <li>Low-level programming and firmware development</li>
+                <li>Real-time systems design and optimization</li>
+                <li>Hardware debugging and performance tuning</li>
+              </ul>
+            </div>
+            
+            <div class="cta-buttons">
+              <a href="#contact" class="btn">
+                <i class="fas fa-paper-plane"></i> Get In Touch
+              </a>
+              <a href="SUDARSHAN-IYENGAR-1992.pdf" class="btn btn-outline" download>
+                <i class="fas fa-file-pdf"></i> Download Resume
+              </a>
+            </div>
         </div>
       </div>
     </div>
