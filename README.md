@@ -16,11 +16,12 @@ Welcome to my professional portfolio website, showcasing my work as an Embedded 
 - CSS3 (with CSS Variables and Flexbox/Grid)
 - JavaScript (ES6+)
 - Font Awesome Icons
-- Google Fonts (Fira Code and Inter)
+- Google Fonts (JetBrains Mono and Inter)
 
 ## Getting Started
 
 1. Clone this repository:
+
    ```bash
    git clone https://github.com/sudarshan-iyengar/sudarshan-iyengar.github.io.git
    ```
