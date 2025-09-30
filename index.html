@@ -17,18 +17,20 @@
     }
 
     :root {
-      --primary: #000000;
-      --secondary: #1DB954;
-      --accent: #1DA1F2;
-      --background: #0a0a0a;
-      --text: #f5f5f5;
-      --text-secondary: #a0a0a0;
-      --card-bg: #1a1a1a;
-      --section-bg: #121212;
-      --border: #2a2a2a;
-      --terminal-bg: #0d0f17;
-      --terminal-header: #1e1e2e;
-      --terminal-border: #313244;
+      --primary: #0a192f;       /* Dark blue */
+      --secondary: #64ffda;     /* Teal accent */
+      --accent: #1e90ff;        /* Bright blue */
+      --background: #0a192f;    /* Dark blue background */
+      --text: #ccd6f6;          /* Light blue-gray text */
+      --text-secondary: #8892b0; /* Lighter blue-gray */
+      --card-bg: #112240;       /* Slightly lighter blue for cards */
+      --section-bg: #0a192f;    /* Same as background */
+      --border: #233554;        /* Border color */
+      --terminal-bg: #0a192f;   /* Dark blue terminal */
+      --terminal-header: #112240; /* Slightly lighter header */
+      --terminal-border: #1e90ff; /* Blue border */
+      --gradient-start: #0a192f; /* Gradient start */
+      --gradient-end: #112240;   /* Gradient end */
     }
 
     * {
@@ -41,9 +43,10 @@
       font-family: 'Space Grotesk', sans-serif;
       line-height: 1.7;
       color: var(--text);
-      background: var(--background);
+      background: linear-gradient(135deg, var(--gradient-start) 0%, var(--gradient-end) 100%);
       -webkit-font-smoothing: antialiased;
       -moz-osx-font-smoothing: grayscale;
+      min-height: 100vh;
     }
 
     .container {
@@ -682,10 +685,9 @@
         <span class="name">Sudarshan Iyengar</span>
       </div>
       <ul class="nav-links">
-        <li><a href="#skills">Skills</a></li>
-        <li><a href="#experience">Experience</a></li>
-        <li><a href="#about">About</a></li>
-        <li><a href="#contact" class="btn btn-contact">Contact</a></li>
+        <li><a href="#skills"><span class="nav-num">01.</span> Skills</a></li>
+        <li><a href="#experience"><span class="nav-num">02.</span> Experience</a></li>
+        <li><a href="#contact" class="btn btn-contact"><span class="nav-num">03.</span> Contact</a></li>
       </ul>
       <button class="mobile-menu-btn" aria-label="Menu">
         <span></span>
@@ -723,37 +725,199 @@
     </div>
   </header>
 
-  <!-- Experience Section -->
-  <section id="experience" class="experience-section">
+  <!-- Career Highlights -->
+  <section class="highlights-section">
     <div class="container">
       <div class="section-header">
-        <h2 class="section-title">Experience</h2>
-        <p class="section-subtitle">// my career journey</p>
+        <h2 class="section-title">Career Highlights</h2>
+        <p class="section-subtitle">// key expertise areas</p>
       </div>
       
-      <div class="terminal">
-        <div class="terminal-header">
-          <div class="terminal-buttons">
-            <div class="terminal-btn"></div>
-            <div class="terminal-btn"></div>
-            <div class="terminal-btn"></div>
+      <div class="highlights-grid">
+        <div class="highlight-card">
+          <div class="highlight-icon">
+            <i class="fas fa-code-branch"></i>
           </div>
-          <div class="terminal-title">experience.sh</div>
+          <h3>Linux & Drivers</h3>
+          <p>Designed and integrated Linux DMA drivers, device trees, and Yocto builds for FPGA systems.</p>
         </div>
-        <div class="terminal-body" id="terminal-output">
-          <!-- Content will be populated by JavaScript -->
+        
+        <div class="highlight-card">
+          <div class="highlight-icon">
+            <i class="fas fa-microchip"></i>
+          </div>
+          <h3>FPGA & RTL</h3>
+          <p>Developed custom AXI/AXIS Verilog modules, protocol monitors, and data stream schedulers on Zynq/Artix platforms.</p>
+        </div>
+        
+        <div class="highlight-card">
+          <div class="highlight-icon">
+            <i class="fas fa-microcontroller"></i>
+          </div>
+          <h3>RTOS & MCUs</h3>
+          <p>Ported applications to FreeRTOS/ThreadX, delivered RTOS peripheral drivers across multiple MCU families.</p>
+        </div>
+        
+        <div class="highlight-card">
+          <div class="highlight-icon">
+            <i class="fas fa-wifi"></i>
+          </div>
+          <h3>IoT & Wireless</h3>
+          <p>Built POC phase Bluetooth/Wi-Fi solutions on Microchip platforms and sub-1GHz sensing for smart monitoring.</p>
+        </div>
+        
+        <div class="highlight-card">
+          <div class="highlight-icon">
+            <i class="fas fa-bolt"></i>
+          </div>
+          <h3>Power Electronics</h3>
+          <p>Developed buck-boost converters, MPPT controllers, and conducted battery management analysis.</p>
+        </div>
+        
+        <div class="highlight-card">
+          <div class="highlight-icon">
+            <i class="fas fa-check-double"></i>
+          </div>
+          <h3>System Validation</h3>
+          <p>Automated test setups, compliance testing, and cross-team debug for production-grade systems.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact Section -->
+  <section id="contact" class="contact-section">
+    <div class="container">
+      <div class="tabs">
+        <button class="tab-btn active" data-tab="skills">Skills</button>
+        <button class="tab-btn" data-tab="experience">Experience</button>
+        <button class="tab-btn" data-tab="contact">Contact</button>
+{{ ... }}
+        <div class="tab-indicator"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Skills Tab Content -->
+  <section id="skills" class="tab-content active">
+    <div class="container">
+      <div class="section-header">
+        <h2 class="section-title">Skills & Expertise</h2>
+        <p class="section-subtitle">// my technical toolkit</p>
+      </div>
+      
+      <div class="skills-grid">
+        <div class="skill-category">
+          <h3>Embedded Development</h3>
+          <ul class="skills-list">
+            <li>C/C++ Programming</li>
+            <li>RTOS (FreeRTOS, Zephyr)</li>
+            <li>Bare-Metal Programming</li>
+            <li>ARM Cortex-M/A Series</li>
+            <li>Device Drivers</li>
+          </ul>
+        </div>
+        
+        <div class="skill-category">
+          <h3>Hardware</h3>
+          <ul class="skills-list">
+            <li>PCB Design (Altium, KiCad)</li>
+            <li>FPGA/ASIC Design</li>
+            <li>Digital/Analog Circuit Design</li>
+            <li>Hardware Debugging</li>
+          </ul>
+          
+          <h4>Communication Protocols</h4>
+          <ul class="skills-list">
+            <li>CAN, CAN FD, CANopen</li>
+            <li>I2C, I2S, SPI, QSPI</li>
+            <li>LIN, USB 2.0/3.0</li>
+            <li>UART, RS-232/485</li>
+          </ul>
+        </div>
+        
+        <div class="skill-category">
+          <h3>Software</h3>
+          <ul class="skills-list">
+            <li>Python</li>
+            <li>Embedded Linux</li>
+            <li>Git</li>
+            <li>Docker</li>
+            <li>CI/CD</li>
+          </ul>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- About Section -->
-  <section id="about" class="about-section">
+  <!-- Experience Tab Content -->
+  <section id="experience" class="tab-content">
     <div class="container">
       <div class="section-header">
-        <h2 class="section-title">About Me</h2>
-        <p class="section-subtitle">// whoami</p>
+        <h2 class="section-title">Professional Experience</h2>
+        <p class="section-subtitle">// my career journey</p>
       </div>
+      
+      <div class="timeline">
+        <div class="timeline-item">
+          <div class="timeline-content">
+            <h3>Associate Lead Engineer</h3>
+            <p class="company">Veoneer Safety Systems, India</p>
+            <p class="duration">08/2022 – Present</p>
+            <ul class="achievements">
+              <li>Developed AXI/AXIS Verilog RTL modules for SPI/GPIO protocol monitoring</li>
+              <li>Implemented GSML stream decoder with DMA for efficient high-speed data transfers</li>
+              <li>Integrated MicroBlaze soft-core with Zynq for Linux IPC and high-speed digital decoding</li>
+              <li>Maintained Yocto, secure boot scripts, and custom device trees</li>
+              <li>Designed Linux DMA drivers for FPGA-to-CPU data streaming</li>
+              <li>Managed QSPI flashing and RTOS driver integration for various peripherals (I2C, SPI, UART, CAN, LIN, PWM, Timers, GPIO)</li>
+            </ul>
+          </div>
+        </div>
+        
+        <div class="timeline-item">
+          <div class="timeline-content">
+            <h3>Embedded Engineer</h3>
+            <p class="company">Alif Semiconductor</p>
+            <p class="duration">03/2021 – 02/2022</p>
+            <ul class="achievements">
+              <li>Ported applications to ThreadX/FreeRTOS on Cortex-M55 platforms</li>
+              <li>Developed Baremetal drivers for Watchdog, Timer, and GPIO</li>
+              <li>Debugged RTOS drivers frameworks using Lauterbach, ULINK, and Segger J-Link</li>
+              <li>Developed and validated RTOS peripheral drivers</li>
+              <li>Partnered with cross-functional teams for feature enhancements</li>
+            </ul>
+          </div>
+        </div>
+        
+        <div class="timeline-item">
+          <div class="timeline-content">
+            <h3>Design Engineer</h3>
+            <p class="company">J.P. Electronics Pte. Ltd.</p>
+            <p class="duration">05/2020 – 02/2021</p>
+            <ul class="achievements">
+              <li>Designed PWM-based lighting control solutions for efficiency</li>
+              <li>Developed Bluetooth/Wi-Fi IoT solutions using Microchip platforms</li>
+              <li>Created schematics in KiCAD and supported full product lifecycle</li>
+              <li>Provided consulting, prototyping, and troubleshooting for customer projects</li>
+            </ul>
+          </div>
+        </div>
+        
+        <div class="timeline-item">
+          <div class="timeline-content">
+            <h3>R&D Engineer</h3>
+            <p class="company">GreenTronics Design Labs India Pvt. Ltd.</p>
+            <p class="duration">02/2017 – 04/2020</p>
+            <ul class="achievements">
+              <li>Developed buck-boost converters and MPPT charge controllers with validation</li>
+              <li>Contributed to Battery Management System (BMS) analysis for efficiency, safety, and reliability</li>
+              <li>Built sub-1GHz radio-based water-level monitoring (PoC) with capacitive sensing</li>
+              <li>Created LDR and remote-controlled lighting solutions for automation</li>
+              <li>Designed and tested three-phase star-delta starter for motor control</li>
+              <li>Delivered solutions across multiple MCU families, optimizing embedded firmware</li>
+              <li>Led system validation, automated test setups, and compliance testing</li>
+            </ul>
+          </div>
       
       <div class="about-content">
         <div class="about-grid">
@@ -795,7 +959,444 @@
     </div>
   </section>
 
+  <style>
+    /* Tab Navigation */
+    .tabs-section {
+      background: rgba(10, 25, 47, 0.85);
+      backdrop-filter: blur(10px);
+      position: sticky;
+      top: 0;
+      z-index: 999;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .tabs {
+      display: flex;
+      position: relative;
+      padding: 0;
+      margin: 0;
+      list-style: none;
+    }
+
+    .tab-btn {
+      background: none;
+      border: none;
+      color: var(--text-secondary);
+      padding: 1.5rem 2rem;
+      font-size: 1rem;
+      cursor: pointer;
+      position: relative;
+      transition: all 0.3s ease;
+      font-family: 'Fira Code', monospace;
+    }
+
+    .tab-btn:hover,
+    .tab-btn.active {
+      color: var(--secondary);
+    }
+
+    .tab-indicator {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      height: 2px;
+      background: var(--secondary);
+      transition: all 0.3s ease;
+    }
+
+    /* Tab Content */
+    .tab-content {
+      display: none;
+      padding: 5rem 0;
+    }
+
+    .tab-content.active {
+      display: block;
+      animation: fadeIn 0.5s ease;
+    }
+
+    /* Skills Grid */
+    .skills-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 2rem;
+      margin-top: 3rem;
+    }
+
+    .skill-category {
+      background: var(--card-bg);
+      padding: 2rem;
+      border-radius: 8px;
+      border: 1px solid var(--border);
+      transition: transform 0.3s ease;
+    }
+
+    .skill-category:hover {
+      transform: translateY(-5px);
+      border-color: var(--secondary);
+    }
+
+    .skill-category h3 {
+      color: var(--secondary);
+      margin-bottom: 1.5rem;
+      font-size: 1.25rem;
+    }
+
+    .skills-list {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    .skills-list li {
+      padding: 0.5rem 0;
+      color: var(--text-secondary);
+      position: relative;
+      padding-left: 1.5rem;
+    }
+
+    .skills-list li::before {
+      content: '▹';
+      position: absolute;
+      left: 0;
+      color: var(--secondary);
+    }
+
+    /* Career Highlights */
+    .highlights-section {
+      padding: 6rem 0;
+      background: linear-gradient(135deg, var(--section-bg) 0%, var(--background) 100%);
+    }
+    
+    .highlights-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 2rem;
+      margin-top: 3rem;
+    }
+    
+    .highlight-card {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 2rem;
+      transition: all 0.3s ease;
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .highlight-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 3px;
+      background: var(--secondary);
+      transform: scaleX(0);
+      transition: transform 0.3s ease;
+    }
+    
+    .highlight-card:hover {
+      transform: translateY(-5px);
+      border-color: var(--secondary);
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+    }
+    
+    .highlight-card:hover::before {
+      transform: scaleX(1);
+    }
+    
+    .highlight-icon {
+      font-size: 2rem;
+      color: var(--secondary);
+      margin-bottom: 1.5rem;
+    }
+    
+    .highlight-card h3 {
+      color: var(--text);
+      margin-bottom: 1rem;
+      font-size: 1.25rem;
+    }
+    
+    .highlight-card p {
+      color: var(--text-secondary);
+      line-height: 1.6;
+      margin: 0;
+    }
+    
+    /* Certifications Section */
+    .certifications-section {
+      padding: 6rem 0;
+      background: linear-gradient(135deg, var(--section-bg) 0%, var(--background) 100%);
+      border-top: 1px solid var(--border);
+    }
+    
+    .certifications-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 2rem;
+      margin-top: 3rem;
+    }
+    
+    .certification-card {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 2rem;
+      display: flex;
+      align-items: flex-start;
+      transition: all 0.3s ease;
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .certification-card::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 0;
+      width: 4px;
+      height: 100%;
+      background: var(--secondary);
+      transition: all 0.3s ease;
+    }
+    
+    .certification-card:hover {
+      transform: translateY(-5px);
+      border-color: var(--secondary);
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+    }
+    
+    .certification-icon {
+      font-size: 1.8rem;
+      color: var(--secondary);
+      margin-right: 1.5rem;
+      min-width: 40px;
+      text-align: center;
+      margin-top: 0.25rem;
+    }
+    
+    .certification-content h3 {
+      color: var(--text);
+      margin: 0 0 0.5rem;
+      font-size: 1.25rem;
+      font-weight: 600;
+    }
+    
+    .certification-content p {
+      color: var(--text-secondary);
+      margin: 0;
+      line-height: 1.6;
+      font-size: 0.95rem;
+    }
+    
+    /* Certifications Section */
+    .certifications-section {
+      padding: 6rem 0;
+      background: linear-gradient(135deg, var(--section-bg) 0%, var(--background) 100%);
+    }
+    
+    .certifications-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 2rem;
+      margin-top: 3rem;
+    }
+    
+    .certification-card {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 2rem;
+      display: flex;
+      align-items: flex-start;
+      transition: all 0.3s ease;
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .certification-card::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 0;
+      width: 4px;
+      height: 100%;
+      background: var(--secondary);
+      transition: all 0.3s ease;
+    }
+    
+    .certification-card:hover {
+      transform: translateY(-5px);
+      border-color: var(--secondary);
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+    }
+    
+    .certification-icon {
+      font-size: 2rem;
+      color: var(--secondary);
+      margin-right: 1.5rem;
+      min-width: 40px;
+      text-align: center;
+    }
+    
+    .certification-content h3 {
+      color: var(--text);
+      margin: 0 0 0.5rem;
+      font-size: 1.25rem;
+    }
+    
+    .certification-content p {
+      color: var(--text-secondary);
+      margin: 0;
+      line-height: 1.6;
+    }
+
+    /* Timeline */
+    .timeline {
+      position: relative;
+      max-width: 800px;
+      margin: 4rem auto 0;
+    }
+
+    .timeline::before {
+      content: '';
+      position: absolute;
+      width: 2px;
+      background: var(--border);
+      top: 0;
+      bottom: 0;
+      left: 50%;
+      margin-left: -1px;
+    }
+
+    .timeline-item {
+      padding: 10px 40px;
+      position: relative;
+      width: 50%;
+      box-sizing: border-box;
+    }
+
+    .timeline-item:nth-child(odd) {
+      left: 0;
+    }
+
+    .timeline-item:nth-child(even) {
+      left: 50%;
+    }
+
+    .timeline-content {
+      padding: 2rem;
+      background: var(--card-bg);
+      border-radius: 8px;
+      border: 1px solid var(--border);
+      transition: all 0.3s ease;
+    }
+
+    .timeline-item:hover .timeline-content {
+      border-color: var(--secondary);
+      transform: translateY(-5px);
+    }
+
+    .timeline-content h3 {
+      color: var(--text);
+      margin: 0 0 0.5rem;
+    }
+
+    .company {
+      color: var(--secondary);
+      font-size: 1rem;
+      margin: 0 0 0.5rem;
+    }
+
+    .duration {
+      color: var(--text-secondary);
+      font-size: 0.9rem;
+      margin: 0 0 1rem;
+    }
+
+    .achievements {
+      list-style: none;
+      padding: 0;
+      margin: 1rem 0 0;
+    }
+
+    .achievements li {
+      position: relative;
+      padding-left: 1.5rem;
+      margin-bottom: 0.5rem;
+      color: var(--text-secondary);
+    }
+
+    .achievements li::before {
+      content: '▹';
+      position: absolute;
+      left: 0;
+      color: var(--secondary);
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+  </style>
+
   <script>
+    // Tab functionality
+    document.addEventListener('DOMContentLoaded', () => {
+      const tabBtns = document.querySelectorAll('.tab-btn');
+      const tabContents = document.querySelectorAll('.tab-content');
+      const tabIndicator = document.querySelector('.tab-indicator');
+      
+      // Set initial active tab
+      const activeTab = document.querySelector('.tab-btn.active');
+      if (activeTab) {
+        const tabId = activeTab.getAttribute('data-tab');
+        document.getElementById(tabId).classList.add('active');
+        updateTabIndicator(activeTab);
+      }
+
+      // Tab click handler
+      tabBtns.forEach(btn => {
+        btn.addEventListener('click', () => {
+          const tabId = btn.getAttribute('data-tab');
+          
+          // Update active tab
+          tabBtns.forEach(b => b.classList.remove('active'));
+          btn.classList.add('active');
+          
+          // Show corresponding content
+          tabContents.forEach(content => {
+            content.classList.remove('active');
+            if (content.id === tabId) {
+              content.classList.add('active');
+            }
+          });
+          
+          // Update indicator
+          updateTabIndicator(btn);
+        });
+      });
+      
+      // Update tab indicator position
+      function updateTabIndicator(activeBtn) {
+        if (!tabIndicator) return;
+        
+        const rect = activeBtn.getBoundingClientRect();
+        const containerRect = activeBtn.parentElement.getBoundingClientRect();
+        
+        tabIndicator.style.width = `${rect.width}px`;
+        tabIndicator.style.left = `${rect.left - containerRect.left}px`;
+      }
+      
+      // Update indicator on resize
+      window.addEventListener('resize', () => {
+        const activeBtn = document.querySelector('.tab-btn.active');
+        if (activeBtn) updateTabIndicator(activeBtn);
+      });
+    });
+    
     // Navbar scroll effect
     window.addEventListener('scroll', function() {
       const nav = document.querySelector('.main-nav');
@@ -1050,5 +1651,105 @@
       });
     });
   </script>
+
+  <!-- Certifications Section -->
+  <section id="certifications" class="certifications-section">
+    <div class="container">
+      <div class="section-header">
+        <h2 class="section-title">Certifications</h2>
+        <p class="section-subtitle">// professional credentials</p>
+      </div>
+      
+      <div class="certifications-grid">
+        <div class="certification-card">
+          <div class="certification-icon">
+            <i class="fas fa-microchip"></i>
+          </div>
+          <div class="certification-content">
+            <h3>Embedded Systems</h3>
+            <p>Advanced certification in embedded systems design and development</p>
+          </div>
+        </div>
+        
+        <div class="certification-card">
+          <div class="certification-icon">
+            <i class="fas fa-project-diagram"></i>
+          </div>
+          <div class="certification-content">
+            <h3>FPGA Design for Embedded Systems</h3>
+            <p>Specialization in FPGA-based system design and implementation</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Certifications Section Styles -->
+  <style>
+    .certifications-section {
+      padding: 6rem 0;
+      background: linear-gradient(135deg, var(--section-bg) 0%, var(--background) 100%);
+      border-top: 1px solid var(--border);
+    }
+    
+    .certifications-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 2rem;
+      margin-top: 3rem;
+    }
+    
+    .certification-card {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 2rem;
+      display: flex;
+      align-items: flex-start;
+      transition: all 0.3s ease;
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .certification-card::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 0;
+      width: 4px;
+      height: 100%;
+      background: var(--secondary);
+      transition: all 0.3s ease;
+    }
+    
+    .certification-card:hover {
+      transform: translateY(-5px);
+      border-color: var(--secondary);
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+    }
+    
+    .certification-icon {
+      font-size: 1.8rem;
+      color: var(--secondary);
+      margin-right: 1.5rem;
+      min-width: 40px;
+      text-align: center;
+      margin-top: 0.25rem;
+    }
+    
+    .certification-content h3 {
+      color: var(--text);
+      margin: 0 0 0.5rem;
+      font-size: 1.25rem;
+      font-weight: 600;
+    }
+    
+    .certification-content p {
+      color: var(--text-secondary);
+      margin: 0;
+      line-height: 1.6;
+      font-size: 0.95rem;
+    }
+  </style>
 </body>
 </html>
