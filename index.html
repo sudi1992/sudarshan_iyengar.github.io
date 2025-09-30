@@ -5,26 +5,18 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Sudarshan Iyengar | Embedded Systems Engineer</title>
   <meta name="description" content="Senior Embedded Systems Engineer with 8+ years of experience in bare-metal and RTOS-based device drivers, custom board bring-up, and hardware-software integration.">
-  <meta name="keywords" content="Embedded Systems, Linux, RTOS, Firmware, C/C++, ARM, Microcontrollers, Device Drivers, Hardware Design">
   <meta name="author" content="Sudarshan Iyengar">
   
   <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;700&family=Nothing+Dot:wght@400&display=swap" rel="stylesheet">
-  <style>
-    @font-face {
-      font-family: 'Nothing Dot';
-      src: url('https://cdn.jsdelivr.net/gh/webfontworld/nerko/NothingDot.woff2') format('woff2');
-      font-weight: 400;
-      font-style: normal;
-      font-display: swap;
-    }
-  </style>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/fonts.css">
   
   <!-- CSS -->
   <link rel="stylesheet" href="css/main.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+{{ ... }}
   
   <!-- Preload critical assets -->
   <link rel="preload" href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
@@ -39,15 +31,14 @@
       --dark: #0A0F1E;
       --dark-secondary: #141A2E;
       --light: #FFFFFF;
-      --gray: #ADB5BD;
       --gray-dark: #6C757D;
       --border-color: rgba(255, 255, 255, 0.1);
       --bg-secondary: #1a2a4a;
       
       /* Typography */
-      --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+      --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
       --font-mono: 'JetBrains Mono', monospace;
-      --font-dot: 'Nothing Dot', monospace;
+      --font-dot: 'Nothing Dot', 'JetBrains Mono', monospace;
     }
     
     /* Critical CSS for above-the-fold content */
@@ -140,11 +131,14 @@
     .highlight-card h3,
     .project-card h3,
     .sidebar h1,
-    .sidebar h2 {
-      font-family: var(--font-dot);
+    .sidebar h2,
+    .hero-title,
+    .hero-subtitle {
+      font-family: 'Nothing Dot', 'JetBrains Mono', monospace;
       letter-spacing: 0.05em;
       text-transform: uppercase;
       font-weight: 400;
+      font-feature-settings: "tnum" 1;
     }
 
     .section-title {
@@ -244,15 +238,16 @@
 
     .sidebar {
       width: 300px;
-      background: linear-gradient(135deg, #0a0f1e 0%, #1a2a4a 100%);
+      background: linear-gradient(145deg, #0a0f1e 0%, #121a30 50%, #1a2a4a 100%);
+      background-blend-mode: overlay;
       padding: 2rem;
       position: fixed;
       height: 100vh;
       overflow-y: auto;
-      border-right: 1px solid rgba(255, 255, 255, 0.1);
+      border-right: 1px solid rgba(255, 255, 255, 0.08);
       color: #e0e0e0;
-      background-image: url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxMDAlIiBoZWlnaHQ9IjEwMCUiPjxkZWZzPjxwYXR0ZXJuIGlkPSJwYXR0ZXJuIiB3aWR0aD0iMTAwIiBoZWlnaHQ9IjEwMCIgcGF0dGVyblVuaXRzPSJ1c2VyU3BhY2VPblVzZSIgcGF0dGVyblRyYW5zZm9ybT0icm90YXRlKDQ1KSI+PHJlY3Qgd2lkdGg9IjUwJSIgaGVpZ2h0PSI1MCUiIGZpbGw9IiMxYzJkNTIiIG9wYWNpdHk9IjAuMSIvPjwvcGF0dGVybj48L2RlZnM+PHJlY3Qgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSIgZmlsbD0idXJsKCNwYXR0ZXJuKSIvPjwvc3ZnPg==');
-      background-blend-mode: overlay;
+      box-shadow: 4px 0 15px rgba(0, 0, 0, 0.2);
+      z-index: 100;
     }
     
     .main-content {
@@ -396,7 +391,11 @@
     
     /* Professional Summary Styles */
     .bg-light {
-      background-color: var(--bg-secondary);
+      background: linear-gradient(145deg, rgba(20, 30, 60, 0.8) 0%, rgba(10, 15, 30, 0.9) 100%);
+      backdrop-filter: blur(5px);
+      border-radius: 12px;
+      border: 1px solid rgba(255, 255, 255, 0.05);
+      box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.36);
     }
     
     .summary-content {
@@ -404,26 +403,28 @@
       margin: 0 auto;
     }
     
-    .summary-text {
-      font-size: 1.1rem;
-      line-height: 1.7;
-      color: var(--text-primary);
-      margin-bottom: 2.5rem;
+    body {
+      font-family: var(--font-sans);
+      line-height: 1.6;
+      color: var(--light);
+      background: linear-gradient(135deg, #0a0c16 0%, #141a2e 100%);
+      margin: 0;
+      padding: 0;
+      overflow-x: hidden;
+      min-height: 100vh;
     }
     
-    .highlights-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-      gap: 2rem;
-      margin-top: 3rem;
-    }
-    
-    .highlight-card {
-      background: var(--bg-primary);
-      border-radius: 8px;
-      padding: 2rem;
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
-      border: 1px solid var(--border-color);
+    /* Add subtle noise texture */
+    body::before {
+      content: '';
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.03'/%3E%3C/svg%3E");
+      pointer-events: none;
+      z-index: -1;
     }
     
     .highlight-card:hover {
@@ -655,19 +656,6 @@ void main() {
                 <p>Bengaluru, India</p>
               </div>
             </div>
-          </div>
-        </div>
-        <div class="skills-summary">
-          <h3>Core Competencies</h3>
-          <div class="skills-tags">
-            <span class="skill-tag">Embedded C/C++</span>
-            <span class="skill-tag">RTOS (FreeRTOS, Zephyr)</span>
-            <span class="skill-tag">Linux Device Drivers</span>
-            <span class="skill-tag">ARM Cortex-M/A</span>
-            <span class="skill-tag">Hardware Debugging</span>
-            <span class="skill-tag">PCB Design</span>
-            <span class="skill-tag">Communication Protocols</span>
-            <span class="skill-tag">Firmware Development</span>
           </div>
         </div>
       </div>

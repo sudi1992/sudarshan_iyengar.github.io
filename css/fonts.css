@@ -1,0 +1,40 @@
+/* Nothing Dot Font */
+@font-face {
+  font-family: 'Nothing Dot';
+  src: url('https://cdn.jsdelivr.net/gh/webfontworld/nerko/NothingDot.woff2') format('woff2'),
+       url('https://cdn.jsdelivr.net/gh/webfontworld/nerko/NothingDot.woff') format('woff');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* Apply Nothing Dot font to specific elements */
+.section-title,
+.skill-category h3,
+.highlight-card h3,
+.project-card h3,
+.sidebar h1,
+.sidebar h2,
+.hero-title,
+.hero-subtitle {
+  font-family: 'Nothing Dot', 'JetBrains Mono', monospace;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  font-weight: 400;
+  font-feature-settings: "tnum" 1;
+}
+
+/* Fallback for when Nothing Dot is not available */
+@supports not (font-variation-settings: normal) {
+  .section-title,
+  .skill-category h3,
+  .highlight-card h3,
+  .project-card h3,
+  .sidebar h1,
+  .sidebar h2,
+  .hero-title,
+  .hero-subtitle {
+    font-family: 'JetBrains Mono', monospace;
+    letter-spacing: normal;
+  }
+}
