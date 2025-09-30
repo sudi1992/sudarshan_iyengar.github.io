@@ -83,6 +83,8 @@
       background-color: #000000;
       min-height: 100vh;
       overflow-x: hidden;
+      margin: 0;
+      padding: 0;
       background-image: 
         linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.9)),
         url('https://images.unsplash.com/photo-1485470733090-0aae1788d5af?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1217&q=80');
@@ -90,6 +92,7 @@
       background-position: center;
       background-repeat: no-repeat;
       background-attachment: fixed;
+      position: relative;
     }
 
     /* Base typography */
@@ -159,19 +162,28 @@
       align-items: center;
     }
 
+    /* Main Content Wrapper */
+    .page-wrapper {
+      height: 100vh;
+      overflow-y: auto;
+      overflow-x: hidden;
+      scroll-snap-type: y mandatory;
+      scroll-behavior: smooth;
+      position: relative;
+      z-index: 1;
+    }
+
     /* Hero Section */
     .hero-section {
-      background: #000000;
+      background: transparent;
       min-height: 100vh;
+      height: 100vh;
       display: flex;
       align-items: center;
       position: relative;
       overflow: hidden;
-      padding: 12rem 0 4rem;
-      background-image: 
-        radial-gradient(circle at 20% 30%, rgba(40, 40, 40, 0.8) 0%, transparent 50%),
-        radial-gradient(circle at 80% 70%, rgba(80, 80, 80, 0.6) 0%, transparent 50%),
-        linear-gradient(135deg, #0a0a0a 0%, #1a1a1a 100%);
+      padding: 0;
+      scroll-snap-align: start;
     }
     
     .hero-section::before {
@@ -869,7 +881,7 @@
     }
     
     /* Navigation */
-    .main-nav {
+    .main-nav, nav.main-nav {
       position: fixed;
       top: 0;
       left: 0;
@@ -1087,7 +1099,8 @@
     }
   </style>
 </head>
-<body>
+<body style="margin: 0; padding: 0; overflow-x: hidden;">
+  <div class="page-wrapper">
   <!-- Navigation -->
   <nav class="main-nav">
     <div class="container">
@@ -1240,7 +1253,7 @@ int main() {
   <section id="skills" class="tab-content active" style="background: rgba(10, 15, 26, 0.97); position: relative; overflow: hidden; padding: 6rem 0;">
     <div class="container" style="max-width: 1200px; margin: 0 auto; padding: 0 2rem;">
       <div class="section-header" style="text-align: center; margin-bottom: 4rem;">
-        <h2 class="section-title" style="font-size: 2.5rem; margin-bottom: 1rem; background: linear-gradient(90deg, #61AFEF, #C678DD); -webkit-background-clip: text; -webkit-text-fill-color: transparent; display: inline-block;">
+        <h2 class="section-title" style="font-size: 2.5rem; margin-bottom: 1rem; background: linear-gradient(90deg, #61AFEF, #C678DD); -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; color: transparent; display: inline-block;">
           Skills & Expertise
         </h2>
         <p class="section-subtitle" style="color: #B0B0B0; font-size: 1.2rem;">// my technical toolkit</p>
@@ -1271,19 +1284,22 @@ int main() {
             </h3>
             <ul class="experience-description" style="list-style: none; padding-left: 0; margin: 1.5rem 0 0 0;">
               <li style="position: relative; margin-bottom: 0.75rem; padding-left: 1.5rem; color: #E6E6E6; line-height: 1.6;">
-                <span style="position: absolute; left: 0; color: #61AFEF;">▹</span> C/C++ Programming
+                <span style="position: absolute; left: 0; color: #61AFEF;">▹</span> 8+ years of bare-metal and RTOS-based device driver development
               </li>
               <li style="position: relative; margin-bottom: 0.75rem; padding-left: 1.5rem; color: #E6E6E6; line-height: 1.6;">
-                <span style="position: absolute; left: 0; color: #61AFEF;">▹</span> RTOS (FreeRTOS, Zephyr)
+                <span style="position: absolute; left: 0; color: #61AFEF;">▹</span> Expert in C/C++ for embedded systems
               </li>
               <li style="position: relative; margin-bottom: 0.75rem; padding-left: 1.5rem; color: #E6E6E6; line-height: 1.6;">
-                <span style="position: absolute; left: 0; color: #61AFEF;">▹</span> Bare-Metal Programming
+                <span style="position: absolute; left: 0; color: #61AFEF;">▹</span> RTOS (FreeRTOS, Zephyr, ThreadX)
               </li>
               <li style="position: relative; margin-bottom: 0.75rem; padding-left: 1.5rem; color: #E6E6E6; line-height: 1.6;">
-                <span style="position: absolute; left: 0; color: #61AFEF;">▹</span> ARM Cortex-M/A Series
+                <span style="position: absolute; left: 0; color: #61AFEF;">▹</span> ARM Cortex-M/A Series architecture
               </li>
               <li style="position: relative; margin-bottom: 0.75rem; padding-left: 1.5rem; color: #E6E6E6; line-height: 1.6;">
-                <span style="position: absolute; left: 0; color: #61AFEF;">▹</span> Device Drivers
+                <span style="position: absolute; left: 0; color: #61AFEF;">▹</span> Custom board bring-up and BSP development
+              </li>
+              <li style="position: relative; margin-bottom: 0.75rem; padding-left: 1.5rem; color: #E6E6E6; line-height: 1.6;">
+                <span style="position: absolute; left: 0; color: #61AFEF;">▹</span> Hardware-software integration and debugging
               </li>
             </ul>
           </div>
@@ -1293,36 +1309,36 @@ int main() {
         <div class="skill-tab-pane" id="hardware">
           <div class="experience-item" style="background: rgba(20, 25, 36, 0.8); border-radius: 12px; padding: 2rem; margin-bottom: 2rem; border: 1px solid rgba(255, 255, 255, 0.1); transition: all 0.3s ease; -webkit-backdrop-filter: blur(10px); backdrop-filter: blur(10px);">
             <h3 class="experience-title" style="color: #61AFEF; font-size: 1.5rem; margin-bottom: 1rem; display: flex; align-items: center; gap: 0.75rem;">
-              <i class="fas fa-microchip"></i> Hardware Skills
+              <i class="fas fa-microchip"></i> Hardware Expertise
             </h3>
             <ul class="experience-description" style="list-style: none; padding-left: 0; margin: 1.5rem 0 0 0;">
               <li style="position: relative; margin-bottom: 0.75rem; padding-left: 1.5rem; color: #E6E6E6; line-height: 1.6;">
-                <span style="position: absolute; left: 0; color: #61AFEF;">▹</span> PCB Design (Altium, KiCad)
+                <span style="position: absolute; left: 0; color: #61AFEF;">▹</span> Custom PCB Design (Altium, KiCad)
               </li>
               <li style="position: relative; margin-bottom: 0.75rem; padding-left: 1.5rem; color: #E6E6E6; line-height: 1.6;">
-                <span style="position: absolute; left: 0; color: #61AFEF;">▹</span> FPGA/ASIC Design
+                <span style="position: absolute; left: 0; color: #61AFEF;">▹</span> FPGA/ASIC Design and Verification
               </li>
               <li style="position: relative; margin-bottom: 0.75rem; padding-left: 1.5rem; color: #E6E6E6; line-height: 1.6;">
-                <span style="position: absolute; left: 0; color: #61AFEF;">▹</span> Digital/Analog Circuit Design
+                <span style="position: absolute; left: 0; color: #61AFEF;">▹</span> Mixed-Signal Circuit Design
               </li>
               <li style="position: relative; margin-bottom: 0.75rem; padding-left: 1.5rem; color: #E6E6E6; line-height: 1.6;">
-                <span style="position: absolute; left: 0; color: #61AFEF;">▹</span> Hardware Debugging
+                <span style="position: absolute; left: 0; color: #61AFEF;">▹</span> Hardware Debugging & Validation
               </li>
             </ul>
             
             <h4 style="color: #61AFEF; margin: 2rem 0 1rem 0; font-size: 1.25rem;">Communication Protocols</h4>
             <ul class="experience-description" style="list-style: none; padding-left: 0; margin: 0 0 0 0;">
               <li style="position: relative; margin-bottom: 0.75rem; padding-left: 1.5rem; color: #E6E6E6; line-height: 1.6;">
-                <span style="position: absolute; left: 0; color: #61AFEF;">▹</span> CAN, CAN FD, CANopen
+                <span style="position: absolute; left: 0; color: #61AFEF;">▹</span> Automotive: CAN, CAN FD, CANopen, LIN
               </li>
               <li style="position: relative; margin-bottom: 0.75rem; padding-left: 1.5rem; color: #E6E6E6; line-height: 1.6;">
-                <span style="position: absolute; left: 0; color: #61AFEF;">▹</span> I2C, I2S, SPI, QSPI
+                <span style="position: absolute; left: 0; color: #61AFEF;">▹</span> High-Speed: USB 2.0/3.0, PCIe, MIPI
               </li>
               <li style="position: relative; margin-bottom: 0.75rem; padding-left: 1.5rem; color: #E6E6E6; line-height: 1.6;">
-                <span style="position: absolute; left: 0; color: #61AFEF;">▹</span> LIN, USB 2.0/3.0
+                <span style="position: absolute; left: 0; color: #61AFEF;">▹</span> Low-Level: I2C, I2S, SPI, QSPI, UART
               </li>
               <li style="position: relative; margin-bottom: 0.75rem; padding-left: 1.5rem; color: #E6E6E6; line-height: 1.6;">
-                <span style="position: absolute; left: 0; color: #61AFEF;">▹</span> UART, RS-232/485
+                <span style="position: absolute; left: 0; color: #61AFEF;">▹</span> Wireless: BLE, Wi-Fi, Sub-1GHz RF
               </li>
             </ul>
           </div>
@@ -1332,23 +1348,26 @@ int main() {
         <div class="skill-tab-pane" id="software">
           <div class="experience-item" style="background: rgba(20, 25, 36, 0.8); border-radius: 12px; padding: 2rem; margin-bottom: 2rem; border: 1px solid rgba(255, 255, 255, 0.1); transition: all 0.3s ease; -webkit-backdrop-filter: blur(10px); backdrop-filter: blur(10px);">
             <h3 class="experience-title" style="color: #61AFEF; font-size: 1.5rem; margin-bottom: 1rem; display: flex; align-items: center; gap: 0.75rem;">
-              <i class="fas fa-code"></i> Software Skills
+              <i class="fas fa-code"></i> Software & Tools
             </h3>
             <ul class="experience-description" style="list-style: none; padding-left: 0; margin: 1.5rem 0 0 0;">
               <li style="position: relative; margin-bottom: 0.75rem; padding-left: 1.5rem; color: #E6E6E6; line-height: 1.6;">
-                <span style="position: absolute; left: 0; color: #61AFEF;">▹</span> Python
+                <span style="position: absolute; left: 0; color: #61AFEF;">▹</span> Python for test automation and scripting
               </li>
               <li style="position: relative; margin-bottom: 0.75rem; padding-left: 1.5rem; color: #E6E6E6; line-height: 1.6;">
-                <span style="position: absolute; left: 0; color: #61AFEF;">▹</span> Embedded Linux
+                <span style="position: absolute; left: 0; color: #61AFEF;">▹</span> Embedded Linux (Yocto, Buildroot) and BSP development
               </li>
               <li style="position: relative; margin-bottom: 0.75rem; padding-left: 1.5rem; color: #E6E6E6; line-height: 1.6;">
-                <span style="position: absolute; left: 0; color: #61AFEF;">▹</span> Git
+                <span style="position: absolute; left: 0; color: #61AFEF;">▹</span> Version Control: Git, GitLab, GitHub
               </li>
               <li style="position: relative; margin-bottom: 0.75rem; padding-left: 1.5rem; color: #E6E6E6; line-height: 1.6;">
-                <span style="position: absolute; left: 0; color: #61AFEF;">▹</span> Docker
+                <span style="position: absolute; left: 0; color: #61AFEF;">▹</span> Containerization: Docker, Docker Compose
               </li>
               <li style="position: relative; margin-bottom: 0.75rem; padding-left: 1.5rem; color: #E6E6E6; line-height: 1.6;">
-                <span style="position: absolute; left: 0; color: #61AFEF;">▹</span> CI/CD
+                <span style="position: absolute; left: 0; color: #61AFEF;">▹</span> CI/CD: Jenkins, GitLab CI, GitHub Actions
+              </li>
+              <li style="position: relative; margin-bottom: 0.75rem; padding-left: 1.5rem; color: #E6E6E6; line-height: 1.6;">
+                <span style="position: absolute; left: 0; color: #61AFEF;">▹</span> Test Automation: Pytest, Google Test, Robot Framework
               </li>
             </ul>
           </div>
@@ -1364,7 +1383,7 @@ int main() {
   <section id="experience" class="tab-content" style="background: rgba(10, 15, 26, 0.97); position: relative; overflow: hidden; padding: 6rem 0;">
     <div class="container" style="max-width: 1200px; margin: 0 auto; padding: 0 2rem;">
       <div class="section-header" style="text-align: center; margin-bottom: 4rem;">
-        <h2 class="section-title" style="font-size: 2.5rem; margin-bottom: 1rem; background: linear-gradient(90deg, #61AFEF, #C678DD); -webkit-background-clip: text; -webkit-text-fill-color: transparent; display: inline-block;">
+        <h2 class="section-title" style="font-size: 2.5rem; margin-bottom: 1rem; background: linear-gradient(90deg, #61AFEF, #C678DD); -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; color: transparent; display: inline-block;">
           Professional Experience
         </h2>
         <p class="section-subtitle" style="color: #B0B0B0; font-size: 1.2rem;">// my career journey</p>
@@ -1468,7 +1487,7 @@ int main() {
           <div class="about-text">
             <h3>Senior Embedded Systems Engineer</h3>
             <p class="highlight">
-              Hello! I'm Sudarshan Iyengar, a passionate Senior Embedded Systems Engineer with over 8 years of experience in designing and developing cutting-edge embedded solutions.
+              8+ years of experience developing bare-metal and RTOS-based device drivers. Strong background in custom board bring-up and hardware-software integration. Recognized for delivering reliable solutions under tight deadlines and driving continuous improvement.
             </p>
             
             <div class="expertise">
@@ -2524,8 +2543,8 @@ int main() {
   <section id="contact" class="contact-section tab-content" style="background: rgba(10, 15, 26, 0.97); padding: 6rem 0; position: relative; overflow: hidden;">
     <div class="container" style="max-width: 1200px; margin: 0 auto; padding: 0 2rem;">
       <div class="section-header" style="text-align: center; margin-bottom: 4rem;">
-        <h2 class="section-title" style="font-size: 2.5rem; margin-bottom: 1rem; background: linear-gradient(90deg, #61AFEF, #C678DD); -webkit-background-clip: text; -webkit-text-fill-color: transparent; display: inline-block;">
-          Get In Touch
+        <h2 class="section-title" style="font-size: 2.5rem; margin-bottom: 1rem; background: linear-gradient(90deg, #61AFEF, #C678DD); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; display: inline-block;">
+          Let's Work Together
         </h2>
         <p class="section-subtitle" style="color: #B0B0B0; font-size: 1.2rem;">// Let's work together on your next project</p>
       </div>
@@ -2624,6 +2643,7 @@ int main() {
     <!-- Background Pattern -->
     <div style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxMDAlIiBoZWlnaHQ9IjEwMCUiPjxkZWZzPjxwYXR0ZXJuIGlkPSJwYXR0ZXJuIiB3aWR0aD0iNDAiIGhlaWdodD0iNDAiIHBhdHRlcm5Vbml0cz0idXNlclNwYWNlT25Vc2UiIHBhdHRlcm5UcmFuc2Zvcm09InJvdGF0ZSg0NSkiPjxyZWN0IHdpZHRoPSIyMCIgaGVpZ2h0PSIyMCIgZmlsbD0icmdiYSgxMDAsMjU1LDIxOCwwLjAzKSIvPjwvcGF0dGVybj48L2RlZnM+PHJlY3Qgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSIgZmlsbD0idXJsKCNwYXR0ZXJuKSIvPjwvc3ZnPg==') center/cover no-repeat; opacity: 0.3; z-index: -1;"></div>
   </section>
+  </div> <!-- End of page-wrapper -->
   
   <style>
     /* Form field focus effects */
@@ -3575,7 +3595,7 @@ int main() {
         });
       });
       
-      // Smooth scrolling for anchor links
+      // Smooth scrolling for anchor links with snap support
       document.querySelectorAll('a[href^="#"]').forEach(anchor => {
         anchor.addEventListener('click', function (e) {
           e.preventDefault();
@@ -3585,10 +3605,24 @@ int main() {
           
           const targetElement = document.querySelector(targetId);
           if (targetElement) {
+            // Temporarily disable snap for smooth scrolling
+            document.querySelector('.page-wrapper').style.scrollSnapType = 'none';
+            
             window.scrollTo({
               top: targetElement.offsetTop - 80,
               behavior: 'smooth'
             });
+            
+            // Re-enable snap after scrolling is complete
+            setTimeout(() => {
+              document.querySelector('.page-wrapper').style.scrollSnapType = 'y mandatory';
+            }, 1000);
+            
+            // Update active navigation
+            document.querySelectorAll('.nav-links a').forEach(link => {
+              link.classList.remove('active');
+            });
+            this.classList.add('active');
           }
         });
       });
@@ -3690,5 +3724,63 @@ int main() {
       }
     });
   </script>
+  <style>
+    /* One Page Scroll Styles */
+    html, body {
+      height: 100%;
+      margin: 0;
+      padding: 0;
+      overflow-x: hidden;
+      scroll-behavior: smooth;
+    }
+    
+    .page-wrapper {
+      height: 100vh;
+      overflow-y: auto;
+      overflow-x: hidden;
+      scroll-snap-type: y mandatory;
+      scroll-behavior: smooth;
+      -webkit-overflow-scrolling: touch; /* Smooth scrolling on iOS */
+    }
+    
+    /* Prevent horizontal scrollbar from appearing during snap */
+    .page-wrapper::-webkit-scrollbar {
+      width: 0;
+      background: transparent;
+    }
+    
+    .hero-section {
+      scroll-snap-align: start;
+      height: 100vh;
+      padding: 0;
+      overflow: hidden;
+      position: relative;
+    }
+    
+    .tab-content {
+      scroll-snap-align: start;
+      min-height: 100vh;
+      padding: 8rem 0 4rem;
+      position: relative;
+      overflow: hidden;
+    }
+    
+    /* Navigation active state */
+    .nav-links a.active {
+      color: #61AFEF;
+      position: relative;
+    }
+    
+    .nav-links a.active::after {
+      content: '';
+      position: absolute;
+      bottom: -5px;
+      left: 0;
+      width: 100%;
+      height: 2px;
+      background: #61AFEF;
+      border-radius: 2px;
+    }
+  </style>
 </body>
 </html>
